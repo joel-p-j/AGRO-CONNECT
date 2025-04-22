@@ -1,0 +1,95 @@
+{% include 'admin_header.html' %}
+<!-- Page title -->
+
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                                    <div class="thumb" style="height: 300px;">
+                                        
+                                            
+                                                <div>
+                                                    {% with messages = get_flashed_messages() %}
+                                                    {% if messages %}
+                                                        <ul>
+                                                            {% for message in messages %}
+                                                                <li>{{ message }}</li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    
+                                                    {% endif %}
+                                                    {% endwith %}
+            
+                                                    <form action="{{url_for('Product_Category')}}" method="post">
+                                                        <h1 style="color: chocolate;margin-left: 100px;">Product Category</h1>
+                                                        <label style="margin-left: 50px;margin-top: 50px;">Category Name:</label><input type="text" name="category_name" style="border: 1px solid green;margin-left:80px;"><br>
+                                                        <button style="margin-left: 500px;position: relative;top:16px;width: 100px;height: 55px;"><input type="submit" value="SAVE" style="position: relative;left: -29px;top:-11px;width: 80px;"></button>
+                                                    </form>
+                                                </div>
+                                                
+                                                
+                                        
+                                    </div><!-- End Post Thumbnail -->
+                                    <div class="info"><!-- Blog Meta -->
+                                        
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th colspan="3" style="text-align: center;">Add New Product Category</th>
+                                                </tr>
+                                                <tr class="table-active table-success">
+                                                    <th>SL NO</th>
+                                                    <th>Category Name</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                                {% for item in ar_obj %}
+                                                    <tr class="info">
+                                                        <td class="info1">{{ loop.index }}</td>  <!-- This will show the SL NO -->
+                                                        <td class="info2">{{ item[1] }}</td>
+                                                        <!-- <td><a href="/admin_delete_area/{{ item[0] }}">Delete</a></td> -->
+                                                        <td class="info3"><a href="/admin_edit_area/{{ item[0] }}"><i class="ri-edit-line" style="padding: 10px;width:50px;height:30px;background-color:rgb(43 157 43) ;margin-right: 20px;border-radius:5px;color:white;margin-left:12px;"></i></a>
+                                                          <a href="/admin_delete_area/{{ item[0] }}"><i class='fas fa-trash'style="padding: 10px;width:38px;height:36px;background-color:red;margin-right: 20px;border-radius:5px;color:white;"></i></a></td>
+                                                    </tr>
+                                                {% else %}
+                                                    <tr>
+                                                        <td colspan="2" style="text-align: center;">No locations found.</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </table>
+                                            
+                                        </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- End Single Post -->
+                                </div>
+                                <div class="col-lg-12 single-item"><!-- Single Post -->
+                                    <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                        <div class="item"><!-- Post Thumbnail -->
+                                            </div>
+                                        </div><!-- End Single Post --></div>
+                                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                                            <div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                                <div class="item"><!-- Post Thumbnail -->
+
+                                                </div>
+                                            </div><!-- End Single Post -->
+                                        </div>
+                                    </div>
+                                </div>
+                                {% include 'admin_sidebar.html' %}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+{% include 'footer.html' %}
+
+
+
+

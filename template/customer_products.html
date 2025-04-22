@@ -1,0 +1,213 @@
+{% include 'customer_header.html' %}
+
+<style>
+    /* .btn_add_cart {
+        display: block;
+         padding: 40px 13px; 
+		 border:2px solid;
+		  border-color: yellow; 
+		  border-radius: 25px;
+		  font-size: 6px; 
+		  height: 50px;
+		  width: 220px;
+		  margin-right: 10px;
+    } */
+</style>
+{% with messages = get_flashed_messages() %}
+                                                    {% if messages %}
+                                                        <ul>
+                                                            {% for message in messages %}
+                                                                <li class="flash-message">{{ message }}</li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                   
+                                                    {% endif %}
+                                                {% endwith %}
+<div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light ">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2">
+				<h1 class="breadcumb-title">Customer <span>Home</span></h1>
+				<nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+					<a href="{{ url_for('customer_home') }}">Product list</a>&nbsp;&#47;&nbsp;
+				</nav>
+			</div>
+		</div>
+	</div>
+</div><!-- End of Page title -->
+<div class="validtheme-shop-area default-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="shop-listing-contentes">
+					<div class="row item-flex center">
+						<div class="col-lg-7">
+							<div class="content"><!-- Tab Nav -->
+								<nav>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+										<button class="nav-link active" id="grid-tab-control" data-bs-toggle="tab" data-bs-target="#grid-tab" type="button" role="tab" aria-controls="grid-tab" aria-selected="true">
+											<i class="fas fa-th-large"></i>
+										</button>
+										<button class="nav-link" id="list-tab-control" data-bs-toggle="tab" data-bs-target="#list-tab" type="button" role="tab" aria-controls="list-tab" aria-selected="false">
+											<i class="fas fa-th-list"></i>
+										</button>
+									</div>
+								</nav><!-- End Tab Nav -->
+							</div>
+						</div>
+						<div class="col-lg-5 text-right">
+							<p class="woocommerce-result-count">Showing all 12 results</p>
+							<form class="woocommerce-ordering" method="get">
+								<select name="orderby" class="orderby" aria-label="Shop order">
+									<option value="menu_order"  selected='selected'>Default sorting</option>
+									<option value="popularity" >Sort by popularity</option>
+									<option value="rating" >Sort by average rating</option>
+									<option value="date" >Sort by latest</option>
+									<option value="price" >Sort by price: low to high</option>
+									<option value="price-desc" >Sort by price: high to low</option>
+								</select>
+								<input type="hidden" name="paged" value="1" />
+							</form>
+						</div>
+					</div>
+				</div><!-- Tab Content -->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="tab-content tab-content-info text-center" id="shop-tabContent"><!-- Strt Product Grid Vies -->
+							<div class="tab-pane fade show active" id="grid-tab" role="tabpanel" aria-labelledby="grid-tab-control">
+								<ul class="vt-products columns-4">
+
+                                    {% for item in pdts: %}
+
+
+									<li class="product type-product post-2068 status-publish first instock product_cat-organic product_cat-winter product_tag-juicy product_tag-vegetables has-post-thumbnail featured shipping-taxable purchasable product-type-simple">
+										<div class="product-contents">
+                                          
+                                            <form action="{{ url_for('customer_add_cart') }}" method="post">
+										
+                                                <div class="product-image">
+												<a href="../product/bell-pepper/index.html">
+													<img src="{{ url_for('static', filename='uploads/' + item[5]) }}" alt="Product" height="150px" width="200px">
+												</a>
+												<div class="shop-action">
+													<ul>
+														<li class="wishlist">
+															<div class="tinv-wraper woocommerce tinv-wishlist tinvwl-shortcode-add-to-cart tinvwl-woocommerce_before_shop_loop_item" data-tinvwl_product_id="2068">
+																<div class="tinv-wishlist-clear"></div>
+																<a role="button" tabindex="0" name="add-to-wishlist" aria-label="Add to Wishlist" class="tinvwl_add_to_wishlist_button tinvwl-icon-heart tinvwl-product-already-on-wishlist  tinvwl-position-shortcode" data-tinv-wl-list="[]" data-tinv-wl-product="2068" data-tinv-wl-productvariation="0" data-tinv-wl-productvariations="[]" data-tinv-wl-producttype="simple" data-tinv-wl-action="add">
+																	<span class="tinvwl_add_to_wishlist-text">Add to Wishlist</span>
+																	<span class="tinvwl_already_on_wishlist-text">Already In Wishlist</span>
+																</a>
+																<div class="tinv-wishlist-clear"></div>		
+																<div class="tinvwl-tooltip">Add to Wishlist</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<div class="product-caption">
+												<div class="product-tags">
+													<div class="product-tags">
+														<a href="#" rel="tag">{{ item[4] }} </a>
+														<a href="#" rel="tag">{{ item[9] }}</a>
+													</div>
+												</div>
+										        <label>Stock:</label>
+												<bdi>  {{ item[7] }} </bdi>
+												<div class="price">
+													<span class="price">
+														<span class="woocommerce-Price-amount amount">
+															<bdi> ₹ {{ item[6] }} / kg<span class="woocommerce-Price-currencySymbol"></span></bdi>
+														</span>
+													</span>
+                                            	</div>
+                                                <br>
+                                                <label>Quantity</label>
+                                                <input type="number" name="quantity" value="1" style="margin-left: 20px; width: 75px;text-align: center;">
+												<!-- Add hidden input fields for product_id and rate -->
+                                                <input type="hidden" name="product_id" value="{{ item[0] }}">
+												
+                                                <input type="hidden" name="rate" value="{{ item[6] }}">
+                                                <!-- <a href="{{ url_for('customer_add_cart') }}" class="cart-btn">
+													<i class="fas fa-shopping-bag"></i>Add to cart
+												</a> -->
+												<!-- <button type="submit" style="border: 2px solid; padding: 12px 25px;border-radius: 30px;text-transform: uppercase;align-items: center;font-size: 13px;background: transparent;height: 50px; " >Add to cart</button>-->
+
+												<button type="submit" class="cart-btn" style="border:2px solid; border-color: yellow; border-radius: 25px;font-size: 14px; height: 50px;margin-right: 10px;" >
+													<i class="fas fa-shopping-bag"></i> Add to cart
+												</button>
+												<!-- <button class="btn_add_cart">
+													<i class="fas fa-shopping-bag"></i> Add to cart
+												</button> -->
+											</div> 
+                                            </form>
+										</div>
+									</li>
+
+                                    {% endfor %}
+								
+                                </ul>
+                            </div><!-- End List -->
+                        </div>
+                    </div>
+                </div><!-- End Tab Content -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+	 function showCustomAlert(message) {
+        const popup = document.createElement('div');
+        popup.textContent = message;
+        popup.style.position = 'fixed';
+        popup.style.top = '20%';
+        popup.style.left = '50%';
+        popup.style.transform = 'translate(-50%, -50%)';
+        popup.style.background = 'white';
+        popup.style.padding = '35px';
+        popup.style.border = '1px solid black';
+        popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+        popup.style.zIndex = '1000';
+        popup.style.width = '400px'; // Wider box
+        popup.style.textAlign = 'center'; // Center-align content
+        popup.style.borderRadius = '5px';
+        popup.style.height = '100px';
+
+        document.body.appendChild(popup);
+
+        // Automatically remove popup after 3 seconds
+        setTimeout(() => {
+            popup.remove();
+        }, 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+	// Quantity Validation
+	document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function (event) {
+                const quantityInput = this.querySelector('input[name="quantity"]');
+                if (quantityInput.value < 1) {
+                    event.preventDefault(); // Prevent form submission
+                    showCustomAlert("Please select a valid quantity (1 or above)");
+                }
+            });
+        });
+    
+
+</script>
+
+
+{% include 'footer.html' %}

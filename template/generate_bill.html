@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!-- Link Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+.container{
+    border: 1px solid #008000;
+    border-radius: 8px;
+    width:80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 30px;
+}
+    h2 {
+        text-align: center;
+    }
+
+    .bill_details {
+        display: flex;
+    }
+
+    .b_details_disp {
+        margin-left: 15px;
+    }
+
+    .atag {
+        font-style: italic;
+        color: aliceblue;
+    }
+
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+    }
+
+    .table-container {
+        flex: 1;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .thead-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .table td,
+    .table th {
+        padding: 8px;
+        text-align: center;
+    }
+    /* .modal-content_custome {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        pointer-events: auto;
+        background-color: #fff;
+        background-clip: padding-box;
+        border-radius: .3rem;
+        outline: 0;
+        margin-left: 20%;
+        margin-top: 20px;
+    } */
+
+    /* .modal-header_custome {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1rem;
+        border-bottom: 1px solid #dee2e6;
+        border-top-left-radius: calc(.3rem - 1px);
+        border-top-right-radius: calc(.3rem - 1px);
+    } */
+
+    .modal-body_custome {
+        position: relative;
+        flex: 1 1 auto;
+        padding: 1rem;
+    }
+
+    #paymentOptionsContainer {
+        margin-top: 20px;
+        display: none;
+    }
+
+    /* Add some space between form fields and make them aligned */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .form-control-new1{
+        width: 80PX;
+    }
+
+    .payment-method-select {
+        width: 100%;
+    }
+
+    /* Fix button layout */
+    #paymentForm button {
+        width: 100%;
+    }
+    #paymentOptionsContainer {
+    margin-top: 20px;
+    text-align: center;
+    display: none; /* Initially hide the payment options */
+    }
+
+ /* .form-control-new {
+  width: 20%;
+  padding: 10px;
+  font-size: 16px;
+} */
+.payment-method-select1 {
+  width: 186px;
+}
+
+#paymentForm button {
+  width: 14%;
+  margin-bottom: 10px;
+}
+</style>
+<div class="container">
+
+<div class="modal-content_custome">
+    {% if bill_items %}
+    <h2>Bill Details</h2>
+    <div class="bill_details">
+        <div>Bill#</div>
+        <div class="b_details_disp">{{ bill_items[0].bill_no }}</div>
+    </div>
+    <div class="bill_details">
+        <div>Order#</div>
+        <div class="b_details_disp">{{ bill_items[0].order_no }}</div>
+    </div>
+    <div class="bill_details">
+        <div>Payment Status</div>
+        <div class="b_details_disp">{{ bill_items[0].payment_status }}</div>
+    </div>
+    <div><br></div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="flex-container">
+                <div class="table-container">
+                    <form action="{{ url_for('customer_bill_payment') }}" method="POST">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr class="table-active table-success">
+                                        <th>Product Code</th>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Rate</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in bill_items %}
+                                    <tr>
+                                        <td>{{ item.product_code }}</td>
+                                        <td>{{ item.product_name }}</td>
+                                        <td>{{ item.quantity }}</td>
+                                        <td>{{ item.rate }}</td>
+                                        <td>{{ item.quantity * item.rate }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td align="right">Grand Total :</td>
+                                        <td>{{ bill_items[0].bill_amount }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                            <button class="btn btn-success">
+                                <a href="{{ url_for('customer_home') }}" class="atag">Back to home</a>
+                            </button>
+
+                            <!-- "Make Payment" button -->
+                            <button id="paymentButton" class="btn btn-primary" data-bill-id="{{ bill_items[0].bill_id }}" data-bill-amount="{{ bill_items[0].bill_amount }}">
+                                Make Payment
+                            </button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Hidden payment options section -->
+            <div id="paymentOptionsContainer">
+                <h3>Choose Payment Method</h3>
+                <form id="paymentForm" action="{{ url_for('customer_singleBill_payment') }}" method="POST" novalidate>
+                    <div class="form-group">
+                        <label for="paymentMethod" class="form-label">Payment Method</label>
+                        <select id="paymentMethod" name="payment_method" class="payment-method-select1">
+                            <option value="upi">UPI</option>
+                            <option value="card">Card</option>
+                        </select>
+                    </div>
+
+                    <!-- UPI details -->
+                    <div id="upiDetails" class="form-group" style="display:none;">
+                        <label for="upiId" class="form-label">UPI ID</label>
+                        <input type="text" id="upiId" name="upi_id" class="form-control-new" required>
+                    </div>
+
+                    <!-- Card details -->
+                    <div id="cardDetails" class="form-group" style="display:none;">
+                        <label for="cardNumber" class="form-label">Card Number</label>
+                        <input type="text" id="cardNumber" name="card_number" class="form-control-new" required>
+                        <label for="expiryDate" class="form-label-new">Expiry Date</label>
+                        <input type="text" id="expiryDate" name="expiry_date" class="form-control-new1" placeholder="MM/YY" required>
+                        <label for="cvv" class="form-label-new">CVV</label>
+                        <input type="text" id="cvv" name="cvv" class="form-control-new1" required>
+                    </div>
+
+                    <input type="hidden" id="billId" name="bill_id" value="{{ bill_items[0].bill_id }}">
+                    <input type="hidden" id="billAmount" name="bill_amount" value="{{ bill_items[0].bill_amount }}">
+
+                    <button type="submit" class="btn btn-success">Submit Payment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>No items found for this bill.</p>
+    {% endif %}
+</div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<script>
+    document.getElementById('paymentButton')?.addEventListener('click', function(e) {
+        e.preventDefault();  // Prevent the default action (navigation) from happening
+    
+        // Show payment options container
+        const paymentOptionsContainer = document.getElementById('paymentOptionsContainer');
+        paymentOptionsContainer.style.display = 'block';
+    
+        // Set up the payment method select event listener
+        const paymentMethodSelect = document.getElementById('paymentMethod');
+        const upiDetails = document.getElementById('upiDetails');
+        const cardDetails = document.getElementById('cardDetails');
+    
+        paymentMethodSelect.addEventListener('change', function() {
+            if (paymentMethodSelect.value === 'upi') {
+                upiDetails.style.display = 'block';
+                cardDetails.style.display = 'none';
+            } else if (paymentMethodSelect.value === 'card') {
+                upiDetails.style.display = 'none';
+                cardDetails.style.display = 'block';
+            }
+        });
+    
+        // Trigger the initial display change
+        paymentMethodSelect.dispatchEvent(new Event('change')); 
+    });
+    
+    document.getElementById('paymentForm')?.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent default form submission
+
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    const billId = document.getElementById('paymentButton').dataset.billId;
+    const billAmount = document.getElementById('paymentButton').dataset.billAmount;
+
+    // Validate visible fields
+    let isValid = true;
+
+    if (paymentMethod === 'upi') {
+        const upiId = document.getElementById('upiId').value;
+        if (!upiId) {
+            alert('Please enter your UPI ID');
+            isValid = false;
+        }
+    } else if (paymentMethod === 'card') {
+        const cardNumber = document.getElementById('cardNumber').value;
+        const expiryDate = document.getElementById('expiryDate').value;
+        const cvv = document.getElementById('cvv').value;
+
+        if (!cardNumber || !expiryDate || !cvv) {
+            alert('Please fill in all card details');
+            isValid = false;
+        }
+    }
+
+    if (!isValid) return; // If validation fails, stop submission
+
+    // Collect payment data
+    let paymentData = {
+        bill_id: billId,
+        bill_amount: billAmount,
+        payment_method: paymentMethod, // Include payment method
+    };
+
+    // Add payment-specific data
+    if (paymentMethod === 'upi') {
+        paymentData.upi_id = document.getElementById('upiId').value;
+    } else if (paymentMethod === 'card') {
+        paymentData.card_number = document.getElementById('cardNumber').value;
+        paymentData.expiry_date = document.getElementById('expiryDate').value;
+        paymentData.cvv = document.getElementById('cvv').value;
+    }
+
+    // Debugging: Check the data being sent
+    console.log(paymentData);
+
+    // Send the data to the backend using Fetch API
+    fetch('/customer_singleBill_payment', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',  // Set content type to JSON
+    },
+    body: JSON.stringify(paymentData),  // Send JSON data
+})
+.then(response => response.json())
+.then(data => {
+    if (data.success) {
+        alert('Payment Successful!');
+        window.location.href = '{{ url_for("customer_home") }}'; // Redirect after success
+    } else {
+        alert('Payment failed. Please try again!');
+    }
+})
+.catch(err => {
+    console.error('Error:', err);
+    alert('An error occurred while processing your payment.');
+});
+
+});
+
+    </script>
+    

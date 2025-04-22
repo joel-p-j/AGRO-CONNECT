@@ -1,0 +1,113 @@
+{% include 'landowner_header.html' %}
+
+<div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light ">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="breadcumb-title">WELCOME</h1>
+            <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+                <a href="https://wordpress.validthemes.net/agrica"></a>
+                <a href="../../product-category/organic/index.html"><i>Land is the foundation of agriculture;<br>it nurtures our future and sustains our communities.</a></i></a><br>Home</a></div>
+            </div>
+        </div>
+</div><!-- End of Page title -->
+<div class="validtheme-shop-single-area default-padding">
+    <div class="container">
+        <div class="product-details">
+            <div class="row">
+				
+			
+	<div class="col-lg-6"><div class="product-thumb"><div class="item-box"></div></div></div>
+	<div class="col-lg-6">
+		
+ </li></ul>
+</div> 
+			</form>
+
+	
+ </div>
+</div>
+
+		<!-- Product Bottom Info  -->
+    <div class="single-product-bottom-info">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Tab Nav -->
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                		
+                        <!-- <button class="nav-link active" id="description-tab-control" data-bs-toggle="tab" data-bs-target="#description-tab" type="button" role="tab" aria-controls="description-tab" aria-selected="true"> -->
+                                                      <!-- </button> -->
+                    	
+                        
+                                    </div>
+                <!-- End Tab Nav -->
+                <!-- Start Tab Content -->
+                <div class="tab-content tab-content-info" id="myTabContent">
+                		
+                    <table style="margin-left: -33px;">
+						<tr>
+							<th colspan="11" style="text-align: center;">Complaint Status</th>
+						</tr>
+						<tr style="width: 20px;">
+							<th>SL_No</th>
+							<th>Complaint</th>
+							<th>Admin_reply</th>
+							<th>Status</th>
+						</tr>
+						{% for status in ar_obj %}
+						<tr class="info">
+							
+							<td>{{ loop.index }}</td>
+							<td>{{ status[0] }}</td>  
+							<td>{{ status[1] }}</td> 
+							<td>{{ status[2] }}</td>
+							
+						
+						</tr>
+						{% else %}
+						<tr>
+							<td colspan="4" style="text-align: center;">Not found</td>
+						</tr>
+						{% endfor %}
+					</table> 
+                   
+			</div> 
+
+					
+
+		
+                    <!-- End Single -->
+                    	
+                </div>
+                
+					<!-- <h3>Land Notifications</h3> -->
+				<div class="vt-products text-center related-product-carousel swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+									<div class="swiper-slide">
+						
+</div>
+</div>
+<div class="product-caption">
+    <div class="product-tags">
+        <div class="product-tags">
+            <a href="../../product-tag/crop/index.html" rel="tag"></a>
+            <a href="../../product-tag/organic/index.html" rel="tag">Organic</a>
+        </div>
+    </div>
+    <h4 class="product-title"><a href="../strawberry/index.html">Strawberry</a></h4>
+    <div class="price">
+	
+							</div> -->
+		</div>
+
+	</div>
+	
+
+
+		
+ </div>
+ </div>
+ </div>
+ </div>
+    {% include 'footer.html' %}

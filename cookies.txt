@@ -1,0 +1,6 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+wordpress.validthemes.net	TRUE	/agrica/	FALSE	1999999999	woocommerce_items_in_cart	1
+wordpress.validthemes.net	TRUE	/agrica/	FALSE	1999999999	wp_woocommerce_session_047ba1d0a3b11210fe57e37751383936	t_4b3f629a9b0cad02f77e8b178d3189%7C%7C1711276273%7C%7C1711272673%7C%7C3c9c6fa60f26bd2bbc05259c82254d90
+wordpress.validthemes.net	TRUE	/agrica/	FALSE	1999999999	woocommerce_cart_hash	0fee15626d2178f25a6342526b2db96c
+

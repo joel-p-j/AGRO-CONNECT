@@ -1,0 +1,113 @@
+{% include 'admin_header.html' %}
+<!-- Page title -->
+
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                                    <div class="thumb">
+                                        <a href="../announcing-result-the-resolution-sentiments/index.html" class="post-thumbnail">
+                                           
+                                        </a>
+                                        </div><!-- End Post Thumbnail -->
+                                        <!-- <div class="info"></div> -->
+                                            {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                   
+                                                        {% endif %}
+                                                        {% endwith %}
+                                    <table class="table">
+                                        <thead class="thead-dark"></thead>
+                                        <tr>
+                                            <th colspan="11" style="text-align: center;">View land notifications</th>
+                                        </tr>
+                                        <tr class="table-active table-success">
+                                            <th>SL#</th>
+                                            <th>Matter</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                        {% for noti in ar_obj %}
+                                        <tr class="info">
+                                            <td>{{ loop.index }}</td>
+                                            <td>{{ noti[2] }}</td>  
+                                            <td>{{ noti[3] }}</td>
+                                        </tr>
+                                        {% else %}
+                                        <tr>
+                                            <td colspan="11" style="text-align: center;">Not found</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </table> 
+                                    
+                                            <div class="meta">
+                                                
+                                                <ul>
+                                            </ul>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Post -->
+                                    </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+                                        <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                        <div class="item"><!-- Post Thumbnail -->
+                                           
+                                            </div>
+                                        </div><!-- End Single Post --></div><div class="col-lg-12 single-item"><!-- Single Post --><div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                                <div class="item"><!-- Post Thumbnail -->
+                                                    
+                                                </div></div><!-- End Single Post --></div></div>
+
+                                                {% include 'admin_sidebar.html' %}
+                                                        
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+<script>
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 5000);
+}
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const flashMessages = document.querySelectorAll('.flash-message');
+    flashMessages.forEach(message => {
+        showCustomAlert(message.textContent.trim()); // Trim leading/trailing whitespace
+    });
+});
+
+</script>
+{% include 'footer.html' %} 

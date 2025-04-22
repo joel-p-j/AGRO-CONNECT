@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="col-lg-12">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr class="table-active table-success">
+                    <th scope="col">Product Code</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in order_details %}
+                    {% set quantity = order.quantity | default(0) | float %}
+                    {% set rate = order.rate | default(0) | float %}
+                    {% set amount = quantity * rate %}
+                    <tr>
+                        <td>{{ order.product_code }}</td>
+                        <td><img src="{{ url_for('static', filename='uploads/' + order.image) }}" alt="Product" height="30px" width="30px"></td>
+                        <td>{{ order.product_name }}</td>
+                        <td>{{ rate | round(2) }}</td>
+                        <td>{{ quantity | round(2) }}</td>
+                        <td>{{ amount | round(2) }}</td>
+                    </tr>
+                {% endfor %}
+
+                <tr>
+                    <td colspan="5"></td>
+                    <td colspan="2" align="left">
+                        Grand Total: {{ grand_total | round(2) }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+       
+    </div>
+</div>

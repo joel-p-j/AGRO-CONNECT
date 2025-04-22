@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AgroConnect</title>
+	<link rel="icon" type="image/png" href="static/assets/images/Agrologonew.png">
+    
+    <meta name='robots' content='max-image-preview:large' />
+    <link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+    <link rel="alternate" type="application/rss+xml" title="Agrica &raquo; Feed" href="feed/index.html" />
+    <link rel="alternate" type="application/rss+xml" title="Agrica &raquo; Comments Feed" href="comments/feed/index.html" />
+
+    <!-- Stylesheets -->
+    <link rel='stylesheet' id='elementor-post-9-css' href='static/assets/css/post-9689d.css?ver=1705050394' type='text/css' media='all' />
+    <link rel='stylesheet' id='bootstrap-css' href='static/assets/css/bootstrap.min5b31.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='fontawesome-css' href='static/assets/css/font-awesome.minad76.css?ver=5.9.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='agrica-validnavs-css' href='static/assets/css/validnavs5152.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='agrica-main-style-css' href='static/assets/css/styled5f7.css?ver=2.0' type='text/css' media='all' />
+   
+    <link rel='stylesheet' id='landcss' href='static/assets/css/reg_style.css' type='text/css' />
+
+    <!-- JS -->
+    <script type="text/javascript" src="static/assets/js/jquery.minf43b.js?ver=3.7.1" id="jquery-core-js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="static/assets/images/cropped-favicon-32x32.png" sizes="32x32" />
+
+    <style>
+        html, body {
+            /* height: 100%; */
+            height: 25%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-image: url('static/assets/images/16.png');
+            background-size: 100% 100vh;
+            /* background-size: cover; */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+             /* Keeps the background fixed during scrolling */
+        }
+        .custom-container {
+            width: 100%; 
+            height: 45px;
+            /* Adjust the width to fill the entire view */
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar-area top-bar-style-one bg-dark text-light">
+    <div class="containers">
+        <div class="row align-center">
+            <div class="col-lg-8">
+                <ul class="item-flex">
+                    <li><i class="fas fa-clock"></i> Opening Hours: 24 hrs</li>
+                    <li><a href="tel:+91 7586958956"><i class="fas fa-phone-alt"></i> +91 7586958956</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 text-end">
+                <div class="social">
+                    <ul>
+                        <li><a href="http://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="http://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="http://youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="http://linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<header>
+    <nav class="navbar navbar-sticky navbar-default validnavs dark">
+        <div class="custom-container d-flex justify-content-between align-items-center">
+            <!-- Navbar Header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <img class="logo" src="static/assets/images/Agro-logo-new.png" />
+                </a>
+            </div>
+
+            <!-- Navbar Menu -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-times"></i>
+                </button>
+                <ul class="nav navbar-nav navbar-center" id="menu-primary-menu">
+                    <li id="menu-item-85"><a title="Home" href="{{url_for('index')}}">Home</a></li>
+                    <li id="menu-item-2681"><a title="About Us" href="{{url_for('aboutus')}}">About Us</a></li>
+                    <li id="menu-item-2729"><a title="Contact Us" href="{{ url_for('contact') }}">Contact Us</a></li>
+                    <li id="menu-item-2732" class="menu-item menu-item-has-children dropdown">
+                        <a title="Registration" href="#" class="dropdown-toggle" data-toggle="dropdown">Registration</a>
+                        <ul class="dropdown-menu">
+                            <li id="menu-item-2736"><a title="Provider Registration" href="{{ url_for('farmer') }}">Farmer</a></li>
+                            <li id="menu-item-2917"><a title="Land Owner Registration" href="{{ url_for('landowner') }}">Land Owner</a></li>
+                            <li id="menu-item-2732"><a title="Customer Registration" href="{{ url_for('customer') }}">Customer</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Attribute Navigation -->
+            <div class="attr-right">
+                <div class="attr-nav">
+                    <ul>
+                        <li class="button"><a href="{{url_for('login')}}">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container-f">
+    <!-- Title section -->
+    <div class="title">Registration</div>
+
+    {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No messages</p>
+                {% endif %}
+            {% endwith %}
+
+    <div class="content">
+      <!-- Registration form -->
+      <form action="{{ url_for('farmer_reg') }}" method="post" enctype="multipart/form-data">
+        <div class="user-details">
+          <!-- Input for Full Name -->
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" name="name" placeholder="Enter your name" required>
+          </div>
+          <!-- Input for Username -->
+          <div class="select-box">
+            <span class="details">Area</span>
+            <select name="area">
+              <Option>Select area</Option>
+              {% 
+                for item in area_obj: %}
+                    <option value="{{ item[0] }}"> {{ item[1] }} </option>
+               {% endfor %}
+            </select>
+          </div>
+          <div class="input-box">
+            <span class="details">Address</span>
+            <textarea name="address" placeholder="Enter your address" required></textarea>
+          </div>
+          
+          <div class="input-box">
+            <span class="details">Adhaar</span>
+            <input type="text" name="adhaar" placeholder="Enter your adhaar no" required>
+          </div>
+          <!-- Input for Phone Number -->
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <!-- Input for Password -->
+          <div class="input-box">
+            <span class="details">Mobile</span>
+            <input type="text" name="mobile" placeholder="Enter your number" required>
+          </div>
+          <!-- Input for Confirm Password -->
+          <div class="input-box">
+            <span class="details">Upload Adhaar(upload copy in pdf format)</span>
+            <input type="file" name="upload" placeholder="Upload file" required style="background-color: beige;">
+          </div>
+          <div class="input-box">
+            <span class="details">Account Holder Name</span>
+            <input type="text" name="account_holder_name" placeholder="Enter your name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Account No</span>
+            <input type="text" name="account_no" placeholder="Enter your acc.number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">IFSC Code</span>
+            <input type="text" name="ifsc_code" placeholder="Enter IFSC Code" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Branch name</span>
+            <input type="text" name="branch_name" placeholder="Enter your branch" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="text" name="password" placeholder="Enter your password" required>
+          </div>
+        </div>
+        
+        <!-- Submit button -->
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+{% include 'innerfooter.html' %}   
+<script>
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("form").addEventListener("submit", function(event) {
+            let mobile = document.querySelector("input[name='mobile']").value;
+            
+            if (!/^\d{10}$/.test(mobile)) {
+                alert("Mobile number must be exactly 10 digits.");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    });
+</script>   
+<!-- </html> -->

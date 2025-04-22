@@ -1,0 +1,255 @@
+{% include 'admin_header.html' %}
+<!-- Page title -->
+
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item" ><!-- Post Thumbnail -->
+                                    <div class="thumb">
+                                        <a href="../announcing-result-the-resolution-sentiments/index.html" class="post-thumbnail">
+                                           
+                                        </a>
+                                        </div><!-- End Post Thumbnail -->
+                                        <div class="info">
+                                            {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                    {% else %}
+                                                       
+                                                        {% endif %}
+                                                        {% endwith %}
+                    <div class="table-container">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                        <tr>
+                                            <th colspan="11" style="text-align: center;">View Lease payment reports</th>
+                                        </tr>
+                                        <tr class="table-active table-success">
+                                            <th>SL_No</th>
+                                            <th>Landowner name</th>
+                                            <th>Area name</th>
+                                            <th>Village name</th>
+                                            <th>Total area</th>
+                                            <th>Survey no</th>
+                                            <th>Land type</th>
+                                            <th>Farmer name</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        {% for lease in lease_obj %}
+                                        <tr class="info">
+                                            
+                                            <td>{{ loop.index }}</td>
+                                            <td>{{ lease[1] }}</td>  
+                                            <td>{{ lease[3] }}</td>  
+                                            <td>{{ lease[4] }}</td> 
+                                            <td>{{ lease[5] }}</td> 
+                                            <td>{{ lease[6] }}</td> 
+                                            <td>{{ lease[7] }}</td> 
+                                            <td>{{ lease[9] }}</td> 
+                                            <td>{{ lease[10] }}</td>
+                                            <td>{{ lease[11] }}</td>
+                                            
+                                           
+                                        
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="11" style="text-align: center;">No applications found.</td>
+                                            </tr>
+                                        {% endfor %}
+
+                                                                
+                                        </table>
+                                        
+                                        <div class="meta">
+                                                <ul>
+                                            </ul>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        
+                <div class="table-container">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                    <tr>
+                                        <th colspan="11" style="text-align: center;">View policy payment reports</th>
+                                    </tr>
+                                    <tr class="table-active table-success">
+                                        <th>SL_No</th>
+                                        <th>Insurance type name</th>
+                                        <th>Farmer name</th>
+                                        <th>Admin reply</th>
+                                        <th>Farmer confirmation</th>
+                                        <th>Policy number</th>
+                                        <th>Start date</th>
+                                        <th>End date</th>
+                                        <th>Policy Amount</th>
+                                        <th>Payment date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    {% for policy in policy_obj %}
+                                    <tr class="info">
+                                        
+                                        <td>{{ loop.index }}</td>
+                                        <td>{{ policy[1] }}</td>  
+                                        <td>{{ policy[3] }}</td>  
+                                        <td>{{ policy[4] }}</td> 
+                                        <td>{{ policy[5] }}</td> 
+                                        <td>{{ policy[6] }}</td> 
+                                        <td>{{ policy[7] }}</td> 
+                                        <td>{{ policy[8] }}</td> 
+                                        <td>{{ policy[9] }}</td> 
+                                        <td>{{ policy[10] }}</td>
+                                        <td>{{ policy[11] }}</td>
+                                        
+                                       
+                                    
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="11" style="text-align: center;">No policies found.</td>
+                                        </tr>
+                                    {% endfor %}
+
+                                                            
+                                    </table>
+                                    
+                                    <div class="meta">
+                                            <ul>
+                                        </ul>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                                <tr>
+                                    <th colspan="11" style="text-align: center;">View product payments</th>
+                                </tr>
+                                <tr class="table-active table-success">
+                                    <th>SL_No</th>
+                                    <th>Customer Name</th>
+                                    <th>Customer Address</th>
+                                    <th>Order no</th>
+                                    <th>No of items</th>
+                                    <th>Total amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+
+                                </tr>
+                                {% for order in orders %}
+                                <tr class="info">
+                                    
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ order[1] }}</td> 
+                                    <td>{{ order[2] }}</td> 
+                                    <td>{{ order[3] }}</td>
+                                    <td>{{ order[4] }}</td>
+                                    <td>{{ order[5] }}</td>
+                                    <td>{{ order[6] }}</td>
+                                    <td>{{ order[7] }}</td>
+                                
+                                {% else %}
+                                    <tr>
+                                        <td colspan="11" style="text-align: center;">No applications found.</td>
+                                    </tr>
+                                {% endfor %}
+
+                                                        
+                                </table>
+                                
+                                <div class="meta">
+                                        <ul>
+                                    </ul>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                                    <!-- End Single Post -->
+                                    </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+                                        <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                        <div class="item"><!-- Post Thumbnail -->
+                                           
+                                            </div>
+                                        </div><!-- End Single Post --></div><div class="col-lg-12 single-item"><!-- Single Post --><div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                                <div class="item"><!-- Post Thumbnail -->
+                                                    
+                                                </div></div><!-- End Single Post --></div></div></div>
+                                                        <div class="sidebar col-xl-4 col-lg-5 col-md-12 mt-md-50 mt-xs-50">
+                                                            <aside>
+                                                                <form role="search" method="get" action="https://wordpress.validthemes.net/agrica/" class="wp-block-search__button-outside wp-block-search__text-button wp-block-search"    >
+                                                                        <!-- <label class="wp-block-search__label" for="wp-block-search__input-1" ></label> -->
+                                                                        
+                                                                    </form>
+                                                                    
+                                                               
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    
+                                                                                </aside>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+<script>
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+   
+</script>
+{% include 'footer.html' %}

@@ -1,0 +1,141 @@
+{% include 'customer_header.html' %}
+
+<div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="breadcumb-title">Customer <span>Home</span></h1>
+                <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+                    <a href="{{ url_for('index') }}">Home</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div><!-- End of Page title -->
+<div class="validtheme-shop-area default-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shop-listing-contentes">
+                    <div class="row item-flex center">
+                        <div class="col-lg-7">
+                            <div class="content"><!-- Tab Nav -->
+                                <nav>
+                                    {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                        <ul>
+                                            {% for message in messages %}
+                                                <li class="flash-message">{{ message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    
+                                    {% endif %}
+                                    {% endwith %}
+                                    
+                                    <div class="form1">
+                                    <form action="/submit_complaint_other" method="post">
+                                        <h2>Complaint Form</h2>
+                                        <label class="label1">Type:</label>
+                                        <select class="select1" id="toSelect" name="toSelect" onchange="updateAgainstOptions()">
+                                            <option value="">--Select--</option>
+                                            <option value="Farmer">Farmer</option>
+                                            
+                                        </select>
+                                        <br>
+                                        <label class="label2">Against:</label>
+                                        <select class="select2" id="againstSelect" name="againstSelect">
+                                            <option value="">--Select--</option>
+                                        </select>
+                                        <br>
+                                        <label class="label3">Matter:</label>
+                                        <textarea name="matter"></textarea>
+                                        <br>
+                                        <button class="btn1">
+                                            <input type="submit" value="SEND">
+                                        </button>
+                                    </form>
+                                    </div>
+                                </nav><!-- End Tab Nav -->
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Tab Content -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tab-content tab-content-info text-center" id="shop-tabContent"><!-- Strt Product Grid Vies -->
+                        </div>
+                    </div>
+                </div><!-- End Tab Content -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Flash Message Pop-up -->
+<div class="flash-message-popup" id="flashMessagePopup">
+    <span id="flashMessageContent"></span>
+</div>
+
+<script>
+   function updateAgainstOptions() {
+        const toValue = document.getElementById("toSelect").value;
+        const againstSelect = document.getElementById("againstSelect");
+
+        // Clear existing options
+        againstSelect.innerHTML = '<option value="">--Select--</option>';
+
+        if (toValue) {
+            fetch(`/get_against_options_other?to=${toValue}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        data.forEach(option => {
+                            const opt = document.createElement("option");
+                            opt.value = option.id;
+                            opt.textContent = option.name;
+                            againstSelect.appendChild(opt);
+                        });
+                    } else {
+                        console.error("Error in data format:", data.error || "Unknown error");
+                    }
+                })
+                .catch(error => console.error("Error in fetch:", error));
+        }
+    }
+
+    // Auto-hide flash messages
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '20px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 5000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const flashMessages = document.querySelectorAll('.flash-message');
+    flashMessages.forEach(message => {
+        showCustomAlert(message.textContent.trim()); // Trim leading/trailing whitespace
+    });
+});
+
+</script>
+
+{% include 'footer.html' %}

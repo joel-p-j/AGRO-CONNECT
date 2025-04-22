@@ -1,0 +1,133 @@
+{% include 'admin_header_new.html' %} 
+
+<style>
+    .flash-message {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        border: 1px solid #f5c6cb;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
+
+    /* Flexbox container for the two tables */
+    .flex-container {
+        display: flex;
+        justify-content: space-between; /* Align tables side by side */
+        gap: 50px; /* Space between tables */
+    }
+
+    /* Make sure each table takes a reasonable amount of space */
+    .table-container {
+        flex: 1; /* Allows tables to take equal width */
+        max-width: 90%; /* Limit the maximum width */
+        overflow-x: auto; /* In case of long tables, allow horizontal scrolling */
+    }
+    
+    /* Optional: Add some styling to tables for better look */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+       
+    }
+    .thead-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+    .table td, .table th {
+        padding: 8px;
+        text-align: center;
+    }
+
+    .table-container2 {
+        flex: 1; /* Allows tables to take equal width */
+        max-width: 25%; /* Limit the maximum width */
+        overflow-x: auto; /* In case of long tables, allow horizontal scrolling */
+    }
+    
+</style>
+
+<div class="blog-area right-sidebar full-blog default-padding">
+
+    <div class="container">
+      
+        <h1>View Orders</h1>
+        <div class="row">
+            {% if order_details %}
+            <div class="col-lg-12">
+
+                <!-- Flex container for the two tables -->
+                <div class="flex-container">
+                
+                    <div class="table-container">
+
+                      <form action="{{ url_for('customer_bill') }}" method="POST">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+
+                                    <tr class="table-active table-success">
+                                        <th colspan="8" style="text-align: right;">
+                                            Order No: {{ order_details[0].order_no }} | Date: {{ order_details[0].date }}
+                                        </th>
+                                    </tr>                            
+
+                                    <tr class="table-active table-success">
+                                        <th scope="col">Farmer</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Product Code</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Rate</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Amount</th>
+                                       
+                                    </tr>
+                                </thead>
+
+                                {% for order in order_details %}
+                                <tbody>
+                                   
+                                    <tr>
+                                        <td>{{ order.farmer_name }}</td>
+                                       
+                                        <td>
+                                           <img src="{{ url_for('static', filename='uploads/' + order.image) }}" alt="Product" height="30px" width="30px">
+                                        </td>
+                                        <td>{{ order.product_code }}</td>
+                                        <td>{{ order.product_name }}</td>
+                                        <td>{{ order.rate }}</td>
+                                        <td>{{ order.quantity }}</td>
+                                        
+                                        <td>{{ (order.quantity * order.rate) | round(2) }}</td>
+                                      
+                                    </tr>
+                                    {% endfor %}
+
+                                    <tr>
+                                        <td colspan="6"></td>
+                                        <td align="left">Grand Total : {{ order_details[0].total_amount }}</td>
+                                        <input type="hidden" name="total" value="{{ order_details[0].total_amount }}"/>
+                                        <input type="hidden" name="order_id" value="{{ order_details[0].order_id }}"/>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                            <button type="submit" class="default-btn">Generate Bill</button>
+                        </div>
+                        </form>
+                    </div>
+                    
+                
+                </div> <!-- End of flex-container -->
+                
+            </div>
+            {% else %}
+                <p>No Orders.</p>
+            {% endif %}
+        </div>
+    <!-- </div> -->
+    </div>
+</div>
+
+
+{% include 'page_footer.html' %}

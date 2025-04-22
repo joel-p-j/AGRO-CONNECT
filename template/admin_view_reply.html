@@ -1,0 +1,147 @@
+{% include 'admin_header.html' %}
+<!-- Page title -->
+
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                                    <div class="thumb">
+                                        <a href="../announcing-result-the-resolution-sentiments/index.html" class="post-thumbnail">
+                                           
+                                        </a>
+                                        </div><!-- End Post Thumbnail -->
+                                        <!-- <div class="info"></div> -->
+                                            {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                   
+                                                        {% endif %}
+                                                        {% endwith %}
+                                    <table class="table">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th colspan="11" style="text-align: center;">View Enquiry Reply</th>
+                                        </tr>
+                                        <tr class="table-active table-success">
+                                            <th>SL#</th>
+                                            <th>Sender name</th>
+                                            <th>Sender type</th>
+                                            <th>Recipient name</th>
+                                            <th>Recipient type</th>
+                                            <th>Complaint</th>
+                                            <th>Enquiry</th>
+                                            <th>Reply</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                        {% for reply in ar_obj %}
+                                        <tr class="info">
+                                            
+                                            <td>{{ loop.index }}</td>
+                                            <td>{{ reply[1] }}</td>  <!-- sender_name -->
+                                            <td>{{ reply[2] }}</td>  <!-- sender_type -->
+                                            <td>{{ reply[3] }}</td>  <!-- recipient name -->
+                                            <td>{{ reply[4] }}</td>  <!-- recipient type -->
+                                            <td>{{ reply[5] }}</td>  <!-- complaint -->
+                                            <td>{{ reply[6] }}</td>  <!-- enquiry -->
+                                            <td>{{ reply[7] }}</td>  <!-- reply -->
+                                            <td>{{ reply[8] }}</td>  <!-- status -->
+                                            
+                                            <td>
+                                                {% if reply[8] == "Sent" %}
+
+                                                    <button  style="margin-left: 5px;width:90px;" type="button" 
+                                                             class="btn btn-primary" 
+                                                             data-bs-toggle="modal" 
+                                                             data-bs-target="#enquiryModal-{{ loop.index }}">
+                                                             <a href="#" style="position:relative;left:-26px;color: white;">Update</a>
+                                                    </button>
+                                            
+                                                {% else %}
+
+                                                    <button  style="margin-left: 5px;width:90px;" type="button" 
+                                                             class="btn btn-primary" 
+                                                             data-bs-toggle="modal" 
+                                                             data-bs-target="#enquiryModal-{{ loop.index }}" disabled><a href="#" style="position:relative;left:-32px;color: white;">Updated</a>
+                                                    </button>
+
+                                                {% endif %}
+                                            
+                                        
+                                                <!-- Modal Structure -->
+                                                <div class="modal fade" id="enquiryModal-{{ loop.index }}" tabindex="-1" aria-labelledby="enquiryModalLabel-{{ loop.index }}" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="enquiryModalLabel-{{ loop.index }}">Send Reply</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="{{ url_for('admin_send_reply',complaint_id=reply[0]) }}" method="post">
+                                                                    <input type="hidden" name="item_id" value="{{ reply[0] }}">
+                                                                            
+                                                                    <div class="mb-3">
+                                                                       
+                                                                        <textarea 
+                                                                            class="form-control" 
+                                                                            id="enquiryMessage-{{ loop.index }}" 
+                                                                            name="admin_reply" 
+                                                                            rows="4" 
+                                                                            required
+                                                                            oninput="toggleLabelVisibility(this, 'label-enquiry-{{ loop.index }}')"
+                                                                            onblur="toggleLabelVisibility(this, 'label-enquiry-{{ loop.index }}')"
+                                                                            style="margin-left: 0px;margin-top: 10px;"
+                                                                        ></textarea>
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary">Send Reply</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                         </td>
+                                        </tr>
+                                        {% else %}
+                                        <tr>
+                                            <td colspan="11" style="text-align: center;">Not found</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </table> 
+                                            <div class="meta">
+                                                <ul>
+                                            </ul>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Post -->
+                                    </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+                                        <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                        <div class="item"><!-- Post Thumbnail -->
+                                           
+                                            </div>
+                                        </div><!-- End Single Post --></div><div class="col-lg-12 single-item"><!-- Single Post --><div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                                <div class="item"><!-- Post Thumbnail -->
+                                                    
+                                                </div></div><!-- End Single Post --></div></div></div>
+                                                       
+
+
+                                                
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+{% include 'footer.html' %}

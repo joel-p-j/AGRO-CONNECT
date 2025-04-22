@@ -1,0 +1,216 @@
+{% include 'landowner_header.html' %}
+
+<div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light ">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="breadcumb-title">WELCOME</h1>
+            <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+                <a href="https://wordpress.validthemes.net/agrica"></a>
+                <a href="../../product-category/organic/index.html"><i>Land is the foundation of agriculture;<br>it nurtures our future and sustains our communities.</a></i></a><br>Home</a></div>
+            </div>
+        </div>
+</div><!-- End of Page title -->
+<div class="validtheme-shop-single-area default-padding">
+    <div class="container">
+        <div class="product-details">
+            <div class="table-responsive">
+				
+                {% with messages = get_flashed_messages() %}
+                                                    {% if messages %}
+                                                        <ul>
+                                                            {% for message in messages %}
+                                                                <li class="flash-message">{{ message }}</li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                   
+                                                    {% endif %}
+                                                {% endwith %}
+                                                
+                                                <table class="table">
+                                                    <thead class="thead-dark">
+                                                    <tr>
+                                                        <th colspan="6" style="text-align: center;">View Land Enquiries</th>
+                                                    </tr>
+                                                    <tr class="table-active table-success">
+                                                        <th>SL#:</th>
+                                                        <th>Farmer Name</th>
+                                                        <th>Land Enquiry</th>
+                                                        <th>Date</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                    {% for landenquiry in ar_obj %}
+                                                    <tr class="info">
+                                                        <td>{{ loop.index }}</td>
+                                                        <td>{{ landenquiry[1] }}</td>  <!-- farmer_name -->
+                                                        <td>{{ landenquiry[2] }}</td>  <!-- matter -->
+                                                        <td>{{ landenquiry[3] }}</td>  <!-- date -->
+                                                        <td>{{ landenquiry[4] }}</td>  <!-- status -->
+                                                        <td>
+                                                            <button  style="margin-left: 5px;width:90px;" type="button" 
+                                                             class="btn btn-primary" 
+                                                             data-bs-toggle="modal" 
+                                                             data-bs-target="#enquiryModal-{{ loop.index }}">
+                                                             <a href="#" style="position:relative;left:-26px;color: white;">Reply</a>
+                                                            </button>
+                                            
+                                                        </td>
+                                                    </tr>
+                                                    {% else %}
+                                                    <tr>
+                                                        <td colspan="5" style="text-align: center;">Not found</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </table>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- End Single Post -->
+
+                        <!-- Modal for each Reply -->
+                        {% for landenquiry in ar_obj %}
+                        <div class="modal fade" id="enquiryModal-{{ loop.index }}" tabindex="-1" aria-labelledby="enquiryModalLabel-{{ loop.index }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="enquiryModalLabel-{{ loop.index }}">Your Reply</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <!-- Modal Body -->
+                                    <div class="modal-body">
+                                        <!-- Reply Form -->
+                                        <form action="{{ url_for('send_land_reply',land_enquiry_id=landenquiry[0]) }}" method="POST" enctype="multipart/form-data">
+                                            <textarea class="form-control" name="reply_message" rows="4" placeholder="Type your reply here..." style="margin-left:0px;margin-top: -3px;"></textarea>
+                                            <label style="color: black;">MOU(pdf)</label>
+                                            <input type="file" name="upload" accept=".pdf" placeholder="Upload MOU in pdf format" required style="background-color: beige;margin-top: 40px;margin-left: 27px;">
+                                            <label style="color: black;">Lease Amount:</label>
+                                            <input type="text" name="lease_amount" style="padding-left: 10px;padding-right: 10px; background-color: beige;margin-top: 40px;margin-left: 27px;">
+                                            <div class="mt-3 text-center">
+                                                <button type="submit" class="btn btn-primary">Send Reply</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        </table>
+				
+			
+	<div class="col-lg-6"><div class="product-thumb"><div class="item-box"></div></div></div>
+	<div class="col-lg-6">
+		
+ </li></ul>
+</div> 
+			</form>
+
+	
+ </div>
+ </div>
+
+		<!-- Product Bottom Info  -->
+    <div class="single-product-bottom-info">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Tab Nav -->
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                		
+                        
+                    	
+                        
+                                    </div>
+                <!-- End Tab Nav -->
+                <!-- Start Tab Content -->
+                <div class="tab-content tab-content-info" id="myTabContent">
+                		
+                    <!-- Tab Single -->
+                    <div class="tab-pane fade show active" id="description-tab" role="tabpanel" aria-labelledby="description-tab">
+                    
+	
+                    </div>
+                    
+			</div> 
+
+					
+
+			
+                    	
+                </div>
+                
+				<div class="vt-products text-center related-product-carousel swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+									<div class="swiper-slide">
+						
+</div>
+</div>
+<div class="product-caption">
+    <div class="product-tags">
+        <div class="product-tags">
+            <a href="../../product-tag/crop/index.html" rel="tag"></a>
+            <a href="../../product-tag/organic/index.html" rel="tag">Organic</a>
+        </div>
+    </div>
+    <h4 class="product-title"><a href="../strawberry/index.html">Strawberry</a></h4>
+    <div class="price">
+	
+							</div> 
+		</div>
+
+	</div>
+	
+
+
+		
+ </div>
+ </div>
+ </div>
+ </div>
+ <script>
+ function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 5000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+   
+</script>
+    {% include 'footer.html' %}

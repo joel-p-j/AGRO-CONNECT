@@ -1,0 +1,393 @@
+body{
+	background-image:url("../images/reg_background.jpg");
+  background-size: 100% 150vh;
+    
+}
+
+.screen {
+    background-color:#929d12e3;
+	height: 560px;
+	width: 350px;
+  margin-right: 40px;
+    margin-left: 70%;
+    border-radius: 5px;
+    margin-top: 3%;
+    h2{
+		text-align: center;
+		padding-top: 30px;
+	}
+
+}
+
+
+.innerscreen {
+  background-color:#929d12e3;
+height: 755px;
+width: 400px;
+  margin-left: 65%;
+  margin-right: 30px;
+  border-radius: 5px;
+  margin-top: 3%;
+  padding-left: 30px;
+  h2{
+		text-align: center;
+		padding-top: 30px;
+	}
+
+
+}
+
+.login__field1 {
+	padding: 6px 20px;	
+	position: relative;	
+}
+
+
+
+
+.login {
+	width: 420px;
+	padding: 10px;
+	margin-left: 30px;
+}
+
+.login__field {
+	padding: 6px 0px;	
+	position: relative;	
+}
+
+.login__icon {
+	position: absolute;
+	top: 16px;
+	color: #5f0d5f;
+}
+
+.login__input  {
+	border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 25px;
+	font-weight: 700;
+	width: 85%;
+	transition: .2s;
+}
+
+.login__input:hover {
+	border-bottom-color: #6A679E;
+}
+
+.login__submit {
+	/* background: #efc5c5; */
+	background-color:#7fc70d;
+	font-size: 16px;
+	margin-top: 40px;
+	padding: 6px 20px;
+	border-radius: 10px;
+	border: 1px solid #a5a0f4;
+	text-transform: uppercase;
+	font-weight: 700;
+	width: 33%;
+	color: #ac0c0c;
+	cursor: pointer;
+	margin-left: 62px;
+}
+.button1{
+	width: 100px;
+	height: 30px;
+	background-color:#919d1213;
+	padding-left: 10px;
+	margin-left: 10px;
+	border: none;
+	border-radius: 10px;
+	color:#ffff;
+    padding-top: 0px;
+}
+
+.navbar-brand>img {
+	display: block;
+	height: 60px;
+	margin-left: 120px;
+}
+.navbar .attr-right .attr-nav li.button a {
+	padding: 1px 18px !important;
+	border-radius: 10px;
+	font-size: 17px;
+	color: var(--color-heading);
+	position: relative;
+	overflow: hidden;
+	margin-left: 5px;
+	border: 2px solid var(--color-primary);
+	margin-right: 130px;
+}
+
+
+/* farmer registration */
+
+/* Importing Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+
+} 
+
+/* body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-image: url('16.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+} */
+
+.container-f{
+ width: 800px;
+ height:850px;
+ background-color: #73a201c4;
+ margin-left: 250px;
+ padding: 10px 30px;
+ margin-top: 20px;
+ margin-bottom: 20px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 50px !important;
+    margin-top: -10px;
+    margin-bottom: -25px;
+	color: wheat;
+}
+
+.containers {
+
+  width: 100%;
+  /* background-color:#1f4e3d; */
+  padding: 5px 50px;
+  /* border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); */
+}
+
+.containers .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+.containers .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.content form .user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+
+form .user-details .input-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+
+form .input-box span.details {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color:white;
+}
+
+.user-details .input-box input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #0e2c0c;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box textarea 
+{
+  height: 70px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  /* padding-top: 20px; */
+  border: 1px solid #0e2c0c;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.user-details .input-box input:focus,
+.user-details .input-box input:valid {
+  border-color: #2b783d;
+}
+
+form .gender-details .gender-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+}
+
+form .category {
+  display: flex;
+  width: 80%;
+  margin: 14px 0;
+  justify-content: space-between;
+}
+
+form .category label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+form .category label .dot {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#dot-1:checked~.category label .one,
+#dot-2:checked~.category label .two,
+#dot-3:checked~.category label .three {
+  background:  #0e2c0cbd;
+  border-color: #d9d9d9;
+}
+
+form input[type="radio"] {
+  display: none;
+}
+
+form .button {
+  height: 45px;
+  /* margin: 35px 0 */
+  margin-left:95px;
+}
+
+form .button input {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #1a4a27;
+  margin-left:-44px;
+}
+form .b
+
+form .button input:hover {
+  background: #185e2a;
+}
+
+/* Responsive media query code for mobile devices */
+@media(max-width: 584px) {
+  .containers {
+    max-width: 100%;
+  }
+
+  form .user-details .input-box {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  form .category {
+    width: 100%;
+  }
+
+  .content form .user-details {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+
+  .user-details::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+
+
+/* Responsive media query code for mobile devices */
+@media(max-width: 459px) {
+  .containers .content .category {
+    flex-direction: column;
+  }
+}
+.user-details .select-box select {
+  height: 51px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #0e2c0c;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Optional: add a custom arrow */
+.user-details .select-box {
+  position: relative;
+}
+
+form .user-details .select-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+form .select-box span.details {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color:white;
+}
+.user-details .select-box select {
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #0e2c0c;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+
+/* Optional: add a custom arrow */
+
+form .user-details .select-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+form .select-box span.details {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color:white;
+}
+
+

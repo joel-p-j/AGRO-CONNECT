@@ -1,0 +1,209 @@
+{% include 'farmer_header.html' %}
+<!-- Page title -->
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        width: 350px;
+        text-align: center;
+    }
+    .popup-content {
+        padding: 15px;
+    }
+    .close-btn {
+        float: right;
+        cursor: pointer;
+        font-size: 20px;
+    }
+</style>
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                                    <!-- <div class="thumb">
+                                        <a href="#" class="post-thumbnail">
+                                            <img fetchpriority="high" width="1500" height="701" src="static/assets/images/img1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async"></a>
+                                    </div>End Post Thumbnail -->
+                                    <!-- <div class="info">
+                                        <h3 style="margin-left: 192px;">Complaint Form</h3>
+                                    </div> -->
+                                </div>
+                            </div><!-- End Single Post -->
+                        </div>
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                
+                                </div>
+                                </div><!-- End Single Post -->
+                                </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+                                        <div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                            <div class="item"><!-- Post Thumbnail -->
+                                                <div class="thumb" style="width: 1293px;margin-left: -87px;">
+                                                        {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                    {% else %}
+                                                        
+                                                        {% endif %}
+                                                        {% endwith %}
+
+                                                       
+                                                        <table class="table">
+                                                            <tr>
+                                                                <th colspan="11" style="text-align: center;">Download Application</th>
+                                                            </tr>
+                                                            <tr class="table-active table-success">
+                                                                <th>SL_No:</th>
+                                                                <th>Form Type</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                            
+                                                            {% for form in result_data %}
+                                                            <tr class="info">
+                                                                <td>{{ loop.index }}</td>
+                                                                <td>{{ form[1] }}</td>
+                                                                <td>
+                                                                    {% if form[2] %}  
+                                                                    <a style="background-color: #49a760;width: 196px;height:75px;" 
+                                                                    href="{{ url_for('static', filename='uploads/' + form[2]) }}" 
+                                                                       class="btn btn-success" download>
+                                                                       Download
+                                                                    </a>
+                                                                    {% else %}
+                                                                    Not Available
+                                                                    {% endif %}  
+                                                                    <button class="btn btn-primary" onclick="openUploadPopup('{{ form[0] }}')" style="width: 196px;height:75px;">Upload Form</button>
+                                                                        <!-- Button to Open Modal -->
+                                                                       
+                                                                </td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </table>
+
+                                                                </td> 
+                                                                
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="uploadPopup" class="popup">
+                                        <div class="popup-content">
+                                            <span class="close-btn" onclick="closeUploadPopup()">&times;</span>
+                                            <h5>Upload Form</h5>
+                                            <form id="uploadForm" action="{{ url_for('upload_insurance_claim_form') }}" method="POST" enctype="multipart/form-data">
+                                                <label>Insurance type:</label>
+                                                <select name="insurance_type" >
+                                                    <option>Select category</option>
+                                                    {% 
+                                                        for insurance_type in insurance_obj: %}
+                                                            <option value="{{ insurance_type[0] }}"> {{ insurance_type[1] }} </option>
+                                                       {% endfor %}
+                                                    
+                                                </select>
+                                                <label>Reason:</label>
+                                                <textarea class="form-control" name="reason" rows="4" placeholder="Type your reason here..." style="margin-left:0px;margin-top: -3px;width: 280px;"></textarea>
+                                                <label>Upload application:</label>
+                                                <input type="file" name="form_file" style="width: 282px;" accept=".pdf,.doc,.docx" required>
+                                                <button type="submit" class="btn btn-success"  style="position: relative;top:10px;">Upload</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div><!-- End Single Post -->
+        
+                                
+                                                        
+
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+   
+</script>
+<script>
+    function openUploadPopup(formId) {
+        document.getElementById("uploadPopup").style.display = "block";  // Show popup
+    }
+
+    function closeUploadPopup() {
+        document.getElementById("uploadPopup").style.display = "none";  // Hide popup
+    }
+</script>
+
+{% include 'footer.html' %}
+
+
+

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>AgroConnect</title>
+  <link rel="icon" type="image/png" href="static/assets/images/Agrologonew.png">
+
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'>
+<!-- <link rel="stylesheet" href="./ustyle.css"> -->
+<link rel="stylesheet" href="static/assets/css/reg_style.css" type="text/css">
+</head>
+<body class="reg_body">
+        <!-- <div class="screen"> -->
+          <div class="innerscreen" style="margin-right: 20px;">
+            {% with messages = get_flashed_messages() %}
+                                                    {% if messages %}
+                                                        <ul>
+                                                            {% for message in messages %}
+                                                                <li class="flash-message">{{ message }}</li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    {% else %}
+                                                        <p>No messages</p>
+                                                    {% endif %}
+                                                {% endwith %}
+            <h2>Customer Registration</h2>
+            <form action="{{ url_for('customer_reg') }}" method="post">
+                
+                <div class="login__field1">
+                    <i class="login__icon fas fa-user"></i> <!-- Name Icon -->
+                    <input type="text" name="cname" class="login__input" placeholder="Name">
+                </div>
+                <div class="login__field1">
+                    <i class="login__icon fas fa-map-marker-alt"></i> <!-- Address Icon -->
+                    <select class="login__input" name="area">
+                        <option>Select area</option>
+                        {% 
+                            for item in area_obj: %}
+                                <option value="{{ item[0] }}"> {{ item[1] }} </option>
+                           {% endfor %}
+                    </select>
+                  
+                </div>
+                <div class="login__field1">
+                    <i class="login__icon fas fa-home"></i> <!-- Address Icon -->
+                    <textarea class="login__input" name="address" placeholder="Address"></textarea>
+                    <!-- <input type="text" class="login__input" placeholder="Address"> -->
+                </div>
+                <div class="login__field1">
+                    <i class="login__icon fas fa-id-card"></i> <!-- Address Icon -->
+                    <input type="text" name="adhaar" class="login__input" placeholder="adhaar">
+                </div>
+                <div class="login__field1">
+                    <i class="login__icon fas fa-envelope"></i> <!-- Email Icon -->
+                    <input type="email" name="email" class="login__input" placeholder="Email">
+                </div>
+                <div class="login__field1">
+                    <i class="login__icon fas fa-phone"></i> <!-- Contact Icon -->
+                    <input type="text" name="mobile" class="login__input" placeholder="Contact">
+                </div>
+                <div class="login__field1">
+                    <i class="login__icon fas fa-user"></i> <!-- Contact Icon -->
+                    <input type="text" name="account_holder_name" class="login__input" placeholder="Type your name here..."">
+                </div>
+                <div class="login__field1">
+                    <i class="login__icon fa fa-credit-card"></i> <!-- Contact Icon -->
+                    <input type="text" name="account_no" class="login__input" placeholder="Type your account number..."">
+                </div>
+                <div class="login__field1">
+                    <i class="login__icon fas fa-barcode"></i> <!-- Contact Icon -->
+                    <input type="text" name="ifsc_code" class="login__input" placeholder="Type IFSC code..."">
+                </div>
+                <div class="login__field1">
+                    <i class="login__icon fas fa-building"></i> <!-- Contact Icon -->
+                    <input type="text" name="branch_name" class="login__input" placeholder="Type branch name......"">
+                </div>
+                <div class="login__field1">
+                    <i class="login__icon fas fa-lock"></i> <!-- Contact Icon -->
+                    <input type="text" name="password" class="login__input" placeholder="Type your password here...">
+                </div>
+                
+                <button class="button login__submit" type="submit">
+                    <span class="button__text">Submit</span>
+                </button>
+                <!-- <button class="button login__submit" type="reset">
+                    <span class="button__text">Reset</span>
+                </button> -->
+            </form>
+            <button class="button1">
+                <a href="{{ url_for('index') }}"><span style="color:white;">Back to home</span></a>
+            </button> 
+           </div>
+        <!-- </div> -->
+</body>
+<script>
+     function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("form").addEventListener("submit", function(event) {
+            let mobile = document.querySelector("input[name='mobile']").value;
+            
+            if (!/^\d{10}$/.test(mobile)) {
+                alert("Mobile number must be exactly 10 digits.");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    });
+
+</script>
+</html>

@@ -1,0 +1,146 @@
+{% include 'landowner_header.html' %}
+
+<div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light ">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="breadcumb-title">WELCOME</h1>
+            <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+                <a href="https://wordpress.validthemes.net/agrica"></a>
+                <a href="../../product-category/organic/index.html"><i>Land is the foundation of agriculture;<br>it nurtures our future and sustains our communities.</a></i></a><br>Home</a></div>
+            </div>
+        </div>
+</div><!-- End of Page title -->
+<div class="validtheme-shop-single-area default-padding">
+    <div class="container">
+        <div class="product-details">
+            <button class="default-btn"><a href="{{ url_for('land_registration') }}">Add land details</a></button>
+            <div class="table-responsive">
+				
+                {% with messages = get_flashed_messages() %}
+                                                    {% if messages %}
+                                                        <ul>
+                                                            {% for message in messages %}
+                                                                <li class="flash-message">{{ message }}</li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                   
+                                                    {% endif %}
+                                                {% endwith %}
+                                                
+                                                <table class="table">
+                                                    <thead class="thead-dark">
+                                                    <tr>
+                                                        <th colspan="7" style="text-align: center;">View Land Details</th>
+                                                    </tr>
+                                                    <tr class="table-active table-success">
+                                                        <th>SL#:</th>
+                                                        <th>Area</th>
+                                                        <th>Village</th>
+                                                        <th>Land Type</th>
+                                                        <th>Survey#</th>
+                                                        <th>Total Area</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                    {% for land in ar_obj %}
+                                                    <tr class="info">
+                                                        <td>{{ loop.index }}</td>
+                                                        <td>{{ land[12] }}</td>  
+                                                        <td>{{ land[3] }}</td>  
+                                                        <td>{{ land[6] }}</td>  
+                                                        <td>{{ land[5] }}</td>  
+                                                        <td>{{ land[4] }}</td>  
+                                                        <td>
+                                                            <!-- <button class="btn btn-success make-payment-btn" ><a href="/landowner_edit_landdetails/{{ land[0] }}">Edit</a></button> -->
+                                                            <button><a href="/landowner_delete_landdetails/{{ land[0] }}">Delete</a></button></td>
+
+                                                        </td>  
+                                           
+                                                    {% endfor %}
+                                                </table>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- End Single Post -->
+                      			
+	<div class="col-lg-6"><div class="product-thumb"><div class="item-box"></div></div></div>
+	<div class="col-lg-6">
+		
+ </li></ul>
+</div> 
+			</form>
+
+	
+ </div>
+ </div>
+
+		<!-- Product Bottom Info  -->
+    <div class="single-product-bottom-info">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Tab Nav -->
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                		
+                        
+                    	
+                        
+                                    </div>
+                <!-- End Tab Nav -->
+                <!-- Start Tab Content -->
+                <div class="tab-content tab-content-info" id="myTabContent">
+                		
+                    <!-- Tab Single -->
+                    <div class="tab-pane fade show active" id="description-tab" role="tabpanel" aria-labelledby="description-tab">
+                    
+	
+                    </div>
+                    
+			</div> 
+
+					
+
+			
+                    	
+                </div>
+                
+				<div class="vt-products text-center related-product-carousel swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+									<div class="swiper-slide">
+						
+</div>
+</div>
+<div class="product-caption">
+    <div class="product-tags">
+        <div class="product-tags">
+            <a href="../../product-tag/crop/index.html" rel="tag"></a>
+            <a href="../../product-tag/organic/index.html" rel="tag">Organic</a>
+        </div>
+    </div>
+    <h4 class="product-title"><a href="../strawberry/index.html">Strawberry</a></h4>
+    <div class="price">
+	
+							</div> 
+		</div>
+
+	</div>
+	
+
+
+		
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <script>
+      setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+ </script>
+    {% include 'footer.html' %}

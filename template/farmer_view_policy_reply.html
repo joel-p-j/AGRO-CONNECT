@@ -1,0 +1,286 @@
+{% include 'farmer_header.html' %}
+<!-- Page title -->
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        width: 350px;
+        text-align: center;
+    }
+    .popup-content {
+        padding: 15px;
+    }
+    .close-btn {
+        float: right;
+        cursor: pointer;
+        font-size: 20px;
+    }
+</style>
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                                    <!-- <div class="thumb">
+                                        <a href="#" class="post-thumbnail">
+                                            <img fetchpriority="high" width="1500" height="701" src="static/assets/images/img1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async"></a>
+                                    </div>End Post Thumbnail -->
+                                    <!-- <div class="info">
+                                        <h3 style="margin-left: 192px;">Complaint Form</h3>
+                                    </div> -->
+                                </div>
+                            </div><!-- End Single Post -->
+                        </div>
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                
+                                </div>
+                                </div><!-- End Single Post -->
+                                </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+                                        <div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                            <div class="item"><!-- Post Thumbnail -->
+                                                <div class="thumb" style="width: 1293px;margin-left: -87px;">
+                                                        {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                 
+                                                        {% endif %}
+                                                        {% endwith %}
+
+                                                       
+                                                        <table class="table">
+                                                            <thead class="thead-dark">
+                                                            <tr>
+                                                                <th colspan="10" style="text-align: center;">Policy Details</th>
+                                                            </tr>
+                                                            <tr class="table-active table-success">
+                                                                <th>SL_No:</th>
+                                                                <th>Policy Number</th>
+                                                                <th>Policy Details</th>
+                                                                <th>Start Date</th>
+                                                                <th>End Date</th>
+                                                                <th>Policy Amount</th>
+                                                                <th>Status</th>
+                                                                <th>Policy Document</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                            {% for policy in ar_obj %}
+                                                            <tr class="info">
+                                                                <td>{{ loop.index }}</td>
+                                                                <td>{{ policy[2] }}</td>
+                                                                <td>{{ policy[3] }}</td>
+                                                                <td>{{ policy[4] }}</td>
+                                                                <td>{{ policy[5] }}</td>
+                                                                <td>{{ policy[6] }}</td>
+                                                                <td>{{ policy[7] }}</td>
+                                                                <td>{{ policy[8] }}</td>
+                                                                
+                                                                <td>
+                                                                    {% if policy[8] %}  
+                                                                    <a style="background-color: #49a760;width: 135px;height:58px;" 
+                                                                    href="{{ url_for('static', filename='uploads/' + policy[8]) }}" 
+                                                                       class="btn btn-success" download>
+                                                                       Download
+                                                                    </a>
+                                                                    {% else %}
+                                                                    Not Available
+                                                                    {% endif %} 
+
+                                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+                                                                    data-bs-target="#policyPaymentModal" 
+                                                                    onclick="loadPolicyData('{{ policy[0] }}', '{{ policy[6] }}')">
+                                                                    Payment
+                                                                    </button>
+                                                                    
+                                                                    {% if policy[7] == 'completed' and certificate_file %}  
+                                                                       <a style="background-color: #49a760; width: 135px; height: 58px;position: relative;left:20px;" 
+                                                                       href="{{ url_for('static', filename='uploads/' + certificate_file) }}" 
+                                                                       class="btn btn-primary" download>
+                                                                       Certificate
+                                                                       </a>
+                                                                    {% else %}
+                                                                      <button class="btn btn-secondary" style="width: 135px; height: 58px;" disabled>
+                                                                        <a style="position: relative;left:-22px;"> Certificate</a>
+                                                                      </button>
+                                                                    {% endif %}
+
+                                                                    
+                                                                </td> 
+                                                        </tr>
+                                                        {% else %}
+                                                        <tr>
+                                                            <td colspan="10" style="text-align: center;">No applications found.</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                        
+                                                    </table>
+
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Payment Modal (Outside the Loop) -->
+                                    <div class="modal fade" id="policyPaymentModal" tabindex="-1" aria-labelledby="policyPaymentModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="policyPaymentModalLabel">Policy Payment</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="paymentForm" method="POST">
+                                                        <input type="hidden" name="policy_id" id="policy_id">
+                                    
+                                                        <div class="mb-3">
+                                                            <label for="policy_amount" class="form-label">Policy Amount</label>
+                                                            <input type="text" class="form-control" id="policy_amount" name="policy_payment" readonly>
+                                                        </div>
+                                    
+                                                        <div class="mb-3">
+                                                            <label for="payment_mode" class="form-label">Payment Mode</label>
+                                                            <select class="form-control" name="payment_mode" id="payment_mode" onchange="togglePaymentFields()">
+                                                                <option value="">Select Payment Mode</option>
+                                                                <option value="Credit Card">Credit Card & Debit Card</option>
+                                                                <option value="UPI">UPI</option>
+                                                            </select>
+                                                        </div>
+                                    
+                                                        <!-- Card Payment Fields (Hidden Initially) -->
+                                                        <div id="cardDetails" style="display: none;">
+                                                            <div class="mb-3">
+                                                                <label for="card_number" class="form-label">Card Number</label>
+                                                                <input type="text" class="form-control" name="card_number" id="card_number" placeholder="Enter card number">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="card_holder" class="form-label">Card Holder Name</label>
+                                                                <input type="text" class="form-control" name="card_holder" id="card_holder" placeholder="Enter cardholder name">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="expiry_date" class="form-label">Expiry Date</label>
+                                                                <input type="month" class="form-control" name="expiry_date" id="expiry_date">
+                                                            </div>
+                                                        </div>
+                                    
+                                                        <!-- UPI Payment Field (Hidden Initially) -->
+                                                        <div id="upiDetails" style="display: none;">
+                                                            <div class="mb-3">
+                                                                <label for="upi_id" class="form-label">UPI ID</label>
+                                                                <input type="text" class="form-control" name="upi_id" id="upi_id" placeholder="Enter UPI ID">
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-success">Submit Payment</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+   
+</script>
+<script>
+    function loadPolicyData(policyId, policyAmount) {
+        document.getElementById("policy_id").value = policyId;
+        document.getElementById("policy_amount").value = policyAmount;
+    
+        // Dynamically set form action URL with policy_id
+        document.getElementById("paymentForm").action = "/policy_payment/" + policyId;
+    }
+    
+    function togglePaymentFields() {
+        var paymentMode = document.getElementById("payment_mode").value;
+        var cardDetails = document.getElementById("cardDetails");
+        var upiDetails = document.getElementById("upiDetails");
+    
+        // Hide all fields by default
+        cardDetails.style.display = "none";
+        upiDetails.style.display = "none";
+    
+        // Show relevant fields based on payment mode
+        if (paymentMode === "Credit Card" || paymentMode === "Debit Card") {
+            cardDetails.style.display = "block";
+        } else if (paymentMode === "UPI") {
+            upiDetails.style.display = "block";
+        }
+    }
+</script>
+    
+   
+{% include 'footer.html' %}
+
+
+

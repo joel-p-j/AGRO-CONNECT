@@ -1,0 +1,220 @@
+{% include 'farmer_header.html' %}
+<!-- Page title -->
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                                   
+                                    <button class="default-btn"><a href="{{ url_for('farmer_add_products') }}">Add new product</a></button>
+                                </div>
+                            </div><!-- End Single Post -->
+                        </div>
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                
+                                </div>
+                                </div><!-- End Single Post -->
+                                </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+
+                                        
+                                        <div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                            <div class="item"><!-- Post Thumbnail -->
+                                                <div class="thumb" style="width: 1293px;margin-left: -87px;">
+                                                        {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                    
+                                                        {% endif %}
+                                                        {% endwith %}
+
+                                                        
+                                                        <table class="table">
+                                                            <tr>
+                                                                <th colspan="8" style="text-align: center;">Product Management</th>
+                                                            </tr>
+                                                            <tr class="table-active table-success">
+                                                                <th>SL NO</th>
+                                                                <th>Product category</th>
+                                                                <th>Product Code</th>
+                                                                <th>Product Name</th>
+                                                                <th>Image</th>
+                                                                <th>Rate</th>
+                                                                <th>Quantity</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                            {% for item in ar_obj %}
+                                                                <tr class="info">
+                                                                    <td>{{ loop.index }}</td>  <!-- This will show the SL NO -->
+                                                                    <td>{{ item[1] }}</td>
+                                                                    <td>{{ item[2] }}</td>
+                                                                    <td>{{ item[3] }}</td>
+                                                                    <td><img src="{{ url_for('static', filename='uploads/' + item[4]) }}" width="100"></td>
+                                                                    <td>{{ item[5] }}</td>
+                                                                    <td>{{ item[6] }}</td>
+            
+                                                                    <td class="info3" >
+                                                                        <button  style="position: relative;left: 2px;" type="button" 
+                                                                        class="btn btn-primary" 
+                                                                        data-bs-toggle="modal" 
+                                                                        data-bs-target="#userModal-{{ loop.index }}">
+                                                                        Update
+                                                                        </button>
+                                                                        <!-- Modal for User Details -->
+                                                                        <div class="modal fade" id="userModal-{{ loop.index }}" tabindex="-1" aria-labelledby="userModalLabel-{{ loop.index }}" aria-hidden="true">
+                                                                           <div class="modal-dialog">
+                                                                               <div class="modal-content">
+                                                                                   <div class="modal-header">
+                                                                                       <h5 class="modal-title" id="userModalLabel-{{ loop.index }}">Product management</h5>
+                                                                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                   </div>
+                                                                                   <div class="modal-body">
+                                                                                       <form action="{{ url_for('farmer_edit_product',product_id = item[0]) }}" method="post" style="position: relative;top: -71px;">
+                                                                                           <button style="position: relative;bottom: -610px;left:-8px;" type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Update</button>
+                                                                                           <div class="mb-3">
+                                                                                               <label class="form-label" style="margin-left: -310px;position: relative;top: 5px;left:300px;"><strong>Product category:</strong></label>
+                                                                                               
+                                                                                               <select class="select01" name="pdtcategory" value="{{ item[1]}}" style="width: 254px;
+                                                                                               height: 58px;
+                                                                                               margin-left: 337px;
+                                                                                               border-radius: 5px;
+                                                                                               background-color: #bcbca7;
+                                                                                               position: relative;
+                                                                                               top: 5px;">
+                                                                                                   <option>Select category</option>
+                                                                                                   {% 
+                                                                                                       for category in pdtcategory_obj: %}
+                                                                                                       <option value="{{ category[0] }}" {% if category[1] == item[1] %} selected {% endif %}>
+                                                                                                        {{ category[1] }}
+                                                                                                       </option>
+                                                                                                      {% endfor %}
+                                                                                               </select>
+                                                                                               
+                                                                                           </div>
+                                                                                           <div class="mb-3" style="position: relative;top:-28px;">
+                                                                                               <label class="form-label" style="margin-left: -310px;position: relative;top: 12px;"><strong>Product Code:</strong></label>
+                                                                                               <input type="text" name="product_code" style="width: 250px;position: relative;right: -187px;top: -35px;" class="form-control" value="{{ item[2] }}">
+                                                                                           </div>
+                                                                                           <div class="mb-3" style="position: relative;top:-28px;">
+                                                                                               <label class="form-label" style="margin-left: -310px;position: relative;top: 12px;"><strong>Product Name:</strong></label>
+                                                                                               <input type="text" name="product_name" style="width: 250px;position: relative;right: -187px;top: -35px;" class="form-control" value="{{ item[3] }}">
+                                                                                           </div>
+                                                                                           
+                                                                                           <div class="mb-3" style="position: relative;top:-79px;">
+                                                                                               <label class="form-label" style="margin-left: -310px;position: relative;top: 12px;"><strong>Rate:</strong></label>
+                                                                                               <input type="text" name="rate" style="width: 250px;position: relative;right: -187px;top: -35px;" class="form-control" value="{{ item[5] }}">
+                                                                                           </div>
+                                                                                           <div class="mb-3" style="position: relative;top:-79px;">
+                                                                                               <label class="form-label" style="margin-left: -310px;position: relative;top: 12px;"><strong>Quantity:</strong></label>
+                                                                                               <input type="text" name="quantity" style="width: 250px;position: relative;right: -187px;top: -35px;" class="form-control" value="{{ item[6] }}">
+                                                                                        </div>
+                                                                                       </form>
+                                                                                   </div>
+                                                                                   <div class="modal-footer">
+                                                                                      
+                                                                                   </div>
+                                                                               </div>
+                                                                           </div>
+                                                                        </div>
+                                                                        <form action="{{ url_for('farmer_delete_product', product_id=item[0]) }}" method="post">
+                                                                            <input type="hidden" name="product_id" value="{{ item[0] }}">
+                                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?');" style="position: relative;left: 3px;">
+                                                                                <a href="#" style="position:relative;left:0px;color: white;">Delete</a>
+                                                                            </button> 
+                                                                        </form>
+                                                                
+                                                                    </td>
+                                                                </tr>
+                   
+                                                            {% else %}
+                                                                <tr>
+                                                                    <td colspan="7" style="text-align: center;">No products found.</td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        </table>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+        
+                                
+                                                        
+
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+   
+</script>
+
+
+
+{% include 'footer.html' %}
+
+
+

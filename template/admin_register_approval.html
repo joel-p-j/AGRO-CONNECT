@@ -1,0 +1,199 @@
+{% include 'admin_header.html' %}
+<!-- Page title -->
+
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                                    <div class="table-responsive">
+                                        <a href="../announcing-result-the-resolution-sentiments/index.html" class="post-thumbnail">
+                                           
+                                        </a>
+                                        </div><!-- End Post Thumbnail -->
+                                        <!-- <div class="info"></div> -->
+                                            {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                   
+                                                        {% endif %}
+                                                        {% endwith %}
+                                    <table class="table">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th colspan="11" style="text-align: center;">View User Details</th>
+                                        </tr>
+                                        <tr class="table-active table-success">
+                                            <th>SL_No</th>
+                                            <th>User Name</th>
+                                            <th>User type</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                        {% for user in ar_obj %}
+                                        <tr class="info">
+                                            
+                                            <td>{{ loop.index }}</td>
+                                            <td>{{ user[1] }}</td>  
+                                            <td>{{ user[2] }}</td>  
+                                            <td>{{ user[3] }}</td>
+                                            <td>
+                                                {% if user[3] == "Register" %}
+
+                                                    <button  style="margin-left: 5px;width:50px;" type="button" 
+                                                             class="btn btn-primary" 
+                                                             data-bs-toggle="modal" 
+                                                             data-bs-target="#userModal-{{ loop.index }}">
+                                                             <a href="#" style="position:relative;left:-27px;color: white;">Details</a>
+                                                    </button>
+
+                                                {% else %}
+
+                                                    <button  style="margin-left: 5px;width:90px;" type="button" 
+                                                             class="btn btn-primary" 
+                                                             data-bs-toggle="modal" 
+                                                             data-bs-target="#userModal-{{ loop.index }}" disabled><a href="#" style="position:relative;left: -38px;top: 0px;;color: white;">Approved</a>
+                                                    </button>
+
+                                                {% endif %}
+                                                    <!-- Modal for User Details -->
+                                                    <div class="modal fade" id="userModal-{{ loop.index }}" tabindex="-1" aria-labelledby="userModalLabel-{{ loop.index }}" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="userModalLabel-{{ loop.index }}">User Details</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form action="{{ url_for('approve_user', user_type=user[2], user_id=user[0]) }}" method="post" style="position: relative;top: -71px;">
+                                                                        <button style="position: relative;bottom: -893px;" type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Approve</button>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label"><strong>Name:</strong></label>
+                                                                            <input type="text" class="form-control" value="{{ user[1] }}" readonly>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label"><strong>Type:</strong></label>
+                                                                            <input type="text" class="form-control" value="{{ user[2] }}" readonly>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label"><strong>Status:</strong></label>
+                                                                            <input type="text" class="form-control" value="{{ user[3] }}" readonly>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label"><strong>Address:</strong></label>
+                                                                            <input type="text" class="form-control" value="{{ user[4] }}" readonly>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label"><strong>Aadhaar No:</strong></label>
+                                                                            <input type="text" class="form-control" value="{{ user[5] }}" readonly>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label"><strong>Mobile:</strong></label>
+                                                                            <input type="text" class="form-control" value="{{ user[6] }}" readonly>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label"><strong>Email:</strong></label>
+                                                                            <input type="email" class="form-control" value="{{ user[7] }}" readonly>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label"><strong>Registration Date:</strong></label>
+                                                                            <input type="text" class="form-control" value="{{ user[8] }}" readonly>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                   
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {% else %}
+                                        <tr>
+                                            <td colspan="11" style="text-align: center;">Not found</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </table> 
+                                    
+                                            <div class="meta">
+                                                
+                                                <ul>
+                                            </ul>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Post -->
+                                    </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+                                        <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                        <div class="item"><!-- Post Thumbnail -->
+                                           
+                                            </div>
+                                        </div><!-- End Single Post --></div><div class="col-lg-12 single-item"><!-- Single Post --><div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                                <div class="item"><!-- Post Thumbnail -->
+                                                    
+                                                </div></div><!-- End Single Post --></div></div>
+                                                        
+
+
+                                                {% include 'admin_sidebar.html' %}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+<script>
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 5000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+
+
+
+</script>
+{% include 'footer.html' %} 

@@ -1,0 +1,72 @@
+{% include 'farmer_header.html' %}
+<!-- Page title -->
+
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                                    <div class="thumb">
+                                        <a href="#" class="post-thumbnail">
+                                            </div><!-- End Post Thumbnail -->
+                                    
+                                                </div>
+                                            </div><!-- End Single Post -->
+                                    </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+                                        <div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                            <div class="item"><!-- Post Thumbnail -->
+                                                <div class="thumb">
+                                                    <!-- <a href="" class="post-thumbnail"> -->
+                                                        <div class="table-responsive">
+                                                            <table class="table">
+                                                                <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th colspan="11" style="text-align: center;">Complaint Status</th>
+                                                                </tr>
+                                                                <tr class="table-active table-success">
+                                                                   
+                                                                    <th>SL#</th>
+                                                                    <th>Complaint</th>
+                                                                    <th>Admin_reply</th>
+                                                                    <th>Status</th>
+                                                                </tr>
+                                                            </thead>
+                                                                {% for status in ar_obj %}
+                                                                <tr class="info">
+                                                                    
+                                                                    <td>{{ loop.index }}</td>
+                                                                    <td>{{ status[0] }}</td>  
+                                                                    <td>{{ status[1] }}</td> 
+                                                                    <td>{{ status[2] }}</td>
+                                                                    
+                                                                
+                                                                </tr>
+                                                                {% else %}
+                                                                <tr>
+                                                                    <td colspan="4" style="text-align: center;">Not found</td>
+                                                                </tr>
+                                                                {% endfor %}
+                                                            </table> 
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}

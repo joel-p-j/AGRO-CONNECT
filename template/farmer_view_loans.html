@@ -1,0 +1,191 @@
+{% include 'farmer_header.html' %}
+<!-- Page title -->
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        width: 350px;
+        text-align: center;
+    }
+    .popup-content {
+        padding: 15px;
+    }
+    .close-btn {
+        float: right;
+        cursor: pointer;
+        font-size: 20px;
+    }
+</style>
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                                    <!-- <div class="thumb">
+                                        <a href="#" class="post-thumbnail">
+                                            <img fetchpriority="high" width="1500" height="701" src="static/assets/images/img1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async"></a>
+                                    </div>End Post Thumbnail -->
+                                    <!-- <div class="info">
+                                        <h3 style="margin-left: 192px;">Complaint Form</h3>
+                                    </div> -->
+                                </div>
+                            </div><!-- End Single Post -->
+                        </div>
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                
+                                </div>
+                                </div><!-- End Single Post -->
+                                </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+                                        <div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                            <div class="item"><!-- Post Thumbnail -->
+                                                <div class="thumb" style="width: 1293px;margin-left: -87px;">
+                                                        {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                 
+                                                        {% endif %}
+                                                        {% endwith %}
+                                                        <table class="table">
+                                                            <thead class="thead-dark">
+                                                            <tr>
+                                                                <th colspan="10" style="text-align: center;">Loan Types</th>
+                                                            </tr>
+                                                            <tr class="table-active table-success">
+                                                                <th>SL_No:</th>
+                                                                <th>Scheme name</th>
+                                                                <th>Terms and Conditions</th>
+                                                                <th>Maximum amount</th>
+                                                            </tr>
+                                                        </thead>
+                                                            {% for loan in loan_obj %}
+                                                            <tr class="info">
+                                                                <td>{{ loop.index }}</td>
+                                                                <td>{{ loan[1] }}</td>
+                                                                <td>{{ loan[2] }}</td>
+                                                                <td>{{ loan[3] }}</td>
+                                                                </td> 
+                                                        </tr>
+                                                        {% else %}
+                                                        <tr>
+                                                            <td colspan="4" style="text-align: center;">No loans found.</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                        
+                                                    </table>
+                                                       
+                                                        
+
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+   
+</script>
+<script>
+    function loadPolicyData(policyId, policyAmount) {
+        document.getElementById("policy_id").value = policyId;
+        document.getElementById("policy_amount").value = policyAmount;
+    
+        // Dynamically set form action URL with policy_id
+        document.getElementById("paymentForm").action = "/policy_payment/" + policyId;
+    }
+    
+    function togglePaymentFields() {
+        var paymentMode = document.getElementById("payment_mode").value;
+        var cardDetails = document.getElementById("cardDetails");
+        var upiDetails = document.getElementById("upiDetails");
+    
+        // Hide all fields by default
+        cardDetails.style.display = "none";
+        upiDetails.style.display = "none";
+    
+        // Show relevant fields based on payment mode
+        if (paymentMode === "Credit Card" || paymentMode === "Debit Card") {
+            cardDetails.style.display = "block";
+        } else if (paymentMode === "UPI") {
+            upiDetails.style.display = "block";
+        }
+    }
+</script>
+    
+   
+{% include 'footer.html' %}
+
+
+

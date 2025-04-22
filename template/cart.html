@@ -1,0 +1,190 @@
+{% include 'customer_header.html' %}
+
+                                 
+<div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="breadcumb-title">Cart</h1>
+                <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+                    <a href="{{ url_for('customer_home') }}">Home</a>
+                    &nbsp;&#47;&nbsp;Cart
+                </nav>
+            </div>
+        </div>
+    </div>
+</div><!-- End of Page title -->
+            
+
+<section class="default-padding">
+    
+    <div class="container">
+        <h1>My Cart</h1>
+        <div class="row">
+            {% if cart_items %}
+            <div class="col-lg-12">
+                <form id="cart_form" action="{{ url_for('customer_order') }}" method="post">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr class="table-active table-success">
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Rate/Kg</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cart in cart_items %}
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="#">
+                                            <img src="{{ url_for('static', filename='uploads/' + cart.image ) }}" alt="item" height="100px" width="100px">
+                                        </a>
+                                    </td>
+                                    <td class="product-name">
+                                        <a href="#">{{ cart.product_name }}</a>
+                                    </td>
+                                    <td class="product-price">
+                                        <span class="unit-amount">₹ {{ cart.rate }}</span>
+                                    </td>
+                                    <td class="product-quantity">
+                                        <input type="number" min="1" name="quantity_{{ cart.cart_log_id }}" value="{{ cart.quantity }}" onchange="updateTotal('{{ cart.rate }}', this)" style="margin-left: 20px; width: 100px; text-align: center;" data-cart-id="{{ cart.cart_log_id }}">
+                                    </td>
+                                    <td class="product-subtotal" id="total-amount">
+                                        <span class="subtotal-amount" data-previous-subtotal="{{ cart.rate|float * cart.quantity|float }}">₹ {{ '%.2f'|format(cart.rate|float * cart.quantity|float) }}</span>
+                                        <a href="{{ url_for('customer_delete_cart_item', cart_log_id=cart.cart_log_id) }}" onclick="return confirm('Are you sure you want to delete this product?')" class="remove"><i class="fas fa-trash-alt" style="color: red;"></i></a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <input type="hidden" name="cart_id" value="{{ cart_items[0].cart_id }}">
+                    <input type="hidden" id="cart_total" name="cart_total" value="0.00">
+                    <div class="cart-buttons">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-sm-7 col-md-7">
+                                <a href="{{ url_for('customer_view_products') }}" class="button wc-backward">Continue Purchase</a>
+                            </div>
+                            <div class="col-lg-5 col-sm-5 col-md-5 text-end">
+                                <button type="button" class="default-btn" id="update_cart_btn">Update Cart</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="text-end">
+                        <h5>Cart Totals</h5>
+                            <!-- <li>Total <span id="total">₹ 0.00</span></li> -->
+                            <div>Total <span id="total">₹ 0.00</span></div>
+                        <button type="submit" class="default-btn" >Send Order</button>
+                       
+                    </div>
+                </form>
+                {% else %}
+                    <p>No items in the cart.</p>
+                {% endif %}
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Javascript for calculating product total amount and grand total amount -->
+    <script>
+        function updateTotal(rate, input) {
+    const quantity = input.value;
+    const subtotalAmountSpan = input.closest('tr').querySelector('.subtotal-amount');
+    const totalAmountSpan = document.getElementById('total');
+
+    // Calculate the total for the current item
+    const total = rate * quantity;
+    subtotalAmountSpan.textContent = '₹ ' + total.toFixed(2);
+
+    // Update the total amount for all items
+    const subtotalAmountSpans = document.querySelectorAll('.subtotal-amount');
+    let newTotal = 0;
+    subtotalAmountSpans.forEach(subtotalSpan => {
+        newTotal += parseFloat(subtotalSpan.textContent.replace('₹ ', ''));
+    });
+
+    // Update the total amount displayed
+    totalAmountSpan.textContent = '₹ ' + newTotal.toFixed(2);
+
+    // Update the hidden input field for cart total
+    document.getElementById('cart_total').value = newTotal.toFixed(2);
+
+    // Update the hidden input fields for quantity and total for the current item
+    const cartItemId = input.dataset.cartId;
+    document.querySelector(`input[name="cart_item_${cartItemId}_quantity"]`).value = quantity;
+    document.querySelector(`input[name="cart_item_${cartItemId}_total"]`).value = total.toFixed(2);
+    document.querySelector(`input[name="cart_item_${cartItemId}_id"]`).value = cartItemId;
+}
+
+    
+        // Call the function initially when the page loads
+        window.onload = function() {
+            // Initialize the total based on existing items in the cart
+            const initialTotal = calculateInitialTotal();
+            document.getElementById('total').textContent = '₹ ' + initialTotal.toFixed(2);
+            
+            // Update the hidden input field for cart total during initialization
+            document.getElementById('cart_total').value = initialTotal.toFixed(2);
+        };
+    
+        // Function to calculate the initial total based on existing items in the cart
+        function calculateInitialTotal() {
+            const subtotalAmountSpans = document.querySelectorAll('.subtotal-amount');
+            let initialTotal = 0;
+            subtotalAmountSpans.forEach(subtotalSpan => {
+                initialTotal += parseFloat(subtotalSpan.textContent.replace('₹ ', ''));
+            });
+            return initialTotal;
+        }
+    
+        // Attach event listener to the update cart button
+document.getElementById('update_cart_btn').addEventListener('click', function() {
+    const formData = new FormData();
+
+    // Iterate over all quantity inputs to find the ones that have changed
+    const quantityInputs = document.querySelectorAll('.product-quantity input');
+    quantityInputs.forEach(input => {
+        const cartLogId = input.dataset.cartId;
+        const quantity = input.value;
+        const previousQuantity = input.defaultValue;
+
+        // If the quantity has changed, add it to the form data
+        if (quantity !== previousQuantity) {
+            formData.append(`quantity_${cartLogId}`, quantity);
+
+            // Get the subtotal amount for the current item
+            // const subtotalAmount = input.closest('tr').querySelector('.subtotal-amount').textContent;
+            // formData.append(`subtotal_${cartLogId}`, subtotalAmount);
+
+        }
+    });
+
+    // Add the cart total to the form data
+    const cartTotal = document.getElementById('cart_total').value;
+    formData.append('cart_total', cartTotal);
+
+    // Add the cart_id to the form data
+const cartId = document.querySelector('input[name="cart_id"]').value;
+formData.append('cart_id', cartId);
+
+    // Send the form data to the server
+    fetch("{{ url_for('customer_update_cart') }}", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+});
+
+    </script>
+
+    {% include 'footer.html' %}

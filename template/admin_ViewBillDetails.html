@@ -1,0 +1,159 @@
+{% include 'admin_header.html' %}
+
+<style>
+    .flash-message {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        border: 1px solid #f5c6cb;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
+
+    /* Flexbox container for the two tables */
+    .flex-container {
+        display: flex;
+        justify-content: space-between; /* Align tables side by side */
+        gap: 50px; /* Space between tables */
+    }
+
+    /* Make sure each table takes a reasonable amount of space */
+    .table-container {
+        flex: 1; /* Allows tables to take equal width */
+        max-width: 80%; /* Limit the maximum width */
+        overflow-x: auto; /* In case of long tables, allow horizontal scrolling */
+    }
+    
+    /* Optional: Add some styling to tables for better look */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+       
+    }
+    .thead-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+    .table td, .table th {
+        padding: 8px;
+        text-align: center;
+    }
+
+    .table-container2 {
+        flex: 1; /* Allows tables to take equal width */
+        max-width: 25%; /* Limit the maximum width */
+        overflow-x: auto; /* In case of long tables, allow horizontal scrolling */
+    }
+    
+</style>
+                                 
+<!-- <div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="breadcumb-title">Order Details</h1>
+                <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+                    <a href="{{ url_for('customer_home') }}">Home</a>
+                    &nbsp;&#47;&nbsp;Customer
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>End of Page title -->
+
+
+<section class="default-padding">
+    
+    <div class="container">
+
+
+         {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul id="flash-messages">
+                {% for message in messages %}
+                <li class="flash-message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+       
+        {% endif %}
+        {% endwith %}  
+        
+
+
+        <h1>View Bill Details</h1>
+        <div class="row">
+            {% if bill_details %}
+            <div class="col-lg-12">
+
+                <!-- Flex container for the two tables -->
+                <div class="flex-container">
+                
+                    <div class="table-container">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr class="table-active table-success">
+                                        <tr class="table-active table-success">
+                                            <th scope="col">Bill#</th>
+                                            <th scope="col">Order#</th>
+                                            <th scope="col">Bill Amount</th>
+                                            <th scope="col">Payment Status</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for bill in bill_details %}
+                                    <tr>
+                                        <td>{{ bill.bill_no }}</td>
+                                        <td>{{ bill.order_no }}</td>
+                                        <td><span class="unit-amount">{{ bill.bill_amount }}</span></td>
+                                        <td>{{ bill.payment_status }}</td>
+                                        <td>
+                                            <form action="{{ url_for('admin_delete_bill', bill_id=bill.bill_id) }}" method="post">
+                                                <button type="submit" class="default-btn" onclick="return confirm('Are you sure you want to delete this bill?');" style="width:130px;">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                            
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="table-container2">
+                    
+                        <img src="static/uploads/16.png" alt="Product" height="550px" width="300px">
+                           
+                    </div> -->
+
+                </div> <!-- End of flex-container -->
+                
+            </div>
+            {% else %}
+                <p>No bills.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<script>
+    // Wait for the page to load
+    window.onload = function() {
+        // Get the flash messages container
+        var flashMessages = document.getElementById('flash-messages');
+    
+        // If there are messages, set a timeout to hide them
+        if (flashMessages) {
+            setTimeout(function() {
+                // Fade out the flash messages after 3 seconds (3000 milliseconds)
+                flashMessages.style.display = 'none';
+            }, 3000);
+        }
+    };
+</script>
+
+{% include 'footer.html' %}

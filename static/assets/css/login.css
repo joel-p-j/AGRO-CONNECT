@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: -3;
+  padding: 4px;
+  /* user-select: none; */
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+html,body{
+  height: 100%;
+}
+
+
+/* .content{
+  width: 430px;
+  height: 620px;
+  padding: 12px 30px;
+  background-color: #5ea52640;
+  border-radius: 10px;
+  margin-left: 411px; */
+  /* box-shadow: -3px -3px 7px #ffffff73,
+               2px 2px 5px rgba(94,104,121,0.288); */
+/* } */
+
+.land{
+  width: 400px;
+  height:auto;
+  background-color: #a491937d;
+  margin-top: 50px;
+  margin-bottom: -1280px;
+  margin-left: 504px;
+  border-radius: 5px;
+}
+.text{
+  height: 50px;
+  background-color:#40611e85;
+}
+.content .text{
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #000000;
+}
+
+.forgot-pass{
+  text-align: left;
+  margin: 10px 0 10px 5px;
+}
+.forgot-pass a{
+  font-size: 16px;
+  color: #3498db;
+  text-decoration: none;
+}
+.forgot-pass:hover a{
+  text-decoration: underline;
+}
+button{
+  margin: 20px;
+  width: 40%;
+  height: 45px;
+  font-size: 18px;
+  line-height: 36px;
+  font-weight: 600;
+  background: #254a0d4f;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  margin-left: 112px;
+  padding-top: 5px;
+  /* box-shadow: 2px 2px 5px #BABECC,
+             -5px -5px 10px #ffffff73; */
+}
+button:focus{
+  color: #3498db;
+  box-shadow: inset 2px 2px 5px #BABECC,
+             inset -5px -5px 10px #ffffff73;
+}
+.sign-up{
+  margin: 10px 0;
+  color: #595959;
+  font-size: 16px;
+}
+.sign-up a{
+  color: #3498db;
+  text-decoration: none;
+}
+.sign-up a:hover{
+  text-decoration: underline;
+}
+
+.button_style{
+    margin: 19px 0;
+    width: 40%;
+    height: 35px;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+    background: #254a0d4f;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    /* box-shadow: 2px 2px 5px #BABECC,
+               -5px -5px 10px #ffffff73; */
+  }
+
+  .ptag_style{
+    text-align: left;
+    margin: 19px 0;
+    /*width: 40%;
+    height: 35px; */
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+    /* background: #254a0d4f;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    cursor: pointer; */
+    color: #fff;
+    /* box-shadow: 2px 2px 5px #BABECC,
+               -5px -5px 10px #ffffff73; */
+  }
+  /* Force the navbar to always behave like desktop */
+.navbar-header .navbar-toggle {
+    display: none; /* Hide hamburger menu */
+}
+
+.navbar-collapse {
+    display: flex !important; /* Ensure full menu is displayed */
+    justify-content: space-between; /* Distribute items evenly */
+}
+@media (min-width: 768px) {
+    .navbar-collapse {
+        display: flex !important;
+    }
+}
+
+.custom-container {
+    max-width: 1300px; /* Adjust width as needed */
+    width: 100%;
+    height: 50px;
+}
+.navbar .attr-right .attr-nav li.button a {
+	padding: 1px 18px !important;
+	border-radius: 10px;
+	font-size: 17px;
+	color: var(--color-heading);
+	position: relative;
+	overflow: hidden;
+	margin-left: 5px;
+	border: 2px solid var(--color-primary);
+  margin-right: 100px;
+}
+.navbar-brand>img {
+	display: block;
+	height: 50px;
+  margin-left: 75px;
+}
+.footer-bottom {
+  padding-bottom: 18px;
+  margin-top: 1319px;
+}
+
+.field {
+  height: 50px;
+  width: 95%;
+  display: flex;
+  position: relative;
+  margin: 10px 12px;
+}
+
+.field:nth-child(2) {
+  margin-top: 4px;
+}
+
+.field input,
+.field textarea,
+.field select {
+  height: 99%;
+  width: 85%;
+  padding-left: 15px;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  background: #321f1821;
+  color: #fff;
+  border-radius: 7px;
+  border: 1px solid black;
+  margin-left: 28px;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  box-shadow: inset 1px 1px 2px #BABECC,
+              inset -1px -1px 2px #ffffff73;
+}
+
+.field label {
+  position: absolute;
+  top: 48%;
+  transform: translateY(-50%);
+  left: 65px;
+  pointer-events: none;
+  color: #595959;
+}
+
+.field input:valid ~ label,
+.field textarea:valid ~ label,
+.field select:valid ~ label {
+  opacity: 0;
+}
+
+/* Additional styles for textarea */
+.field textarea {
+  resize: none; /* Prevent resizing if desired */
+  height: auto; /* Ensure it takes up space correctly */
+}
+
+/* Placeholder styling */
+.field input::placeholder,
+.field textarea::placeholder,
+.field select {
+  color: white; /* Placeholder color */
+  opacity: 0.7; /* Slightly transparent for better visibility */
+}
+
+.field input:-webkit-autofill::placeholder,
+.field textarea:-webkit-autofill::placeholder {
+  color: white; /* For autofilled fields in WebKit browsers */
+  opacity: 0.7;
+}
+form {
+    width:100px;
+    
+
+}

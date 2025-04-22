@@ -1,0 +1,135 @@
+{% include 'customer_header.html' %}
+
+<div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light ">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2">
+				<h1 class="breadcumb-title">Customer <span>Home</span></h1>
+				<nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+					<a href="{{ url_for('index') }}">Home</a>&nbsp;&#47;&nbsp;
+				</nav>
+			</div>
+		</div>
+	</div>
+</div><!-- End of Page title -->
+<div class="validtheme-shop-area default-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="shop-listing-contentes">
+					<div class="row item-flex center">
+						<div class="col-lg-7">
+							 <div class="content"><!-- Tab Nav -->
+								
+							</div> 
+						</div>
+						<div class="col-lg-5 text-right">
+							
+							</form> 
+						</div>
+					</div>
+				</div><!-- Tab Content -->
+				<!-- 
+				
+                            </div>End List  -->
+                        <!-- </div>
+                    </div> -->
+                </div><!-- End Tab Content -->
+				<div class="row">
+					{% with messages = get_flashed_messages() %}
+                                                    {% if messages %}
+                                                        <ul>
+                                                            {% for message in messages %}
+                                                                <li class="flash-message">{{ message }}</li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    {% else %}
+                                                        <p>No messages</p>
+                                                    {% endif %}
+                                                {% endwith %}
+                                                
+                                                <table>
+                                                    <tr>
+                                                        <th colspan="5" style="text-align: center;">View Enquiries</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>SL_No:</th>
+                                                        <th>Enquiry</th>
+                                                        <th>Date</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                    
+                                                    {% for enquiry in ar_obj %}
+                                                    <tr class="info">
+                                                        <td>{{ loop.index }}</td>
+                                                        <td>{{ enquiry[1] }}</td>  <!-- enquiry -->
+                                                        <td>{{ enquiry[2] }}</td>  <!-- date -->
+                                                        <td>{{ enquiry[3] }}</td>  <!-- status -->
+                                                        <td>
+                                                        {% if enquiry[3] == "Sent" %}
+
+                                                            <button  style="margin-left: 5px;width:90px;" type="button" 
+                                                             class="btn btn-primary" 
+                                                             data-bs-toggle="modal" 
+                                                             data-bs-target="#enquiryModal-{{ loop.index }}">
+                                                             <a href="#" style="position:relative;left:-26px;color: white;">Reply</a>
+                                                            </button>
+                                            
+                                                        {% else %}
+
+                                                            <button  style="margin-left: 5px;width:90px;" type="button" 
+                                                             class="btn btn-primary" 
+                                                             data-bs-toggle="modal" 
+                                                             data-bs-target="#enquiryModal-{{ loop.index }}" disabled><a href="#" style="position:relative;left:-32px;color: white;">Replied</a>
+                                                            </button>
+
+                                                        {% endif %}
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    {% else %}
+                                                    <tr>
+                                                        <td colspan="5" style="text-align: center;">Not found</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </table>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- End Single Post -->
+
+                        <!-- Modal for each Reply -->
+                        {% for enquiry in ar_obj %}
+                        <div class="modal fade" id="enquiryModal-{{ loop.index }}" tabindex="-1" aria-labelledby="enquiryModalLabel-{{ loop.index }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="enquiryModalLabel-{{ loop.index }}">Your Reply</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <!-- Modal Body -->
+                                    <div class="modal-body">
+                                        <!-- Reply Form -->
+                                        <form action="{{ url_for('customer_send_reply',enquiry_id=enquiry[0]) }}" method="POST">
+                                            <textarea class="form-control" name="reply_message" rows="4" placeholder="Type your reply here..." style="margin-left: 1px;margin-top: 0px;"></textarea>
+                                            <!-- <input type="hidden" name="item_id" value="{{ enquiry[0] }}"> -->
+                                            <div class="mt-3 text-center">
+                                                <button type="submit" class="btn btn-primary">Send Reply</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+			</div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+
+

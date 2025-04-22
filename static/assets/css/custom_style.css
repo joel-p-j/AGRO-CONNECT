@@ -1,0 +1,749 @@
+.form1 form{
+    background-color: #e3e2de;
+    height: 600px;
+    width: 767px;
+    margin-left: 184px;
+    }
+    
+    form h2{
+        margin-left:225px;
+        position: relative;
+        top:20px;
+    }
+    
+    form .label1{
+        margin-left: 188px;
+        margin-top: 50px; 
+        font-size: 23px;
+    }
+    
+    form .select1{
+        margin-left: 150px;
+        margin-top: 50px;
+        width: 200+px;
+        border-color: #32a852;
+        border-radius: 0px;
+        background-color: #fff;
+    }
+    
+    form .label2{
+        width: 200px;
+        margin-left: 185px; 
+        margin-top: 24px; 
+        font-size: 23px;
+    }
+    
+    form .select2{
+        margin-left: -16px; 
+        margin-top: 50px;
+        width: 200px;
+        border-color: #32a852;
+        border-radius: 0px;
+        background-color: #fff;
+    }
+    
+    form .label3{
+        width: 200px;
+        margin-left: 186px; 
+        margin-top: 50px; 
+        font-size: 23px;
+    }
+    
+    form textarea{
+        width: 350px; 
+        height: 100px; 
+        border-color: #32a852; 
+        margin-left: 372px; 
+        margin-top: -35px;
+        text-align: justify; 
+        vertical-align: middle; 
+        padding: 10px; 
+        font-size: 16px;
+    }
+    
+    form .btn1{
+        position: relative; 
+        left: 335px; 
+        top: 65px; 
+        width: 80px;
+    }
+    
+    .form1 .btn1 input{
+        position: relative; 
+        left: -40px;  
+        top: -13px;
+        width: 80px;
+    }
+
+.form2 form{
+    background-color: #d1cfcf;
+    width:750px;
+    height: 620px;
+    margin-left:220px;
+    }
+    
+    form h3{ 
+        margin-left: 225px;
+        position:relative;
+        top:20px;
+    }
+    
+    form .label1{
+        margin-left: 150px; 
+        margin-top: 50px; 
+        font-size: 23px;
+    }
+    
+    form .select1{
+        width: 200px; 
+        margin-left: 123px; 
+        border-color: #32a852;
+    }
+    
+    form .label2{
+        margin-left: 150px; 
+        margin-top: 50px; 
+        font-size: 23px;
+    }
+    
+    form .select2{
+        width: 200px; 
+        margin-left: -48px;
+        border-color: #32a852;
+    }
+    
+    form .label3{
+        margin-left: 150px; 
+        position: relative; 
+        top: 6px; 
+        font-size: 23px;
+    }
+    
+    form textarea{
+        width: 350px; 
+        height: 100px; 
+        border-color: #32a852; 
+        margin-left: 308px; 
+        margin-top: -43px;
+    }
+    
+    form .btn1{
+        margin-left: -31px; 
+        position: relative; 
+        top: 28px; 
+        width: 100px; 
+        height: 55px;
+    }
+    
+    .form2 .btn1 input{
+        position: relative; 
+        left: -29px; 
+        top: -11px; 
+        width: 80px;
+    } 
+
+.form3 form{
+    height: 620px;
+    }
+
+    form h3{
+        margin-left: 235px;
+        margin-top: -23px;
+    }
+
+    form .label1{
+        margin-left: 180px; 
+        margin-top: 50px; 
+        font-size: 23px;
+    }
+
+    form .select1{
+        width: 200px; 
+        margin-left: 97px; 
+        border-color: #32a852;
+    }
+
+    form .label2{
+        margin-left: 180px; 
+        margin-top: 50px; 
+        font-size: 23px;
+    }
+
+    form .select2{
+        width: 200px; 
+        margin-left: -48px; 
+        border-color: #32a852;
+    }
+
+    form .label3{
+        margin-left: 180px; 
+        position: relative; 
+        top: -11px; 
+        font-size: 23px;
+    }
+
+    form textarea{
+        width: 350px; 
+        height: 100px; 
+        border-color: #32a852; 
+        margin-left: 333px; 
+        margin-top: -47px;
+        text-align: justify; 
+        vertical-align: middle; 
+        padding: 10px; 
+        font-size: 16px;
+    }
+
+    form .btn1{
+        margin-left: -8px; 
+        position: relative; 
+        top: 58px; 
+        width: 100px; 
+        height: 55px;
+    }
+
+    .form3 .btn1 input{
+        position: relative; 
+        left: -30px; 
+        top: -11px; 
+        width: 80px;
+    }
+
+.popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        border-radius: 8px;
+        width: 300px;
+    }
+    .popup h2 {
+        margin-top: 0;
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+    .close-btn {
+        background: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        float: right;
+    }
+    .submit-btn {
+        background: green;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        width: 100%;
+    }
+.form-label {
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    /* styles.css */
+
+.container2{
+    width:1500px;
+    height: 300px;
+    position :relative;
+    top:60px;
+    left: 20px;
+    background-color: #1f4e3d;
+    border-radius: 45px;
+
+}
+.container3{
+    border-right: 3px dashed grey;
+    width: 204px;
+    height: 199px;
+    margin-top: 50px;
+    margin-left: 43px;
+}
+.container4{
+    border-right: 3px dashed grey;
+    width: 303px;
+    height: 199px;
+    margin-top: -196px;
+    margin-left: 261px;
+}
+.container5{
+    border-right: 3px dashed grey;
+    width: 242px;
+    height: 199px;
+    margin-top: -200px;
+    margin-left: 585px;
+}
+.container6{
+    /* border-right: 3px dashed grey; */
+    width: 219px;
+    height: 199px;
+    margin-top: -201px;
+    margin-left: 841px;
+}
+
+.bg-img{
+    background-image: url('../images/ll1.png');
+    border: 1px solid black;
+    width:750px;
+    height: 1074px;
+    margin-left:220px;
+    margin-top: -16px;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    }
+
+    form h3{ 
+        margin-left: 225px;
+        position:relative;
+        top:37px;
+        color:rgb(0, 0, 0);
+    }
+    
+    form .label11{
+        margin-left: 156px; 
+        margin-top: 50px; 
+        font-size: 23px;
+        position: relative;
+        top:44px;
+        color: white;
+    }
+    
+    form .select11{
+        width: 254px;
+        height: 58px;
+        margin-left: 93px;
+        border-radius: 5px;
+        background-color: #bcbca7;
+        position: relative;
+        top:43px;
+    }
+
+    form .select12{
+        width: 260px;
+        height: 58px;
+        margin-left: 46px;
+        position: relative;
+        top:234px;
+        border-radius: 5px;
+        background-color: #bcbca7;
+    }
+  
+    form .label21{
+        margin-left: 153px; 
+        margin-top: 1px; 
+        font-size: 23px;
+        position: relative;
+        top:74px;
+        color: white;
+    }
+    
+    form .input11{
+        width: 255px; 
+        margin-left: 77px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius:5px;
+        background-color: #bcbca7;
+        position: relative;
+        top:79px;
+    }
+    
+    form .label31{
+        margin-left: 150px; 
+        position: relative; 
+        top: 144px; 
+        font-size: 23px;
+        color: white;
+    }
+    
+    form .input12{
+        width: 200px; 
+        margin-left: -48px;
+        padding-left: 10px;
+        padding-right: 40px;
+        border-radius:5px;
+        background-color: #bcbca7;
+    }
+
+    form .input13{
+        width: 260px;
+        position: relative;
+        left: 47px;
+        top: 170px;
+        background-color: #bcbca7;
+        border-radius: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    form .input14{
+        width: 260px;
+        position: relative;
+        left: 77px;
+        top: 260px;
+        background-color: #bcbca7;
+        border-radius: 5px;
+    }
+
+    form .label41{
+        margin-left: 150px; 
+        position: relative; 
+        top: 171px; 
+        font-size: 23px;
+        color: white;
+    }
+    
+    form .label51{
+        margin-left: 150px; 
+        position: relative; 
+        top: 235px; 
+        font-size: 23px;
+        color: white;
+    }
+
+    form .text1{
+        background-color: #bcbca7;
+        border-radius: 5px;
+        position: relative;
+        top: 325px;
+        left: -24px;
+        border-color: white;
+    }
+
+    form .label71{
+        margin-left: 150px; 
+        position: relative; 
+        top: 330px; 
+        font-size: 23px;
+        color: white;
+    }
+
+    form .label61{
+        margin-left: 150px; 
+        position: relative; 
+        top: 269px; 
+        font-size: 23px;
+        color: white;
+    }
+
+    form .btn11{
+        margin-left: 283px; 
+        position: relative; 
+        top: 405px; 
+        width: 100px; 
+        height: 55px;
+    }
+    
+    .form11 .btn11 input{
+        position: relative; 
+        left: -29px; 
+        top: -11px; 
+        width: 80px;
+    } 
+
+    .input-wrapper {
+        position: relative;
+        top:97px;
+        left: 357px;
+        width: 257px;/* Adjust width as needed */
+    }
+
+    .input-wrapper input {
+        width: 100%;
+        padding-right: 70px; /* Space for dropdown inside */
+        height: 40px;
+        border-radius: 5px;
+        font-size: 16px;
+        padding-left: 10px;
+        outline: none;
+    }
+
+    .input-wrapper select {
+        position: absolute;
+        right: -142px;
+        top: 42%;
+        transform: translateY(-50%);
+        height: 100%;
+        border: none;
+        background: transparent;
+        font-size: 16px;
+        outline: none;
+        cursor: pointer;
+        appearance: none; /* Remove default dropdown styling */
+    }
+
+    
+    /* Scrollbar Styling for Webkit (Chrome, Safari) */
+    .notification-wrapper::-webkit-scrollbar {
+        height: 8px; /* Horizontal scrollbar height */
+    }
+    
+    .notification-wrapper::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 5px;
+    }
+    
+    .notification-wrapper::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    .notification-container {
+        display: flex;
+        flex-direction: row; /* Arrange notifications horizontally */
+        gap: 15px;
+        width: max-content; /* Ensure container stretches horizontally */
+    }
+    
+    .notification {
+        background: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        min-width: 400px; /* Set minimum width for each notification */
+    }
+    
+    /* Send Enquiry Button Styling */
+    .notification-wrapper {
+        width: 100%;
+        max-width: 800px; /* Adjust width as needed */
+        height: 515px; /* Set a fixed height */
+        overflow-x: auto; /* Enables horizontal scrolling */
+        overflow-y: hidden; /* Hide vertical scrolling */
+        border: 1px solid #ccc; 
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        white-space: nowrap; /* Prevent wrapping */
+        scrollbar-width: thin; /* Firefox */
+        scrollbar-color: #888 #f1f1f1; /* Firefox */
+    }
+    
+    /* Scrollbar Styling for Webkit (Chrome, Safari) */
+    .notification-wrapper::-webkit-scrollbar {
+        height: 8px; /* Horizontal scrollbar height */
+    }
+    
+    .notification-wrapper::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 5px;
+    }
+    
+    .notification-wrapper::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    .notification-container {
+        display: flex;
+        flex-direction: row; /* Arrange notifications horizontally */
+        gap: 15px;
+        width: max-content; /* Ensure container stretches horizontally */
+    }
+    
+    .notification {
+        background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 400px;
+    height: 493px;}
+    
+    /* Send Enquiry Button Styling */
+    .notification button {
+        width: 90px;
+        margin-top: 110px;
+        align-self: center;
+    }
+    
+    
+    
+    /* Close button */
+    .close-btn {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        color: red;
+        font-weight: bold;
+    }
+
+    .close-btn:hover {
+        color: darkred;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Fade-out animation */
+    @keyframes fadeOut {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-10px); }
+    }
+.bg-img1{
+        background-image: url('../images/ll1.png');
+        border: 1px solid black;
+        width:750px;
+        height: 750px;
+        margin-left:220px;
+        margin-top: -16px;
+        border-radius: 20px;
+        background-repeat: no-repeat;
+        }
+.form12 .label01{
+    margin-left: 100px; 
+    margin-top: 50px; 
+    font-size: 23px;
+    position: relative;
+    top:60px;
+    color: white;
+}
+
+form .select01{
+    width: 254px;
+    height: 58px;
+    margin-left: 93px;
+    border-radius: 5px;
+    background-color: #bcbca7;
+    position: relative;
+    top:56px;
+}
+
+form .label02{
+    margin-left: 141px;
+    margin-top: 1px;
+    font-size: 23px;
+    position: relative;
+    top: 47px;
+    color: white;
+}
+
+form .input01{
+    width: 255px;
+    margin-left: 94px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    background-color: #bcbca7;
+    position: relative;
+    top: 45px;
+}
+
+form .label03{
+    margin-left: 135px;
+    position: relative;
+    top: 68px;
+    font-size: 23px;
+    color: white;
+}
+
+form .input02{
+    width: 256px;
+    margin-left: 95px;
+    padding-left: 10px;
+    padding-right: 40px;
+    border-radius: 5px;
+    background-color: #bcbca7;
+    position: relative;
+    top: 64px;
+}
+
+form .input03{
+    width: 257px;
+    position: relative;
+    left: 93px;
+    top: 90px;
+    background-color: #bcbca7;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+form .input04{
+    width: 258px;
+    position: relative;
+    left: 96px;
+    top: 111px;
+    background-color: #bcbca7;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+form .label04{
+    margin-left: 216px;
+    position: relative;
+    top: 89px;
+    font-size: 23px;
+    color: white;
+}
+
+form .label05{
+    margin-left: 158px;
+    position: relative;
+    top: 116px;
+    font-size: 23px;
+    color: white;
+}
+
+form .label06{
+    margin-left: 189px;
+    position: relative;
+    top: 130px;
+    font-size: 23px;
+    color: white;
+}
+
+form .btn01{
+    margin-left: 347px;
+    position: relative;
+    top: 237px;
+    width: 100px;
+    height: 55px;
+}
+
+.form12 .btn01 input{
+    position: relative; 
+    left: -29px; 
+    top: -11px; 
+    width: 80px;
+} 
+
+form .input05{
+    width: 257px;
+    position: relative;
+    left: 97px;
+    top: 135px;
+    background-color: #bcbca7;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+

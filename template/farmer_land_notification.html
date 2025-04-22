@@ -1,0 +1,204 @@
+{% include 'farmer_header.html' %}
+<!-- Page title -->
+
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner">
+                                <div class="item">
+                                    <div class="meta">
+                                        <ul>
+                                            <!-- You can add metadata here if required -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner">
+                                <div class="item">
+                                    <div class="meta">
+                                        <!-- Content inside the post can go here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- End Single Post -->
+
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner">
+                                <div class="item">
+                                    <div class="thumb" style="width: 1150px;">
+                                        <a href="" class="post-thumbnail">
+                                            <div class="meta">
+                                                {% with messages = get_flashed_messages() %}
+                                                    {% if messages %}
+                                                        <ul>
+                                                            {% for message in messages %}
+                                                                <li class="flash-message">{{ message }}</li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                   
+                                                    {% endif %}
+                                                {% endwith %}
+                                                <h4 style="text-align: center;">Notifications</h4>
+
+                                                <div class="notification-wrapper">
+                                                    <div class="notification-container">
+                                                        {% for noti in ar_obj %}
+                                                            <div class="notification">
+                                                                
+                                                                <img src="{{ url_for('static', filename='uploads/' + noti[3]) }}" alt="Land Image" style="width:400px; height: 230px; object-fit: cover; border: 1px solid #ccc; border-radius: 5px;position: relative;top:6px;">
+                                                                <p style="color: rgb(10, 10, 10);position: relative;top: 50px;"><strong>Message:</strong><br> {{ noti[1] }}</p>
+                                                                <button type="button" 
+                                                                class="btn btn-primary" 
+                                                                data-bs-toggle="modal" 
+                                                                data-bs-target="#enquiryModal-{{ loop.index }}" >
+                                                                <a href="#" style="position:relative;left:-26px;color: white;">Enquiry</a>
+                                                               </button>
+                                                
+                                                                
+                                                            </div>
+                                                        {% else %}
+                                                            <p>Notification not found.</p>
+                                                        {% endfor %} 
+                                                    </div>
+                                                
+                                                    <!-- Modal for each Reply -->
+                                                    {% for noti in ar_obj %}
+                                                    <div class="modal fade" id="enquiryModal-{{  noti[0] }}" tabindex="-1" aria-labelledby="enquiryModalLabel-{{  noti[0] }}" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <!-- Modal Header -->
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="enquiryModalLabel-{{  noti[0] }}">Your Enquiry</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <!-- Modal Body -->
+                                                                <div class="modal-body">
+                                                                    <!-- Reply Form -->
+                                                                    <form action="{{ url_for('send_land_enquiry',not_id= noti[0]) }}" method="POST">
+                                                                        <textarea class="form-control" name="enquiry_message" rows="4" placeholder="Type your enquiry here..." style="margin-left: 1px;margin-top: 0px;"></textarea>
+                                                                        
+                                                                        <div class="mt-3 text-center">
+                                                                            <button type="submit" class="btn btn-primary">Send Enquiry</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                              </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- End Single Post -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    
+    function showCustomAlert(message) {
+        const popup = document.createElement('div');
+        popup.textContent = message;
+        popup.style.position = 'fixed';
+        popup.style.top = '20%';
+        popup.style.left = '50%';
+        popup.style.transform = 'translate(-50%, -50%)';
+        popup.style.background = 'white';
+        popup.style.padding = '35px';
+        popup.style.border = '1px solid black';
+        popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+        popup.style.zIndex = '1000';
+        popup.style.width = '400px'; // Wider box
+        popup.style.textAlign = 'center'; // Center-align content
+        popup.style.borderRadius = '5px';
+        popup.style.height = '100px';
+
+        document.body.appendChild(popup);
+
+        // Automatically remove popup after 3 seconds
+        setTimeout(() => {
+            popup.remove();
+        }, 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+    
+    function toggleLabelVisibility(textarea, labelId) {
+    const label = document.getElementById(labelId);
+    if (textarea.value.trim() !== "") {
+    label.style.visibility = "hidden";
+    label.style.opacity = "0";
+     } 
+    else {
+    label.style.visibility = "visible";
+    label.style.opacity = "1";
+    }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+    let container = document.querySelector(".notification-container");
+    let notifications = document.querySelectorAll(".notification");
+    let totalNotifications = notifications.length;
+    let index = 0;
+    let itemsPerRow = 2; // Show 2 notifications at a time
+    let notificationWidth = notifications[0].offsetWidth + 15; // Add margin/padding space
+
+    function showNextNotification() {
+        if (totalNotifications > itemsPerRow) {
+            index++;
+
+            // Move the container left
+            container.style.transform = `translateX(-${index * notificationWidth}px)`;
+            container.style.transition = "transform 0.5s ease-in-out";
+
+            // Reset position when the last notification fully scrolls out
+            if (index >= totalNotifications - itemsPerRow) {
+                setTimeout(() => {
+                    container.style.transition = "none";
+                    container.style.transform = "translateX(0)";
+                    index = 0;
+                }, 500);
+            }
+
+            // Schedule next slide
+            setTimeout(showNextNotification, 5000);
+        }
+    }
+
+    // Start animation if there are more than 2 notifications
+    if (totalNotifications > itemsPerRow) {
+        setTimeout(showNextNotification, 10000);
+    }
+});
+
+</script>
+
+{% include 'footer.html' %}

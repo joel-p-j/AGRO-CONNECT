@@ -1,0 +1,162 @@
+HTTrack3.49-2+htsswf+htsjava launched on Fri, 22 Mar 2024 15:59:31 at https://wordpress.validthemes.net/agrica/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://wordpress.validthemes.net/agrica/ -O1 "D:\Templates\T3" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+16:00:20	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-admin/maint/maint.js (from https://wordpress.validthemes.net/agrica/)
+16:01:36	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/404 (from https://wordpress.validthemes.net/agrica/)
+16:02:08	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/img/empty-cart.png (from https://wordpress.validthemes.net/agrica/)
+16:02:12	Warning: 	Found for https://wordpress.validthemes.net/agrica/checkout/
+16:02:12	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/checkout/ to https://wordpress.validthemes.net/agrica/cart/
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/flaticon.svg (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/flaticon-set.css?ver=1.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/flaticon.svg (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/flaticon-set.css?ver=1.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-brands-400.eot (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-brands-400.eot? (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-brands-400.ttf (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-brands-400.svg (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-duotone-900.eot (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-duotone-900.eot? (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-duotone-900.ttf (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-duotone-900.svg (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-light-300.eot (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-light-300.eot? (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-light-300.ttf (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-light-300.svg (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-regular-400.eot (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-regular-400.eot? (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-regular-400.ttf (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-regular-400.svg (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-solid-900.eot (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-solid-900.eot? (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-solid-900.ttf (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/fonts/fa-solid-900.svg (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/font-awesome.min.css?ver=5.9.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/img/loader.svg (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/shop.css?ver=1.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/img/shape/35.png (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/style.css?ver=2.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/img/logo-icon.png (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/style.css?ver=2.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/img/logo-icon-light.png (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/css/style.css?ver=2.0)
+16:02:24	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-admin/wp-admin.js (from https://wordpress.validthemes.net/agrica/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=8.4.0)
+16:02:25	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=56
+16:02:25	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=56 to https://wordpress.validthemes.net/agrica/home-farming/
+16:02:31	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=72
+16:02:31	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=72 to https://wordpress.validthemes.net/agrica/agriculture-shop/
+16:03:46	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2943
+16:03:46	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2943 to https://wordpress.validthemes.net/agrica/dairy-firm/
+16:03:46	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2659
+16:03:46	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2659 to https://wordpress.validthemes.net/agrica/about-us/
+16:03:46	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=331
+16:03:46	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=331 to https://wordpress.validthemes.net/agrica/team/
+16:03:46	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2843
+16:03:46	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2843 to https://wordpress.validthemes.net/agrica/team-details/
+16:03:46	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2667
+16:03:46	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2667 to https://wordpress.validthemes.net/agrica/contact/
+16:03:46	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2691
+16:03:46	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2691 to https://wordpress.validthemes.net/agrica/project-page/
+16:03:46	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2789
+16:03:46	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2789 to https://wordpress.validthemes.net/agrica/project-details/
+16:03:46	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2698
+16:03:46	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2698 to https://wordpress.validthemes.net/agrica/services-version-one/
+16:03:46	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2720
+16:03:46	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2720 to https://wordpress.validthemes.net/agrica/services-version-two/
+16:03:46	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2743
+16:03:46	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2743 to https://wordpress.validthemes.net/agrica/service-details/
+16:03:54	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=1224
+16:03:54	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=1224 to https://wordpress.validthemes.net/agrica/minuter-highest-technic-clothes-trainer-observe-country/
+16:03:54	Error: 	"Method Not Allowed" (405) at link https://wordpress.validthemes.net/agrica/xmlrpc.php (from https://wordpress.validthemes.net/agrica/minuter-highest-technic-clothes-trainer-observe-country/)
+16:03:55	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2068
+16:03:55	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2068 to https://wordpress.validthemes.net/agrica/product/bell-pepper/
+16:04:06	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2738
+16:04:06	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2738 to https://wordpress.validthemes.net/agrica/wishlist/
+16:04:09	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=14
+16:04:09	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=14 to https://wordpress.validthemes.net/agrica/my-account/
+16:04:14	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/?page_id=3 (from https://wordpress.validthemes.net/agrica/my-account/)
+16:04:14	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2898
+16:04:14	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2898 to https://wordpress.validthemes.net/agrica/cart/
+16:04:15	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=1227
+16:04:15	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=1227 to https://wordpress.validthemes.net/agrica/overcame-breeding-point-concerns-has-terminate/
+16:04:15	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2076
+16:04:15	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2076 to https://wordpress.validthemes.net/agrica/announcing-result-the-resolution-sentiments/
+16:04:15	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/wp-content/plugins/agrica-core/addons/footer-widgets/footer-widgets.js (from https://wordpress.validthemes.net/agrica/wp-content/themes/agrica/assets/js/progress-bar.min.js?ver=1.0.0)
+16:04:15	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/-negative.svg (from https://wordpress.validthemes.net/agrica/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.18.3)
+16:04:15	Error: 	"Not Found" (404) at link https://wordpress.validthemes.net/agrica/OPR/ (from https://wordpress.validthemes.net/agrica/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.18.3)
+16:04:16	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=1644
+16:04:16	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=1644 to https://wordpress.validthemes.net/agrica/product/fresh-red-seedless/
+16:04:25	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=89f03f7d02720160f1b04cf5b27f5ccb&_wpnonce=59fa0c8f99
+16:04:25	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=89f03f7d02720160f1b04cf5b27f5ccb&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:04:26	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=1646
+16:04:26	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=1646 to https://wordpress.validthemes.net/agrica/product/green-avocado/
+16:04:42	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=e4873aa9a05cc5ed839561d121516766&_wpnonce=59fa0c8f99
+16:04:42	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=e4873aa9a05cc5ed839561d121516766&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:04:42	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=1649
+16:04:42	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=1649 to https://wordpress.validthemes.net/agrica/product/organic-cucumber/
+16:04:58	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=96de2547f44254c97f5f4f1f402711c1&_wpnonce=59fa0c8f99
+16:04:58	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=96de2547f44254c97f5f4f1f402711c1&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:04:58	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=1650
+16:04:58	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=1650 to https://wordpress.validthemes.net/agrica/product/fresh-banana/
+16:05:10	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=973a5f0ccbc4ee3524ccf035d35b284b&_wpnonce=59fa0c8f99
+16:05:10	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=973a5f0ccbc4ee3524ccf035d35b284b&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:05:10	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=1651
+16:05:10	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=1651 to https://wordpress.validthemes.net/agrica/product/fresh-fish/
+16:05:21	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=be3e9d3f7d70537357c67bb3f4086846&_wpnonce=59fa0c8f99
+16:05:21	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=be3e9d3f7d70537357c67bb3f4086846&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:05:21	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=1652
+16:05:21	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=1652 to https://wordpress.validthemes.net/agrica/product/strawberry/
+16:05:31	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=207f88018f72237565570f8a9e5ca240&_wpnonce=59fa0c8f99
+16:05:31	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=207f88018f72237565570f8a9e5ca240&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:05:31	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=1660
+16:05:31	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=1660 to https://wordpress.validthemes.net/agrica/product/organic-carrot/
+16:05:41	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=9a4400501febb2a95e79248486a5f6d3&_wpnonce=59fa0c8f99
+16:05:41	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=9a4400501febb2a95e79248486a5f6d3&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:05:41	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=1661
+16:05:41	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=1661 to https://wordpress.validthemes.net/agrica/product/organic-sweet-corn/
+16:05:51	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=7d12b66d3df6af8d429c1a357d8b9e1a&_wpnonce=59fa0c8f99
+16:05:51	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=7d12b66d3df6af8d429c1a357d8b9e1a&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:05:51	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=814a9c18f5abff398787c9cfcbf3d80c&_wpnonce=59fa0c8f99
+16:05:51	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=814a9c18f5abff398787c9cfcbf3d80c&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:05:51	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2073
+16:05:51	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2073 to https://wordpress.validthemes.net/agrica/product/cabbage/
+16:06:04	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=4b86abe48d358ecf194c56c69108433e&_wpnonce=59fa0c8f99
+16:06:04	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=4b86abe48d358ecf194c56c69108433e&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:06:04	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2075
+16:06:04	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2075 to https://wordpress.validthemes.net/agrica/product/organic-egg/
+16:06:15	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=cbef46321026d8404bc3216d4774c8a9&_wpnonce=59fa0c8f99
+16:06:15	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=cbef46321026d8404bc3216d4774c8a9&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:06:16	Warning: 	Moved Permanently for https://wordpress.validthemes.net/agrica/?p=2074
+16:06:16	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/?p=2074 to https://wordpress.validthemes.net/agrica/product/green-apple/
+16:06:28	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?remove_item=1f4fe6a4411edc2ff625888b4093e917&_wpnonce=59fa0c8f99
+16:06:28	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?remove_item=1f4fe6a4411edc2ff625888b4093e917&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:06:31	Warning: 	Moved Permanently for wordpress.validthemes.net/robots.txt
+16:06:31	Warning: 	Redirected link is identical because of 'URL Hack' option: wordpress.validthemes.net/robots.txt and https://wordpress.validthemes.net/robots.txt
+16:06:31	Warning: 	Warning moved treated for wordpress.validthemes.net/robots.txt (real one is https://wordpress.validthemes.net/robots.txt)
+16:06:31	Warning: 	Moved Permanently for wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:06:31	Warning: 	Redirected link is identical because of 'URL Hack' option: wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1 and https://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:06:31	Warning: 	File has moved from wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1 to https://wordpress.validthemes.net/agrica/agriculture-shop/?removed_item=1
+16:06:31	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=89f03f7d02720160f1b04cf5b27f5ccb&_wpnonce=59fa0c8f99
+16:06:31	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=89f03f7d02720160f1b04cf5b27f5ccb&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/green-avocado/?quick-view=1650
+16:06:32	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=e4873aa9a05cc5ed839561d121516766&_wpnonce=59fa0c8f99
+16:06:32	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=e4873aa9a05cc5ed839561d121516766&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/organic-cucumber/?quick-view=1660
+16:06:33	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=96de2547f44254c97f5f4f1f402711c1&_wpnonce=59fa0c8f99
+16:06:33	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=96de2547f44254c97f5f4f1f402711c1&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/fresh-banana/?quick-view=1644
+16:06:33	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=973a5f0ccbc4ee3524ccf035d35b284b&_wpnonce=59fa0c8f99
+16:06:33	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=973a5f0ccbc4ee3524ccf035d35b284b&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/fresh-fish/?quick-view=1652
+16:06:34	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=be3e9d3f7d70537357c67bb3f4086846&_wpnonce=59fa0c8f99
+16:06:34	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=be3e9d3f7d70537357c67bb3f4086846&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/strawberry/?quick-view=1646
+16:06:34	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=207f88018f72237565570f8a9e5ca240&_wpnonce=59fa0c8f99
+16:06:34	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=207f88018f72237565570f8a9e5ca240&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/organic-carrot/?quick-view=1644
+16:06:35	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=9a4400501febb2a95e79248486a5f6d3&_wpnonce=59fa0c8f99
+16:06:35	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=9a4400501febb2a95e79248486a5f6d3&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/organic-sweet-corn/?quick-view=2074
+16:06:36	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=7d12b66d3df6af8d429c1a357d8b9e1a&_wpnonce=59fa0c8f99
+16:06:36	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=7d12b66d3df6af8d429c1a357d8b9e1a&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/cabbage/?quick-view=1644
+16:06:36	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=814a9c18f5abff398787c9cfcbf3d80c&_wpnonce=59fa0c8f99
+16:06:36	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=814a9c18f5abff398787c9cfcbf3d80c&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/cabbage/?quick-view=1644
+16:06:36	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=4b86abe48d358ecf194c56c69108433e&_wpnonce=59fa0c8f99
+16:06:36	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=4b86abe48d358ecf194c56c69108433e&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/organic-egg/?quick-view=2073
+16:06:37	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=cbef46321026d8404bc3216d4774c8a9&_wpnonce=59fa0c8f99
+16:06:37	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=cbef46321026d8404bc3216d4774c8a9&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/green-apple/?quick-view=1644
+16:06:38	Warning: 	Found for https://wordpress.validthemes.net/agrica/cart/?undo_item=1f4fe6a4411edc2ff625888b4093e917&_wpnonce=59fa0c8f99
+16:06:38	Warning: 	File has moved from https://wordpress.validthemes.net/agrica/cart/?undo_item=1f4fe6a4411edc2ff625888b4093e917&_wpnonce=59fa0c8f99 to http://wordpress.validthemes.net/agrica/product/bell-pepper/?quick-view=1651
+
+HTTrack Website Copier/3.49-2 mirror complete in 7 minutes 7 seconds : 1036 links scanned, 943 files written (69244685 bytes overall) [25408269 bytes received at 59504 bytes/sec], 57434856 bytes transferred using HTTP compression in 796 files, ratio 19%, 23.1 requests per connection
+(35 errors, 116 warnings, 0 messages)

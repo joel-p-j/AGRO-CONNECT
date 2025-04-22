@@ -1,0 +1,77 @@
+<div class="sidebar col-xl-4 col-lg-5 col-md-12 mt-md-50 mt-xs-50">
+    <aside>
+        <div id="block-2" class="sidebar-item widget_block widget_search">
+            <!-- <form role="search" method="get" action="https://wordpress.validthemes.net/agrica/" class="wp-block-search__button-outside wp-block-search__text-button wp-block-search"    > -->
+            <label class="wp-block-search__label" for="wp-block-search__input-1" ></label>
+            <div class="wp-block-search__inside-wrapper ">
+                <!-- <input class="wp-block-search__input" id="wp-block-search__input-1" placeholder="" value="" type="search" name="s" required /> -->
+                <!-- <button aria-label="Search" class="wp-block-search__button wp-element-button" type="submit" >Option Bar</button> -->
+                <ul data-in="fadeInDown" data-out="fadeOutUp" class="nav navbar-nav navbar-center" id="menu-primary-menu">
+                    <ul class="wp-block-categories-list wp-block-categories">	
+                        <li class="cat-item cat-item-42">
+                            <a href="{{ url_for('farmer_view_products')}}">Product Management</a>
+                        </li>
+                        <li class="cat-item cat-item-40">
+                            <a href="{{ url_for('farmer_view_Orders' )}}">Order Management</a>
+                        </li>
+                        
+                        <li class="cat-item cat-item-43">
+                            <a href="{{ url_for('view_land_reply')}}">Land Enquiry Reply</a>
+                        </li>
+                    
+                        <!-- <li class="cat-item cat-item-43">
+                            <a href="../category/harvest/index.html">Send confirmation</a>
+                        </li> -->
+                        <!-- <li class="cat-item cat-item-43">
+                            <a href="../category/harvest/index.html">MOU</a>
+                        </li> -->
+                        <!-- <li class="cat-item cat-item-43">
+                                <a href="../category/harvest/index.html">Make Payment</a>
+                        </li> -->
+                        <li class="cat-item cat-item-41">
+                            <a href="{{ url_for('farmer_download_ins_form')}}">Download/Upload Insurance Form</a>
+                        </li>
+                        <li class="cat-item cat-item-41">
+                            <a href="{{ url_for('farmer_view_policy_reply')}}">Insurance Application Reply</a>
+                        </li>
+                       
+                        <li class="cat-item cat-item-41">
+                            <a href="{{url_for('farmer_send_insurance_claim')}}">Insurance Claim Application</a>
+                        </li>
+                        
+                        <li class="cat-item cat-item-43">
+                            <a href="{{ url_for('farmer_download_loan_form')}}">Loan Application</a>
+                        </li>
+                        <li class="cat-item cat-item-43">
+                            <a href="{{url_for('farmer_complaint')}}">Send Complaint</a>
+                        </li>
+                        <li class="cat-item cat-item-41">
+                            <a href="{{ url_for('farmer_view_enquiries') }}">Enquiries</a>
+                        </li>
+                        <li class="cat-item cat-item-43">
+                            <a href="{{ url_for('farmer_complaint_status') }}">Complaint Status</a>
+                        </li>
+                       
+                        <!-- <li class="cat-item cat-item-41">
+                            <a href="../category/natural/index.html">View Reply</a>
+                        </li> -->
+                        
+                       
+                    </ul>
+                </ul>
+            </div>
+            <!-- </form> -->
+        </div>
+        <div id="agrica_recent_posts_widget-2" class="sidebar-item recent-post">
+            <!-- <h4 class="title">Recent Post</h4> -->
+            <ul>
+                <li>
+                    <div class="info">
+                        <span class="post-date" style="color: black;font-size: 15px;padding-left: 60px;">"passion of hope."</span>
+                            <a href="#"></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+</div>

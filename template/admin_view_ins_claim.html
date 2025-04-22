@@ -1,0 +1,180 @@
+{% include 'admin_header.html' %}
+<!-- Page title -->
+
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item" ><!-- Post Thumbnail -->
+                                    <div class="thumb">
+                                        <a href="../announcing-result-the-resolution-sentiments/index.html" class="post-thumbnail">
+                                           
+                                        </a>
+                                        </div><!-- End Post Thumbnail -->
+                                        <div class="info" style="width:900px;">
+                                            {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                    {% else %}
+                                                       
+                                                        {% endif %}
+                                                        {% endwith %}
+                                    <table style="margin-left: -33px; width: 100px;">
+                                        <tr>
+                                            <th colspan="11" style="text-align: center;">View Insurance claim Application</th>
+                                        </tr>
+                                        <tr style="width: 20px;">
+                                            <th>SL_No</th>
+                                            <th>Farmer name</th>
+                                            <th>Policy number</th>
+                                            <th>Reason</th>
+                                            <th>Upload</th>
+                                            <th>Remark</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        {% for claim in result_data %}
+                                        <tr class="info">
+                                            
+                                            <td>{{ loop.index }}</td>
+                                            <td>{{ claim[0] }}</td>  
+                                            <td>{{ claim[2] }}</td>  
+                                            <td>{{ claim[3] }}</td> 
+                                            <td>{{ claim[4] }}</td> 
+                                            <td>{{ claim[5] }}</td> 
+                                            <td>{{ claim[6] }}</td> 
+                                            <td>{{ claim[7] }}</td> 
+                                            <td>
+                                                <a style="background-color: #49a760;width: 145px;height:58px;" 
+                                                href="{{ url_for('static', filename='uploads/' + claim[4]) }}" 
+                                                class="btn btn-success" download="{{ claim[4] }}">
+                                                Download
+                                             </a>
+                                                
+                                                <button  style="margin-left: 5px;width:90px;" type="button" 
+                                                class="btn btn-primary" 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#enquiryModal-{{ loop.index }}">
+                                                <a href="#" style="position:relative;left:-26px;color: white;">Reply</a>
+                                               </button>
+                                               <div class="modal fade" id="enquiryModal-{{ loop.index }}" tabindex="-1" aria-labelledby="enquiryModalLabel-{{ loop.index }}" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="enquiryModalLabel-{{ loop.index }}">Your Reply</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <!-- Modal Body -->
+                                                        <div class="modal-body">
+                                                            <!-- Reply Form -->
+                                                            <form action="{{ url_for('admin_send_insclaim_reply',claim_id=claim[1]) }}" method="POST" >
+                                                                <textarea class="form-control" name="remark" rows="4" placeholder="Type your reply here..." style="margin-left: 0px;margin-top: 10px;"></textarea>
+                                                                
+                                                                <div class="mt-3 text-center">
+                                                                    <button type="submit" class="btn btn-primary">Send Reply</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="11" style="text-align: center;">No applications found.</td>
+                                            </tr>
+                                        {% endfor %}
+
+                                                                
+                                        </table>
+                                        
+                                        <div class="meta">
+                                                <ul>
+                                            </ul>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Post -->
+                                    </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+                                        <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                        <div class="item"><!-- Post Thumbnail -->
+                                           
+                                            </div>
+                                        </div><!-- End Single Post --></div><div class="col-lg-12 single-item"><!-- Single Post --><div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                                <div class="item"><!-- Post Thumbnail -->
+                                                    
+                                                </div></div><!-- End Single Post --></div></div></div>
+                                                        <div class="sidebar col-xl-4 col-lg-5 col-md-12 mt-md-50 mt-xs-50">
+                                                            <aside>
+                                                                <form role="search" method="get" action="https://wordpress.validthemes.net/agrica/" class="wp-block-search__button-outside wp-block-search__text-button wp-block-search"    >
+                                                                        <!-- <label class="wp-block-search__label" for="wp-block-search__input-1" ></label> -->
+                                                                        
+                                                                    </form>
+                                                                </div>
+                                                               
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    
+                                                                                </aside>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+<script>
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+   
+</script>
+{% include 'footer.html' %}

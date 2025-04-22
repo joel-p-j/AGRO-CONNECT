@@ -1,0 +1,156 @@
+{% include 'landowner_header.html' %}
+
+<div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="breadcumb-title">WELCOME</h1>
+                <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+                    <p>
+                        Land is the foundation of agriculture; <br>
+                        it nurtures our future and sustains our communities.
+                    </p>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Page Title -->
+
+<div class="validtheme-shop-single-area default-padding">
+    <div class="container">
+        <div class="product-details"> 
+            <div class="row" style="width:700px;">
+                <!-- Flash Messages -->
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li class="flash-message">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No messages</p>
+                {% endif %}
+                {% endwith %}
+                
+                <!-- Complaint Form -->
+                <div class="form2">
+                    <form action="/submit_complaint_alternative" method="post">
+                        <h2>Complaint Form</h2>
+                        <label class="label1">Type:</label>
+                        <select class="select1" id="toSelect" name="toSelect" onchange="updateAgainstOptions()">
+                            <option value="">--Select--</option>
+                            <option value="Farmer">Farmer</option>
+                            
+                        </select>
+                        <br>
+                        <label class="label2">To:</label>
+                        <select class="select2" id="againstSelect" name="againstSelect">
+                            <option value="">--Select--</option>
+                        </select>
+                        <br>
+                        <label class="label3">Matter:</label>
+                        <textarea name="matter"></textarea>
+                        <br>
+                        <button class="btn1">
+                            <input type="submit" value="SEND">
+                        </button>
+                    </form>
+                    </div>
+          
+                <!-- Sidebar Notifications -->
+                <!-- <div class="feature-style-two info text-light bg-dark" style="background-image: url(static/assets/images/19-1.png); width: 350px; height: 400px; position: relative; left: 855px;top:-615px">
+                    <div class="info" style="position: relative; left: 10px;">
+                        <ul class="list-simple text-light">
+                            <li>
+                                <h4 class="vt-f-title">
+                                    <a title="Land Notifications" href="#">Land Notifications</a>
+                                </h4>
+                            </li>
+                            <li>
+                                <h4 class="vt-f-title">
+                                    <a title="Product Notifications" href="#">Product Notifications</a>
+                                </h4>
+                            </li>
+                            <li>
+                                <h4 class="vt-f-title">
+                                    <a title="Updates" href="#">Updates</a>
+                                </h4>
+                            </li>
+                            <li>
+                                <h4 class="vt-f-title">
+                                    <a title="Lease Details" href="#">Lease Details</a>
+                                </h4>
+                            </li> 
+                        </ul>
+                    </div>
+                </div> -->
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    function updateAgainstOptions() {
+        const toValue = document.getElementById("toSelect").value;
+        const againstSelect = document.getElementById("againstSelect");
+
+        // Clear existing options
+        againstSelect.innerHTML = '<option value="">--Select--</option>';
+
+        if (toValue) {
+            fetch(`/get_against_options_alternative?to=${toValue}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        data.forEach(option => {
+                            const opt = document.createElement("option");
+                            opt.value = option.id;
+                            opt.textContent = option.name;
+                            againstSelect.appendChild(opt);
+                        });
+                    } else {
+                        console.error("Error in data format:", data.error || "Unknown error");
+                    }
+                })
+                .catch(error => console.error("Error in fetch:", error));
+        }
+    }
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 5000);
+}
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const flashMessages = document.querySelectorAll('.flash-message');
+    flashMessages.forEach(message => {
+        showCustomAlert(message.textContent.trim()); // Trim leading/trailing whitespace
+    });
+});
+   
+</script>
+
+{% include 'footer.html' %}

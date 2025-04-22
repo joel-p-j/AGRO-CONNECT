@@ -1,0 +1,311 @@
+{% include 'customer_header.html' %}
+
+<style>
+    .flash-message {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        border: 1px solid #f5c6cb;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
+
+    /* Flexbox container for the two tables */
+    .flex-container {
+        display: flex;
+        justify-content: space-between; /* Align tables side by side */
+        gap: 50px; /* Space between tables */
+    }
+
+    /* Make sure each table takes a reasonable amount of space */
+    .table-container {
+        flex: 1; /* Allows tables to take equal width */
+        max-width: 80%; /* Limit the maximum width */
+        overflow-x: auto; /* In case of long tables, allow horizontal scrolling */
+    }
+    
+    /* Optional: Add some styling to tables for better look */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+       
+    }
+    .thead-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+    .table td, .table th {
+        padding: 8px;
+        text-align: center;
+    }
+
+    .table-container2 {
+        flex: 1; /* Allows tables to take equal width */
+        max-width: 25%; /* Limit the maximum width */
+        overflow-x: auto; /* In case of long tables, allow horizontal scrolling */
+    }
+    
+</style>
+                                 
+<div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="breadcumb-title">Bill Details</h1>
+                <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+                    <a href="{{ url_for('customer_home') }}">Home</a>
+                    &nbsp;&#47;&nbsp;Customer
+                </nav>
+            </div>
+        </div>
+    </div>
+</div><!-- End of Page title -->
+
+
+<section class="default-padding">
+    
+    <div class="container">
+
+        <h1>My Bills</h1>
+        <div class="row">
+            {% if bill_details %}
+            <div class="col-lg-12">
+
+                <!-- Flex container for the two tables -->
+                <div class="flex-container">
+                
+                    <div class="table-container">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr class="table-active table-success">
+                                        <th scope="col">Bill#</th>
+                                        <th scope="col">Bill Amount</th>
+                                        <th scope="col">Payment Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for bill in bill_details %}
+                                    <tr>
+                                        <td><a href="#">{{ bill.bill_no }}</a></td>
+                                        <td><span class="unit-amount">{{ bill.bill_amount }}</span></td>
+                                        <td>{{ bill.payment_status }}</td>
+                                      
+                                        <td>
+                                            {% if bill.payment_status == "Generated" %}
+                                                <button class="btn btn-success make-payment-btn" data-bill-id="{{ bill.bill_id }}">Make Payment</button>
+                                            {% else %}
+                                                <button class="btn btn-secondary" disabled>Payment Made</button>
+                                            {% endif %}
+
+                                            <button><a href="/customer_delete_bill/{{ bill.bill_id }}">Delete</a></button></td>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container2">
+                    
+                        <img src="static/uploads/16.png" alt="Product" height="550px" width="300px">
+                           
+                    </div>
+
+                </div> <!-- End of flex-container -->
+                
+            </div>
+            {% else %}
+                <p>No Bills.</p>
+            {% endif %}
+        </div>
+
+<!-- Modal for Bill Details -->
+<div class="modal fade" id="billModal" tabindex="-1" aria-labelledby="billModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="billModalLabel">Bill Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Bill Details will be loaded here -->
+                <div id="billDetailsContainer">
+                    <!-- Bill details will be dynamically injected here -->
+                </div>
+
+                <!-- Payment Option Selection -->
+                <div id="paymentOptionsContainer" style="display:none;">
+                    <h5>Select Payment Method</h5>
+                    <form id="paymentForm">
+                        <div class="form-group">
+                            <label for="paymentMethod">Payment Method</label>
+                            <select id="paymentMethod" class="form-control">
+                                <option value="upi">UPI</option>
+                                <option value="card">Credit/Debit Card</option>
+                            </select>
+                        </div>
+
+                        <div id="upiDetails" class="form-group" style="display:none;">
+                            <label for="upiId">Enter UPI ID</label>
+                            <input type="text" id="upiId" class="form-control" placeholder="Enter UPI ID">
+                        </div>
+
+                        <div id="cardDetails" class="form-group" style="display:none;">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" class="form-control" placeholder="Enter Card Number">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" id="expiryDate" class="form-control" placeholder="MM/YY">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" class="form-control" placeholder="Enter CVV">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit Payment</button>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="paymentButton">Make Payment</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+</section>
+
+
+<!-- Bootstrap JS and Popper.js (before closing </body>) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<script>
+    // Open the modal when "Make Payment" button is clicked and load bill details via AJAX
+    document.querySelectorAll('.make-payment-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            const billId = this.dataset.billId;
+
+            // Trigger modal opening
+            const modal = new bootstrap.Modal(document.getElementById('billModal'));
+            modal.show();
+
+            // Use AJAX to get the bill details and populate the modal
+            fetch(`/customer_viewbill/${billId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const billDetailsContainer = document.getElementById('billDetailsContainer');
+                    billDetailsContainer.innerHTML = `
+                        <table class="table">
+                            <thead class="table-active table-success">
+                                <tr>
+                                    <th>Product Code</th>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Rate</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${data.items.map(item => `
+                                    <tr>
+                                        <td>${item.product_code}</td>
+                                        <td>${item.product_name}</td>
+                                        <td>${item.quantity}</td>
+                                        <td>${item.rate}</td>
+                                        <td>${item.quantity * item.rate}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                        <div class="text-end">
+                            <strong>Total Amount: ${data.totalAmount}</strong>
+                        </div>
+                    `;
+
+                    // Update the payment button with the total amount
+                    const paymentButton = document.getElementById('paymentButton');
+                    paymentButton.dataset.billAmount = data.totalAmount;
+                    paymentButton.dataset.billId = billId;
+                })
+                .catch(err => console.error('Error fetching bill details:', err));
+        });
+    });
+
+    // Handle the payment button click
+    document.getElementById('paymentButton')?.addEventListener('click', function() {
+        // Show the payment options form
+        document.getElementById('paymentOptionsContainer').style.display = 'block';
+        document.getElementById('paymentButton').style.display = 'none'; // Hide "Make Payment" button
+    });
+
+    // Handle payment method selection (show/hide UPI or card details)
+    document.getElementById('paymentMethod')?.addEventListener('change', function() {
+        const paymentMethod = this.value;
+        if (paymentMethod === 'upi') {
+            document.getElementById('upiDetails').style.display = 'block';
+            document.getElementById('cardDetails').style.display = 'none';
+        } else if (paymentMethod === 'card') {
+            document.getElementById('cardDetails').style.display = 'block';
+            document.getElementById('upiDetails').style.display = 'none';
+        }
+    });
+
+    // Handle form submission (dummy payment submission for now)
+    document.getElementById('paymentForm')?.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        const paymentMethod = document.getElementById('paymentMethod').value;
+        const billId = document.getElementById('paymentButton').dataset.billId;
+        const billAmount = document.getElementById('paymentButton').dataset.billAmount;
+
+        // Dummy payment data (you should replace this with real payment gateway integration)
+        let paymentData = {
+            bill_id: billId,
+            bill_amount: billAmount,
+            payment_method: paymentMethod,
+        };
+
+        // Add payment-specific details based on method
+        if (paymentMethod === 'upi') {
+            paymentData.upi_id = document.getElementById('upiId').value;
+        } else if (paymentMethod === 'card') {
+            paymentData.card_number = document.getElementById('cardNumber').value;
+            paymentData.expiry_date = document.getElementById('expiryDate').value;
+            paymentData.cvv = document.getElementById('cvv').value;
+        }
+
+        // Send payment details to the server via AJAX
+        fetch('/customer_bill_payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams(paymentData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Handle success - reload the page or close the modal
+                alert('Payment successful!');
+                window.location.reload();  // Reload the page to reflect changes
+            } else {
+                // Handle failure
+                alert('Payment failed, please try again.');
+            }
+        })
+        .catch(err => {
+            console.error('Error making payment:', err);
+            alert('Payment failed. Please try again later.');
+        });
+    });
+</script>
+
+
+
+
+
+{% include 'footer.html' %}

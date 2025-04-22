@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<!-- Link Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+.container{
+    border: 1px solid #008000;
+    border-radius: 8px;
+    width:80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 30px;
+}
+    h2 {
+        text-align: center;
+    }
+
+    .bill_details {
+        display: flex;
+    }
+
+    .b_details_disp {
+        margin-left: 15px;
+    }
+
+    .atag {
+        font-style: italic;
+        color: aliceblue;
+    }
+
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+    }
+
+    .table-container {
+        flex: 1;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .thead-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .table td,
+    .table th {
+        padding: 8px;
+        text-align: center;
+    }
+    /* .modal-content_custome {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        pointer-events: auto;
+        background-color: #fff;
+        background-clip: padding-box;
+        border-radius: .3rem;
+        outline: 0;
+        margin-left: 20%;
+        margin-top: 20px;
+    } */
+
+    /* .modal-header_custome {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1rem;
+        border-bottom: 1px solid #dee2e6;
+        border-top-left-radius: calc(.3rem - 1px);
+        border-top-right-radius: calc(.3rem - 1px);
+    } */
+
+    .modal-body_custome {
+        position: relative;
+        flex: 1 1 auto;
+        padding: 1rem;
+    }
+
+    #paymentOptionsContainer {
+        margin-top: 20px;
+        display: none;
+    }
+
+    /* Add some space between form fields and make them aligned */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .form-control-new1{
+        width: 80PX;
+    }
+
+    .payment-method-select {
+        width: 100%;
+    }
+
+    /* Fix button layout */
+    #paymentForm button {
+        width: 100%;
+    }
+    #paymentOptionsContainer {
+    margin-top: 20px;
+    text-align: center;
+    display: none; /* Initially hide the payment options */
+    }
+
+ /* .form-control-new {
+  width: 20%;
+  padding: 10px;
+  font-size: 16px;
+} */
+.payment-method-select1 {
+  width: 186px;
+}
+
+#paymentForm button {
+  width: 14%;
+  margin-bottom: 10px;
+}
+</style>
+<div class="container">
+
+<div class="modal-content_custome">
+    {% if bill_items %}
+    <h2>Bill Details</h2>
+    <div class="bill_details">
+        <div>Bill#</div>
+        <div class="b_details_disp">{{ bill_items[0].bill_no }}</div>
+    </div>
+    <div class="bill_details">
+        <div>Order#</div>
+        <div class="b_details_disp">{{ bill_items[0].order_no }}</div>
+    </div>
+    <div class="bill_details">
+        <div>Payment Status</div>
+        <div class="b_details_disp">{{ bill_items[0].payment_status }}</div>
+    </div>
+    <div><br></div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="flex-container">
+                <div class="table-container">
+                    <form action="{{ url_for('customer_bill_payment') }}" method="POST">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr class="table-active table-success">
+                                        <th>Product Code</th>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Rate</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in bill_items %}
+                                    <tr>
+                                        <td>{{ item.product_code }}</td>
+                                        <td>{{ item.product_name }}</td>
+                                        <td>{{ item.quantity }}</td>
+                                        <td>{{ item.rate }}</td>
+                                        <td>{{ item.quantity * item.rate }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td align="right">Grand Total :</td>
+                                        <td>{{ bill_items[0].bill_amount }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                            <button class="btn btn-success">
+                                <a href="{{ url_for('customer_home') }}" class="atag">Back to home</a>
+                            </button>
+
+                            <!-- "Make Payment" button -->
+                            <button id="paymentButton" class="btn btn-primary" data-bill-id="{{ bill_items[0].bill_id }}" data-bill-amount="{{ bill_items[0].bill_amount }}">
+                                Make Payment
+                            </button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Hidden payment options section -->
+            <div id="paymentOptionsContainer">
+                <h3>Choose Payment Method</h3>
+                <form id="paymentForm" action="{{ url_for('customer_singleBill_payment') }}" method="POST">
+                    <div class="form-group">
+                        <label for="paymentMethod" class="form-label">Payment Method</label>
+                        <select id="paymentMethod" name="payment_method" class="payment-method-select1">
+                            <option value="upi">UPI</option>
+                            <option value="card">Card</option>
+                        </select>
+                    </div>
+
+                    <!-- UPI details -->
+                    <div id="upiDetails" class="form-group" style="display:none;">
+                        <label for="upiId" class="form-label">UPI ID</label>
+                        <input type="text" id="upiId" name="upi_id" class="form-control-new" required>
+                    </div>
+
+                    <!-- Card details -->
+                    <div id="cardDetails" class="form-group" style="display:none;">
+                        <label for="cardNumber" class="form-label">Card Number</label>
+                        <input type="text" id="cardNumber" name="card_number" class="form-control-new" required>
+                        <label for="expiryDate" class="form-label-new">Expiry Date</label>
+                        <input type="text" id="expiryDate" name="expiry_date" class="form-control-new1" placeholder="MM/YY" required>
+                        <label for="cvv" class="form-label-new">CVV</label>
+                        <input type="text" id="cvv" name="cvv" class="form-control-new1" required>
+                    </div>
+
+                    <input type="hidden" id="billId" name="bill_id" value="{{ bill_items[0].bill_id }}">
+                    <input type="hidden" id="billAmount" name="bill_amount" value="{{ bill_items[0].bill_amount }}">
+
+                    <button type="submit" class="btn btn-success">Submit Payment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>No items found for this bill.</p>
+    {% endif %}
+</div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+
+
+
+
+<script>
+
+document.getElementById('paymentButton')?.addEventListener('click', function(e) {
+    e.preventDefault(); // Prevent the default form submission
+    
+    // Show the payment options form
+    document.getElementById('paymentOptionsContainer').style.display = 'block';
+
+    // Show the respective payment details section based on the selected payment method
+    const paymentMethodSelect = document.getElementById('paymentMethod');
+    const upiDetails = document.getElementById('upiDetails');
+    const cardDetails = document.getElementById('cardDetails');
+    
+    paymentMethodSelect.addEventListener('change', function() {
+        if (paymentMethodSelect.value === 'upi') {
+            upiDetails.style.display = 'block';
+            cardDetails.style.display = 'none';
+        } else if (paymentMethodSelect.value === 'card') {
+            upiDetails.style.display = 'none';
+            cardDetails.style.display = 'block';
+        }
+    });
+
+    // Trigger the payment method change event to show the default fields when the modal opens
+    paymentMethodSelect.dispatchEvent(new Event('change'));
+});
+
+// Handle form submission
+document.getElementById('paymentForm')?.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    const billId = document.getElementById('paymentButton').dataset.billId;
+    const billAmount = document.getElementById('paymentButton').dataset.billAmount;
+
+    // Collect payment data
+    let paymentData = {
+        bill_id: billId,
+        bill_amount: billAmount,
+        payment_method: paymentMethod,
+    };
+
+    // Add payment-specific details based on method
+    if (paymentMethod === 'upi') {
+        paymentData.upi_id = document.getElementById('upiId').value;
+    } else if (paymentMethod === 'card') {
+        paymentData.card_number = document.getElementById('cardNumber').value;
+        paymentData.expiry_date = document.getElementById('expiryDate').value;
+        paymentData.cvv = document.getElementById('cvv').value;
+    }
+
+    // Send payment details to the server via AJAX
+    fetch('/customer_singleBill_payment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(paymentData),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Handle success - show a success message and update the bill
+            alert('Payment successful!');
+            
+            // Update the UI to show the new payment status (optional)
+            document.querySelector('.b_details_disp').innerText = 'Paid'; // Update payment status
+            
+            // Optionally, update the bill amount if it needs to be reflected after payment
+            document.querySelector('.table td:last-child').innerText = '0'; // Update grand total
+
+            // Optionally, disable further payment attempts
+            document.getElementById('paymentButton').style.display = 'none';
+
+
+            window.location.href = '/customer_view_billDetails'; // Change to your actual route URL
+        } else {
+            // Handle failure and show detailed error
+            alert(`Payment failed: ${data.error}`);
+            console.log(data.error); // Log the error response for debugging
+        }
+    })
+    .catch(err => {
+        console.error('Error making payment:', err);
+        alert('Payment failed. Please try again later.');
+    });
+});
+
+</script>
+
+
+
+
+# @app.route("/customer_bill_payment", methods=["GET", "POST"])
+# def customer_bill_payment():
+
+#     connection = get_db_connection()
+#     cursor = connection.cursor()
+    
+#     # customer_id = session.get("userid")
+
+#     if request.method == "POST":
+#         bill_amount = request.form.get('bill_amount')
+#         bill_id = request.form.get('bill_id')
+#         date = datetime.now()
+
+#         status = "Paid"
+     
+#         cursor.execute(
+#             "INSERT INTO bill_payment(bill_id,amount, payment_date) VALUES(%s, %s, %s)",
+#             (bill_id,bill_amount,date)
+#         )
+
+#         connection.commit()
+#         cursor.close()
+#         mycursor = connection.cursor()
+#         query =  "Update customer_bill set payment_status=%s WHERE bill_id = %s"
+#         mycursor.execute(query, (status,bill_id))
+#         connection.commit()
+       
+#         connection.close()
+
+#         flash("Payment made successfully")
+#         print("Record inserted successfully into payments")
+#     else:
+#         flash("Payment failed. Please try again.")
+#         print("Failed to insert into payments. Please try again.") 
+
+#     return redirect(url_for('customer_view_billDetails' )) 
+
+
+
+# @app.route("/customer_bill_payment", methods=["POST"])
+# def customer_bill_payment():
+#     connection = get_db_connection()
+#     cursor = connection.cursor()
+    
+#     if request.method == "POST":
+#         bill_amount = request.form.get('bill_amount')
+#         bill_id = request.form.get('bill_id')
+#         date = datetime.now()
+#         status = "Paid"
+        
+#         try:
+#             # Insert payment details
+#             cursor.execute(
+#                 "INSERT INTO bill_payment (bill_id, amount, payment_date) VALUES (%s, %s, %s)",
+#                 (bill_id, bill_amount, date)
+#             )
+#             connection.commit()
+
+#             # Update the bill status to "Paid"
+#             cursor.execute(
+#                 "UPDATE customer_bill SET payment_status = %s WHERE bill_id = %s",
+#                 (status, bill_id)
+#             )
+#             connection.commit()
+            
+#             # Return success response
+#             return jsonify({'success': True})
+
+#         except Exception as e:
+#             # Handle errors and rollback the transaction
+#             connection.rollback()
+#             print(f"Error occurred: {e}")
+#             return jsonify({'success': False})
+
+#         finally:
+#             cursor.close()
+#             connection.close()
+
+#     # If it's a GET request or something goes wrong, return failure
+#     return jsonify({'success': False})
+
+
+
+
+
+<!-- farmer view order details -->
+
+
+
+{% include 'farmer_header.html' %}
+
+<style>
+    .flash-message {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        border: 1px solid #f5c6cb;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
+
+    /* Flexbox container for the two tables */
+    .flex-container {
+        display: flex;
+        justify-content: space-between; /* Align tables side by side */
+        gap: 50px; /* Space between tables */
+    }
+
+    /* Make sure each table takes a reasonable amount of space */
+    .table-container {
+        flex: 1; /* Allows tables to take equal width */
+        max-width: 80%; /* Limit the maximum width */
+        overflow-x: auto; /* In case of long tables, allow horizontal scrolling */
+    }
+    
+    /* Optional: Add some styling to tables for better look */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+       
+    }
+    .thead-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+    .table td, .table th {
+        padding: 8px;
+        text-align: center;
+    }
+
+    .table-container2 {
+        flex: 1; /* Allows tables to take equal width */
+        max-width: 25%; /* Limit the maximum width */
+        overflow-x: auto; /* In case of long tables, allow horizontal scrolling */
+    }
+
+    .modal-content_custome {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 160%;
+        pointer-events: auto;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: .3rem;
+        outline: 0;
+    }
+     .button-style {
+        color: rgb(224, 9, 9); /* Sets the icon color to yellow */
+    }
+    
+</style>
+                                 
+<section class="default-padding">
+    
+    <div class="container">
+
+        <h1>View Orders</h1>
+        <div class="row">
+            {% if order_details %}
+            <div class="col-lg-12">
+
+                <!-- Flex container for the two tables -->
+                <div class="flex-container">
+                
+                    <div class="table-container">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr class="table-active table-success">
+                                        <th scope="col">Customer</th>
+                                        <th scope="col">Order#</th>
+                                        <th scope="col">No.of.item</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in order_details %}
+                                    <tr>
+                                        <td><a href="#">{{ order.customer_name }}</a></td>
+                                        <td><a href="#">{{ order.order_no }}</a></td>
+                                        <td><span class="unit-amount">{{ order.item_count }}</span></td>
+                                        <td>{{ order.total_amount }}</td>
+                                        <td>{{ order.date }}</td>
+                                        <td>
+                                            <!-- <a href="{{ url_for('admin_view_orderDetails',order_id = order.order_id ) }}">View Details</a> -->
+                                          
+                                           <button type="button" class="btn btn-link" onclick="showOrderDetails('{{ order.order_id }}')">View Details</button>
+                                          
+                                                                               
+                                            <!-- View Bills Button -->
+                                            <!-- <button type="button" class="button-style" data-order-id="{{ order.order_id }}">View Bills</button> -->
+                                            <button type="button" class="btn btn-link view-bill-btn" data-order-id="{{ order.order_id }}">View Bills</button>
+                                        </td>
+                                        
+                                            
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <!-- Modal -->
+                    <div class="modal" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content_custome">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="orderDetailsModalLabel">Order Details</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <!-- <button type="button" class="btn btn-primary" id="generateBillBtn">Generate Bill</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+  
+                    
+                </div> <!-- End of flex-container -->
+                
+
+                <!-- Modal for displaying Bill details -->
+<div class="modal" id="billDetailsModal" tabindex="-1" aria-labelledby="billDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content_custome">
+            <div class="modal-header">
+                <h5 class="modal-title" id="billDetailsModalLabel">Farmerwise Bill Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Bill details will be dynamically inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+            {% else %}
+                <p>No Orders.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+
+
+<script>
+    function showOrderDetails(orderId) {
+    window.orderId = orderId;
+
+    fetch(`/farmer_view_orderDetails/${orderId}`)
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.modal-body').innerHTML = html;
+
+            const modal = new bootstrap.Modal(document.getElementById('orderDetailsModal'));
+            modal.show();
+
+            document.getElementById("generateBillBtn").addEventListener("click", function() {
+                if (window.orderId) {
+                    const totalInput = document.querySelector("input[name='total']");
+                    console.log("Total Input:", totalInput); // Debugging
+
+                    if (totalInput) {
+                        const totalAmount = totalInput.value;
+                        console.log("Total Amount:", totalAmount); // Debugging
+
+                        // ... rest of your form submission code ...
+                    } else {
+                        console.error("Total input not found!");
+                    }
+                } else {
+                    console.error("No order ID found!");
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching order details:', error));
+}
+
+</script>
+
+
+
+<script>
+    function showOrderDetails(orderId) {
+        window.orderId = orderId;
+
+        fetch(`/farmer_view_orderDetails/${orderId}`)
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector('.modal-body').innerHTML = html;
+
+                const modal = new bootstrap.Modal(document.getElementById('orderDetailsModal'));
+                modal.show();
+            })
+            .catch(error => console.error('Error fetching order details:', error));
+    }
+
+    function showBillDetails(orderId) {
+        // Fetch the farmerwise bill details using AJAX
+        fetch(`/farmer_view_billDetails/${orderId}`)
+            .then(response => response.json())  // Expecting JSON response with bill details
+            .then(data => {
+                if (data && data.billDetails) {
+                    const billDetails = data.billDetails;
+
+                    // Update the modal content with the fetched bill details
+                    let modalBody = `
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Bill No</th>
+                                    <th scope="col">Order No</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Total Amount</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+
+                    billDetails.forEach(bill => {
+                        modalBody += `
+                            <tr>
+                                <td>${bill.bill_no}</td>
+                                <td>${bill.order_no}</td>
+                                <td>${bill.amount}</td>
+                                <td>${bill.bill_amount}</td>
+                                <td>${bill.status}</td>
+                            </tr>
+                        `;
+                    });
+
+                    modalBody += `
+                            </tbody>
+                        </table>
+                    `;
+
+                    // Insert the bill details into the modal body
+                    document.querySelector('.modal-body').innerHTML = modalBody;
+
+                    const modal = new bootstrap.Modal(document.getElementById('billDetailsModal'));
+                    modal.show();
+                } else {
+                    console.error("No bill details found!");
+                }
+            })
+            .catch(error => console.error('Error fetching bill details:', error));
+    }
+
+    // Modify the button click to show the bill details modal
+    document.querySelectorAll('.view-bill-btn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            const orderId = event.target.getAttribute('data-order-id');
+            showBillDetails(orderId);
+        });
+    });
+</script>
+{% include 'footer.html' %}

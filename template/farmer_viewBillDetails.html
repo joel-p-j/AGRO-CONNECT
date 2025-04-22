@@ -1,0 +1,116 @@
+{% include 'farmer_header.html' %}
+
+<style>
+    .flash-message {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        border: 1px solid #f5c6cb;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
+
+    /* Flexbox container for the two tables */
+    .flex-container {
+        display: flex;
+        justify-content: space-between; /* Align tables side by side */
+        gap: 50px; /* Space between tables */
+    }
+
+    /* Make sure each table takes a reasonable amount of space */
+    .table-container {
+        flex: 1; /* Allows tables to take equal width */
+        max-width: 80%; /* Limit the maximum width */
+        overflow-x: auto; /* In case of long tables, allow horizontal scrolling */
+    }
+    
+    /* Optional: Add some styling to tables for better look */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+       
+    }
+    .thead-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+    .table td, .table th {
+        padding: 8px;
+        text-align: center;
+    }
+
+    .table-container2 {
+        flex: 1; /* Allows tables to take equal width */
+        max-width: 25%; /* Limit the maximum width */
+        overflow-x: auto; /* In case of long tables, allow horizontal scrolling */
+    }
+
+    .modal-content_custome {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 160%;
+        pointer-events: auto;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: .3rem;
+        outline: 0;
+    }
+     .button-style {
+        color: rgb(224, 9, 9); /* Sets the icon color to yellow */
+    }
+    
+</style>
+                                 
+<section class="default-padding">
+    
+    <div class="container">
+
+        <h1>View Bill Details</h1>
+        <div class="row">
+            {% if bill_details %}
+            <div class="col-lg-12">
+                <!-- Flex container for the two tables -->
+                <div class="flex-container">
+                    <div class="table-container">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr class="table-active table-success">
+                                        <th scope="col">Bill#</th>
+                                        <th scope="col">Order#</th>
+                                        <th scope="col">Total Bill Amount</th>
+                                        <th scope="col">Share Amount</th>
+                                        <th scope="col">Status</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for bill in bill_details %}
+                                    <tr>
+                                        <td>{{ bill.bill_no }}</td>
+                                        <td>{{ bill.order_no }}</td>
+                                        <td>{{ bill.bill_amount }}</td>
+                                        <td>{{ bill.amount }}</td>
+                                        <td>{{ bill.status }}</td>
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- End of flex-container -->
+            </div>
+            {% else %}
+                <p>No Bills.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Bootstrap JS and Popper.js -->
+
+
+{% include 'footer.html' %}

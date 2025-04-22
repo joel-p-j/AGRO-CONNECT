@@ -1,0 +1,37 @@
+<div class="container">
+
+    <div class="col-lg-12">
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr class="table-active table-success">
+            <th scope="col">Farmer</th>
+            <th scope="col">Image</th>
+            <th scope="col">Product Code</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in order_details %}
+        <tr>
+            <td>{{ order.farmer_name }}</td>
+            <td><img src="{{ url_for('static', filename='uploads/' + order.image) }}" alt="Product" height="30px" width="30px"></td>
+            <td>{{ order.product_code }}</td>
+            <td>{{ order.product_name }}</td>
+            <td>{{ order.rate }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ (order.quantity * order.rate) | round(2) }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="5"></td>
+            <td colspan="2"   align="left">Grand Total : {{ order_details[0].total_amount }}</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+</div>

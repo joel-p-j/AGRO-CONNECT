@@ -1,0 +1,152 @@
+{% include 'landowner_header.html' %}
+
+<div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="breadcumb-title">WELCOME</h1>
+                <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+                    <p>
+                        Land is the foundation of agriculture; <br>
+                        it nurtures our future and sustains our communities.
+                    </p>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Page Title -->
+
+<div class="validtheme-shop-single-area default-padding">
+    <div class="container">
+        <div class="product-details"> 
+            <div class="row" style="width:700px;">
+                <!-- Flash Messages -->
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li class="flash-message">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+               
+                {% endif %}
+                {% endwith %}
+                
+                
+                <!-- Complaint Form -->
+                 <div class="bg-img">
+                    <form class="form11" action="/land_registration" method="post"  enctype="multipart/form-data">
+                        <h3>Land Details Form</h3>
+                        <label class="label11">Area:</label>
+                            <select class="select11" name="area">
+                                <option>Select area</option>
+                                {% 
+                                    for item in area_obj: %}
+                                        <option value="{{ item[0] }}"> {{ item[1] }} </option>
+                                   {% endfor %}
+                            </select>
+                        <br>
+                        <label class="label21">Village:</label>
+                        <input class="input11" type="text" name="village" id="village">
+                        <br>
+                        <label class="label31">Total Area:</label>
+                        <div class="input-wrapper">
+                            <input class="input12" type="text" name="total_area" id="total_area" placeholder="Enter total area">
+                        </div>
+                        <label class="label41">Survey No:</label>
+                        <input class="input13" type="text" name="survey_no" id="survey_no">
+                        <br>
+                        <label class="label51">Land Type:</label>
+                        <select class="select12" name="land_type">
+                                <option value="Residential Land">Residential Land</option>
+                                <option value="Agricultural Land">Agricultural Land</option>
+                                <option value="Commercial Land">Commercial Land</option>
+                                <option value="Industrial Land">Industrial Land</option>
+                                <option value="Recreational & Public Land">Recreational & Public Land</option>
+                                <option value="Wetlands">Wetlands</option>
+                                <option value="Mountainous Land">Mountainous Land</option>
+                                <option value="Forest Land">Forest Land</option>
+                            </select>
+                        <br>
+                        <label class="label61">Upload:</label>
+                        <input class="input14" type="file" name="file" accept=".jpg, .jpeg, .png" required>
+                        <br>
+                        <label class="label71">Remarks:</label>
+                        <textarea class="text1" name="remark"></textarea>
+
+                        <button class="btn11">
+                            <input type="submit" value="SEND">
+                        </button>
+                    </form> 
+                    </div>
+          
+              
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    function updateAgainstOptions() {
+        const toValue = document.getElementById("toSelect").value;
+        const againstSelect = document.getElementById("againstSelect");
+
+        // Clear existing options
+        againstSelect.innerHTML = '<option value="">--Select--</option>';
+
+        if (toValue) {
+            fetch(`/get_against_options_alternative?to=${toValue}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        data.forEach(option => {
+                            const opt = document.createElement("option");
+                            opt.value = option.id;
+                            opt.textContent = option.name;
+                            againstSelect.appendChild(opt);
+                        });
+                    } else {
+                        console.error("Error in data format:", data.error || "Unknown error");
+                    }
+                })
+                .catch(error => console.error("Error in fetch:", error));
+        }
+    }
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 5000);
+}
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const flashMessages = document.querySelectorAll('.flash-message');
+    flashMessages.forEach(message => {
+        showCustomAlert(message.textContent.trim()); // Trim leading/trailing whitespace
+    });
+});
+   
+</script>
+
+{% include 'footer.html' %}

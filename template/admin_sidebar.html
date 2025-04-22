@@ -1,0 +1,197 @@
+<div class="sidebar col-xl-4 col-lg-5 col-md-12 mt-md-50 mt-xs-50">
+    <aside>
+        <div id="block-2" class="sidebar-item widget_block widget_search">
+            <form role="search" method="get" action="https://wordpress.validthemes.net/agrica/" class="wp-block-search__button-outside wp-block-search__text-button wp-block-search"    >
+                <!-- <label class="wp-block-search__label" for="wp-block-search__input-1" ></label> -->
+                <div class="wp-block-search__inside-wrapper "><strong>Option Bar</strong>
+                    <!-- <input class="wp-block-search__input" id="wp-block-search__input-1" placeholder="" value="" type="search" name="s" required /> -->
+                    <!-- <button aria-label="Search" class="wp-block-search__button wp-element-button" type="submit" >Option Bar</button> -->
+                </div>
+            </form>
+        </div>
+        {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                   
+                                                        {% endif %}
+                                                        {% endwith %}
+        <div id="agrica_recent_posts_widget-2" class="sidebar-item recent-post">
+            <!-- <h4 class="title">Recent Post</h4> -->
+            <ul>
+                <li>
+                    <!-- <div class="thumb">
+                        th: 80px) 100vw, 80px" />
+                    </div> -->
+                    <div class="info"><span class="post-date"></span>
+                        <a href="{{url_for('admin_land_details')}}">Approval of land</a>
+                    </div>
+                </li>
+                <li>
+                    
+                        <div class="info">
+                            <span class="post-date"></span>
+                            <a href="{{url_for('pdtcategory')}}">Product Category</a>
+                    </div>
+                    </li>
+                        <li>
+                            
+                        <div class="info">
+                            <span class="post-date"></span>
+                            <a href="{{ url_for('admin_insurance_management')}}">Insurance Management</a>
+                        </div></li>
+                        <li>
+                            <div class="info">
+                            <span class="post-date"></span>
+                            <a href="{{ url_for('admin_loan_management') }}">Loan Management</a>
+                        </div>
+                        </li>
+                        <li>
+                        <div class="info">
+                            <span class="post-date"></span>
+                            <a href="{{url_for('complaint_management')}}">Complaint Management</a>
+                        </div>
+                        </li>
+                        <li>
+                            <div class="info">
+                                <span class="post-date"></span>
+                                <a href="{{url_for('admin_view_reply')}}">Enquiry Reply Management</a>
+                            </div>
+                            </li>
+                        <li>
+                        
+                        </li>
+                        <li>
+                        <div class="info">
+                            <span class="post-date"></span>
+                            <a href="{{url_for('notification_management')}}">Notification Management</a>
+                        </div>
+                    </li> 
+                    <li>
+                        <div class="info">
+                            <span class="post-date"></span>
+                            <a href="#" class="upload-link" onclick="openUploadPopup('mouPopup')">Upload MOU</a>
+                        </div>
+                        <div id="mouPopup" class="popup" style="width: 400px;height: 250px; display: none;">
+                            <div class="popup-content">
+                                <span class="close-btn" onclick="closeUploadPopup('mouPopup')" style="color: black;">&times;</span>
+                                <h3>Upload MOU</h3>
+                                <form id="uploadMOUForm" action="{{ url_for('admin_upload_mou') }}" method="POST" enctype="multipart/form-data">
+                                    <input type="file" name="mou_file" accept=".pdf,.doc,.docx" required>
+                                    <button type="submit" class="btn btn-success" style="position: relative;top: 25px;left: 100px;">Upload</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <div class="info">
+                            <span class="post-date"></span>
+                            <a href="#" class="upload-link" onclick="openUploadPopup('formPopup')">Upload Forms</a>
+                        </div>
+                        <div id="formPopup" class="popup" style="width: 400px;height: 450px; display: none;">
+                            <div class="popup-content">
+                                <span class="close-btn" onclick="closeUploadPopup('formPopup')" style="color: black;">&times;</span>
+                                <h3>Upload Forms</h3>
+                                <form id="uploadForm" action="{{ url_for('admin_upload_forms') }}" method="POST" enctype="multipart/form-data">
+                                    <label style="color: black;">Form Type:</label>
+                                    <select name="form_type" id="form_type">
+                                        <option value="insurance">Insurance</option>
+                                        <option value="loan">Loan</option>
+                                        <option value="certificate">Policy Certificate</option>
+                                    </select>
+                                    <label style="color: black;">Upload File:</label>
+                                    <input type="file" name="form_file" accept=".pdf,.doc,.docx" required>
+                                    <button type="submit" class="btn btn-success" style="position: relative;top: 25px;left: 100px;">Upload</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                            <li>
+                                <div class="info">
+                                    <span class="post-date"></span>
+                                    <a href="{{ url_for('admin_view_insurance_application')}}">Insurance Application</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info">
+                                    <span class="post-date"></span>
+                                    <a href="{{ url_for('admin_view_insurance_claim') }}">Insurance Claim</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info">
+                                    <span class="post-date"></span>
+                                    <a href="{{ url_for('admin_view_loan_application') }}">Loan Application</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info">
+                                    <span class="post-date"></span>
+                                    <a href="{{ url_for('admin_report') }}">Reports</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            
+
+
+<script>
+    function openUploadPopup(popupId) {
+        // Close all popups first
+        document.querySelectorAll(".popup").forEach(popup => {
+            popup.style.display = "none";
+        });
+    
+        // Open the specific popup
+        document.getElementById(popupId).style.display = "block";
+    }
+    
+    function closeUploadPopup(popupId) {
+        document.getElementById(popupId).style.display = "none";
+    }
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+   
+    </script>

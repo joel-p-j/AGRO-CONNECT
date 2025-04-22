@@ -1,0 +1,255 @@
+@media screen {
+    *,
+    *::before,
+    *::after {
+        padding: 0;
+        margin: 0;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+        box-sizing: border-box;
+    }
+
+    body {
+        background: url(../images/login2.jpg);
+        width: 100%;
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    
+    .background{
+        width: 430px;
+        height: 620px;
+        position: absolute;
+        /* transform: translate(-50%,-50%); */
+        left: 50%;
+        top: 50%;
+        filter: opacity(50%) ;
+    }
+
+    form{
+        border: 1px solid black;
+        height: 350px;
+        width:400px;
+        position: relative;
+        top:-135px;
+        left: 249px;
+        padding: 50px 35px;
+        background-color: #fff;
+        /* transform: skew(13deg,169deg); */
+    
+    }
+
+    form *{
+        font-family: 'Poppins',sans-serif;
+        color: #062601;
+        letter-spacing: 0.5px;
+        outline: none;
+        border: none;
+    }
+
+    form h3{
+        /* padding-top: 9px; */
+        padding-left:2px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 5px;
+        text-align: center;
+        position: relative;
+        top:-95px;
+        left:50px;
+        width:60px;
+        height:20px;
+        background-color: rgba(255,255,255,0.15);
+        backdrop-filter: blur(1px);
+        /* transform: rotate(359deg) skew(360deg,10deg); */
+        border-radius: 5px;
+        
+    }
+
+    .label1{
+        display: block;
+        margin-top: 5px;
+        padding-left: 7px;
+        padding-top: 2px;
+        font-size: 20px;
+        font-weight: 500;
+        position:relative;
+        top:-14px;
+        left:13px;
+        width:90px;
+        height:25px;
+        background-color: rgba(255,255,255,0.15);
+        backdrop-filter: blur(1px);
+        /* transform: rotate(354.5deg) skew(356deg,11deg); */
+        border-radius: 5px;
+    }
+
+    .input1{
+        display: block;
+        height: 30px;
+        width: 295px;
+        background-color: #fff;
+        border-radius: 3px;
+        padding: 0 10px;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 300;
+        color: #0e0440;
+        position: relative;
+        top:-9px;
+        left:20px;
+        border: 1px solid black;
+        /* transform: rotate(352deg) skew(353deg,13deg); */
+        border-radius: 5px;
+    }
+    .input1 hover{
+        background-color:rgb(168, 168, 202);
+    }
+
+    .label2{
+        display: block;
+        margin-top: 3px;
+        padding-left: 9px;
+        padding-top: 2px;
+        font-size: 20px;
+        font-weight: 500;
+        position:relative;
+        top:2px;
+        left:10px;
+        width:100px;
+        height:25px;
+        background-color: rgba(255,255,255,0.25);
+        /* backdrop-filter: blur(1px); */
+        /* transform: rotate(353.5deg) skew(353deg,10deg); */
+        border-radius: 5px;
+    }
+
+    .input2{
+        display: block;
+        height: 30px;
+        width: 297px;
+        background-color: #ffffff;
+        border-radius: 3px;
+        padding: 0 10px;
+        margin-top: 15px;
+        font-size: 14px;
+        font-weight: 00;
+        position: relative;
+        top:0px;
+        left:19px;
+        border: 1px solid black;
+        /* transform: rotate(353deg) skew(353deg,10deg); */
+        border-radius: 5px;
+    }
+    ::placeholder{
+        color: solid black;
+        font-weight: 800;
+    }
+
+
+    button{
+        margin-top: 105px;
+        margin-left: 101px;
+        width: 136px;
+        height: 42px;
+        background-color: #b5ee18;
+        color: #080710;
+        padding: 5 px 0;
+        font-size: 15px;
+        font-weight: 1000;
+        border-radius: 5px; 
+        cursor: pointer;
+        opacity: 100%;
+        position: relative;
+        top:-87px;
+        
+    } 
+    .bth{
+        color: #080808;
+        width: 148px;
+        height: 33px;
+        margin-left: 181px;
+        background-color: white;
+        margin-top: 41px;
+        border: 2px solid black;
+       
+    }
+    .click-here-button {
+        font-size: 27px;
+        padding: 37px 21px;
+        background-color: #baad3300;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        animation: pulse 1s infinite;
+        position: relative;
+        top: -205px;
+        left: 196px;
+    }
+    
+    /* .hand-symbol {
+        font-size: 30px;
+        margin-right: 5px;
+        margin-top: 30px;
+        margin-bottom: 25px;
+        margin-left: 5px;
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+     */
+
+    .social{
+        margin-top: 40px;
+        display: flex;
+      }
+      .social div{
+        background: red;
+        width: 83px;
+        border-radius: 3px;
+        padding: 5px 10px 10px 5px;
+        background-color: #B78C1C;
+        color: #eaf0fb;
+        text-align: center;
+        font-size: 14px;
+        position: relative;
+        left:-45px;
+        opacity: 95%;
+      }
+
+      .social div:hover{
+        background-color: rgba(255,255,255,0.47);
+      }
+      .social .provider{
+        margin-left: 20px;
+        padding-top:10px;
+      }
+      .social i{
+        margin-right: 4px;
+      }
+      
+      h4{
+          position:relative;
+          left:13px;
+          top:15px;
+          font-size: 15px;
+          color: #062601;
+          background-color:  rgba(255,255,255,0.30);
+          width:100px;
+          border-radius: 5px;
+          text-align: center;
+      }
+
+}

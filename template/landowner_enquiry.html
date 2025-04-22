@@ -1,0 +1,181 @@
+{% include 'landowner_header.html' %}
+
+<div class="breadcrumb-area text-center shadow custom-breadcrumb dark text-light ">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="breadcumb-title">WELCOME</h1>
+            <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">
+                <a href="https://wordpress.validthemes.net/agrica"></a>
+                <a href="../../product-category/organic/index.html"><i>Land is the foundation of agriculture;<br>it nurtures our future and sustains our communities.</a></i></a><br>Home</a></div>
+            </div>
+        </div>
+</div><!-- End of Page title -->
+<div class="validtheme-shop-single-area default-padding">
+    <div class="container">
+        <div class="product-details">
+            <div class="row">
+				
+                {% with messages = get_flashed_messages() %}
+                                                    {% if messages %}
+                                                        <ul>
+                                                            {% for message in messages %}
+                                                                <li class="flash-message">{{ message }}</li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    {% else %}
+                                                        <p>No messages</p>
+                                                    {% endif %}
+                                                {% endwith %}
+                                                
+                                                <table>
+                                                    <tr>
+                                                        <th colspan="5" style="text-align: center;">View Enquiries</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>SL_No:</th>
+                                                        <th>Enquiry</th>
+                                                        <th>Date</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                    
+                                                    {% for enquiry in ar_obj %}
+                                                    <tr class="info">
+                                                        <td>{{ loop.index }}</td>
+                                                        <td>{{ enquiry[1] }}</td>  <!-- enquiry -->
+                                                        <td>{{ enquiry[2] }}</td>  <!-- date -->
+                                                        <td>{{ enquiry[3] }}</td>  <!-- status -->
+                                                        <td>
+                                                        {% if enquiry[3] == "Sent" %}
+
+                                                            <button  style="margin-left: 5px;width:90px;" type="button" 
+                                                             class="btn btn-primary" 
+                                                             data-bs-toggle="modal" 
+                                                             data-bs-target="#enquiryModal-{{ loop.index }}">
+                                                             <a href="#" style="position:relative;left:-26px;color: white;">Reply</a>
+                                                            </button>
+                                            
+                                                        {% else %}
+
+                                                            <button  style="margin-left: 5px;width:90px;" type="button" 
+                                                             class="btn btn-primary" 
+                                                             data-bs-toggle="modal" 
+                                                             data-bs-target="#enquiryModal-{{ loop.index }}" disabled><a href="#" style="position:relative;left:-32px;color: white;">Replied</a>
+                                                            </button>
+
+                                                        {% endif %}
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    {% else %}
+                                                    <tr>
+                                                        <td colspan="5" style="text-align: center;">Not found</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </table>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- End Single Post -->
+
+                        <!-- Modal for each Reply -->
+                        {% for enquiry in ar_obj %}
+                        <div class="modal fade" id="enquiryModal-{{ loop.index }}" tabindex="-1" aria-labelledby="enquiryModalLabel-{{ loop.index }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="enquiryModalLabel-{{ loop.index }}">Your Reply</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <!-- Modal Body -->
+                                    <div class="modal-body">
+                                        <!-- Reply Form -->
+                                        <form action="{{ url_for('landowner_send_reply',enquiry_id=enquiry[0]) }}" method="POST">
+                                            <textarea class="form-control" name="reply_message" rows="4" placeholder="Type your reply here..."></textarea>
+                                            <!-- <input type="hidden" name="item_id" value="{{ enquiry[0] }}"> -->
+                                            <div class="mt-3 text-center">
+                                                <button type="submit" class="btn btn-primary">Send Reply</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        </table>
+				
+			
+	<div class="col-lg-6"><div class="product-thumb"><div class="item-box"></div></div></div>
+	<div class="col-lg-6">
+		
+ </li></ul>
+</div> 
+			</form>
+
+	
+ </div>
+ </div>
+
+		<!-- Product Bottom Info  -->
+    <div class="single-product-bottom-info">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Tab Nav -->
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                		
+                        
+                    	
+                        
+                                    </div>
+                <!-- End Tab Nav -->
+                <!-- Start Tab Content -->
+                <div class="tab-content tab-content-info" id="myTabContent">
+                		
+                    <!-- Tab Single -->
+                    <div class="tab-pane fade show active" id="description-tab" role="tabpanel" aria-labelledby="description-tab">
+                    
+	
+                    </div>
+                    
+			</div> 
+
+					
+
+			
+                    	
+                </div>
+                
+				<div class="vt-products text-center related-product-carousel swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+									<div class="swiper-slide">
+						
+</div>
+</div>
+<div class="product-caption">
+    <div class="product-tags">
+        <div class="product-tags">
+            <a href="../../product-tag/crop/index.html" rel="tag"></a>
+            <a href="../../product-tag/organic/index.html" rel="tag">Organic</a>
+        </div>
+    </div>
+    <h4 class="product-title"><a href="../strawberry/index.html">Strawberry</a></h4>
+    <div class="price">
+	
+							</div> 
+		</div>
+
+	</div>
+	
+
+
+		
+ </div>
+ </div>
+ </div>
+ </div>
+    {% include 'footer.html' %}

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Agro &#8211; Connect</title>
+    <link rel="icon" type="image/png" href="static/assets/images/Agrologonew.png">
+    <meta name='robots' content='max-image-preview:large' />
+    <link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+    <link rel="alternate" type="application/rss+xml" title="Agrica &raquo; Feed" href="feed/index.html" />
+    <link rel="alternate" type="application/rss+xml" title="Agrica &raquo; Comments Feed" href="comments/feed/index.html" />
+
+    <!-- Stylesheets -->
+    <link rel='stylesheet' id='elementor-post-9-css' href='static/assets/css/post-9689d.css?ver=1705050394' type='text/css' media='all' />
+    <link rel='stylesheet' id='bootstrap-css' href='static/assets/css/bootstrap.min5b31.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='fontawesome-css' href='static/assets/css/font-awesome.minad76.css?ver=5.9.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='agrica-validnavs-css' href='static/assets/css/validnavs5152.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='agrica-main-style-css' href='static/assets/css/styled5f7.css?ver=2.0' type='text/css' media='all' />
+   
+    <link rel='stylesheet' id='landcss' href='static/assets/css/landowner.css' type='text/css' />
+
+    <!-- JS -->
+    <script type="text/javascript" src="static/assets/js/jquery.minf43b.js?ver=3.7.1" id="jquery-core-js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="static/assets/images/cropped-favicon-32x32.png" sizes="32x32" />
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-image: url('static/assets/images/land3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Keeps the background fixed during scrolling */
+        }
+        .custom-container {
+            width: 100%; /* Adjust the width to fill the entire view */
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar-area top-bar-style-one bg-dark text-light">
+    <div class="container">
+        <div class="row align-center">
+            <div class="col-lg-8">
+                <ul class="item-flex">
+                    <li><i class="fas fa-clock"></i> Opening Hours: 24 hrs</li>
+                    <li><a href="tel:+91 7586958956"><i class="fas fa-phone-alt"></i> +91 7586958956</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 text-end">
+                <div class="social">
+                    <ul>
+                        <li><a href="http://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="http://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="http://youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="http://linkedin.com/"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<header>
+    <nav class="navbar navbar-sticky navbar-default validnavs dark">
+        <div class="custom-container d-flex justify-content-between align-items-center">
+            <!-- Navbar Header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <img class="logo" src="static/assets/images/Agro-logo-new.png" />
+                </a>
+            </div>
+
+            <!-- Navbar Menu -->
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <i class="fa fa-times"></i>
+                </button>
+                <ul class="nav navbar-nav navbar-center" id="menu-primary-menu">
+                    <li id="menu-item-85"><a title="Home" href="{{url_for('index')}}">Home</a></li>
+                    <li id="menu-item-2681"><a title="About Us" href="#">About Us</a></li>
+                    <li id="menu-item-2696"><a title="Gallery" href="#">Gallery</a></li>
+                    <li id="menu-item-2718"><a title="Products" href="#">Products</a></li>
+                    <li id="menu-item-2729"><a title="Contact Us" href="#">Contact Us</a></li>
+                    <li id="menu-item-2732" class="menu-item menu-item-has-children dropdown">
+                        <a title="Registration" href="#" class="dropdown-toggle" data-toggle="dropdown">Registration</a>
+                        <ul class="dropdown-menu">
+                            <li id="menu-item-2736"><a title="Provider Registration" href="provider_registration.php">Farmer</a></li>
+                            <li id="menu-item-2917"><a title="Land Owner Registration" href="{{ url_for('landowner_registration') }}">Land Owner</a></li>
+                            <li id="menu-item-2732"><a title="Customer Registration" href="{{ url_for('customer_registration') }}">Customer</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Attribute Navigation -->
+            <div class="attr-right">
+                <div class="attr-nav">
+                    <ul>
+                        <li class="button"><a href="{{url_for('login')}}">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="content">
+    <div class="text">
+       Landowner Signup
+    </div>
+    <form action="#">
+       <!-- Name Field -->
+       <div class="field">
+          <input type="text" placeholder="Enter name...">
+          <!-- Label can be added here if needed -->
+       </div>
+       
+       <!-- Address Field -->
+       <div class="field">
+          <input type="text" placeholder="Enter address...">
+       </div>
+
+       <!-- Email or Phone Fields -->
+       <div class="field">
+          <input type="text" placeholder="Enter email or phone...">
+          <label>Email or Phone</label>
+       </div>
+
+       <div class="field">
+          <input type="text" placeholder="Enter email or phone...">
+          <label>Email or Phone</label>
+       </div>
+
+       <!-- Additional Fields (Add more meaningful placeholders) -->
+       <div class="field">
+          <input type="text" placeholder="Enter other info...">
+          <label>Additional Info</label>
+       </div>
+
+       <div class="field">
+          <input type="text" placeholder="Enter more info...">
+          <label>More Info</label>
+       </div>
+
+       <div class="field">
+          <input type="text" placeholder="Enter required info...">
+          <label>Required Info</label>
+       </div>
+
+       <div class="field">
+          <input type="text" placeholder="Enter relevant info...">
+          <label>Relevant Info</label>
+       </div>
+
+       <!-- Submit Button -->
+       <button type="submit">Submit</button>
+    </form>
+
+    
+ </div>
+
+</body>
+</html>

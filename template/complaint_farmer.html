@@ -1,0 +1,148 @@
+{% include 'farmer_header.html' %}
+<!-- Page title -->
+
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                                    <!-- <div class="thumb">
+                                        <a href="#" class="post-thumbnail">
+                                            <img fetchpriority="high" width="1500" height="701" src="static/assets/images/img1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async"></a>
+                                    </div>End Post Thumbnail -->
+                                    <!-- <div class="info">
+                                        <h3 style="margin-left: 192px;">Complaint Form</h3>
+                                    </div> -->
+                                </div>
+                            </div><!-- End Single Post -->
+                        </div>
+                                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                                            <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                                <div class="item"><!-- Post Thumbnail -->
+                
+                                                </div>
+                                            </div><!-- End Single Post -->
+                                    </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+                                        <div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                            <div class="item"><!-- Post Thumbnail -->
+                                                <div class="thumb">
+                                                        {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                   
+                                                        {% endif %}
+                                                        {% endwith %}
+
+                                                    <div class="form3">
+                                                    <form action="/submit_complaint" method="post">
+                                                        <h3>Complaint Form</h3>
+                                                        <label class="label1">Type:</label>
+                                                        <select class="select1" id="toSelect" name="toSelect" onchange="updateAgainstOptions()">
+                                                            <option value="">--Select--</option>
+                                                            <option value="Customer">Customer</option>
+                                                            <option value="Landowner">Landowner</option>
+                                                        </select>
+                                                        <br>
+                                                        <label class="label2">To:</label>
+                                                        <select class="select2" id="againstSelect" name="againstSelect">
+                                                            <option value="">--Select--</option>
+                                                        </select>
+                                                        <br>
+                                                        <label class="label3">Matter:</label>
+                                                        <textarea name="matter"></textarea>
+                                                        <br>
+                                                        <button class="btn1">
+                                                            <input type="submit" value="SEND">
+                                                        </button>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src="static/assets/images/farmquote.jpg" style="position: relative;top:20px;">
+                                </div>
+                            </div>
+                            {% include 'farmer_sidebar.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+        function updateAgainstOptions() {
+        const toValue = document.getElementById("toSelect").value;
+        const againstSelect = document.getElementById("againstSelect");
+
+        // Clear existing options
+        againstSelect.innerHTML = '<option value="">--Select--</option>';
+
+        if (toValue) {
+            fetch(`/get_against_options?to=${toValue}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        data.forEach(option => {
+                            const opt = document.createElement("option");
+                            opt.value = option.id;
+                            opt.textContent = option.name;
+                            againstSelect.appendChild(opt);
+                        });
+                    } else {
+                        console.error("Error in data format:", data.error || "Unknown error");
+                    }
+                })
+                .catch(error => console.error("Error in fetch:", error));
+        }
+    }
+
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 5000);
+}
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const flashMessages = document.querySelectorAll('.flash-message');
+    flashMessages.forEach(message => {
+        showCustomAlert(message.textContent.trim()); // Trim leading/trailing whitespace
+    });
+});
+   
+</script>
+
+{% include 'footer.html' %}
+
+
+

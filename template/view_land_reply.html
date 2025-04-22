@@ -1,0 +1,360 @@
+{% include 'farmer_header.html' %}
+<!-- Page title -->
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        width: 350px;
+        text-align: center;
+    }
+    .popup-content {
+        padding: 15px;
+    }
+    .close-btn {
+        float: right;
+        cursor: pointer;
+        font-size: 20px;
+    }
+</style>
+<div class="blog-area right-sidebar full-blog default-padding">
+    <div class="container">
+        <div class="blog-items">
+            <div class="row">
+                <div class="blog-content col-lg-8 col-md-12">
+                    <div class="blog-item-box">
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-2076 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural category-organic tag-fresh tag-vegetables item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                                    <!-- <div class="thumb">
+                                        <a href="#" class="post-thumbnail">
+                                            <img fetchpriority="high" width="1500" height="701" src="static/assets/images/img1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async"></a>
+                                    </div>End Post Thumbnail -->
+                                    <!-- <div class="info">
+                                        <h3 style="margin-left: 192px;">Complaint Form</h3>
+                                    </div> -->
+                                </div>
+                            </div><!-- End Single Post -->
+                        </div>
+                        <div class="col-lg-12 single-item"><!-- Single Post -->
+                            <div class="post-1224 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-harvest category-natural tag-organic item-inner" >
+                                <div class="item"><!-- Post Thumbnail -->
+                
+                                </div>
+                                </div><!-- End Single Post -->
+                                </div>
+                                    <div class="col-lg-12 single-item"><!-- Single Post -->
+                                        <div class="post-1227 post type-post status-publish format-standard has-post-thumbnail hentry category-dairy category-farming category-natural category-organic tag-food tag-health item-inner" >
+                                            <div class="item"><!-- Post Thumbnail -->
+                                                <div class="thumb" style="width: 1293px;margin-left: -87px;">
+                                                        {% with messages = get_flashed_messages() %}
+                                                        {% if messages %}
+                                                    <ul>
+                                                        {% for message in messages %}
+                                                        <li class="flash-message">{{ message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                    {% else %}
+                                                        <p>No messages</p>
+                                                        {% endif %}
+                                                        {% endwith %}
+
+                                                       
+                                                        <table>
+                                                            <tr>
+                                                                <th colspan="11" style="text-align: center;">View Land Enquiry Reply</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>SL_No:</th>
+                                                                <th>Landowner Name</th>
+                                                                <th>Village Name</th>
+                                                                <th>total Area</th>
+                                                                <th>Land Type</th>
+                                                                <th>Image</th>
+                                                                <th>Reply</th>
+                                                                <th>Date</th>
+                                                                <th>MOU</th>
+                                                                <th>Lease Amount</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                            
+                                                            {% for landreply in ar_obj %}
+                                                            <tr class="info">
+                                                                <td>{{ loop.index }}</td>
+                                                                <td>{{ landreply[1] }}</td> 
+                                                                <td>{{ landreply[2] }}</td> 
+                                                                <td>{{ landreply[3] }}</td>  
+                                                                <td>{{ landreply[4] }}</td>
+                                                                <td><img src="{{ url_for('static', filename='uploads/' + landreply[5]) }}" width="100"></td>
+                                                                <td>{{ landreply[6] }}</td>
+                                                                <td>{{ landreply[7] }}</td>
+                                                                <td>{{ landreply[8] }}</td>
+                                                                <td>{{ landreply[9] }}</td>
+                                                                <td>
+                                                                        {% if landreply[8] %}
+                                                                            <a style="background-color: #49a760;width: 196px;" href="{{ url_for('static', filename='uploads/' + landreply[8]) }}" class="btn btn-success" download>Download MOU</a>
+                                                                        {% else %}
+                                                                            Not Available
+                                                                        {% endif %}
+                                                                        <button class="btn btn-primary" onclick="openUploadPopup('{{ landreply[0] }}')" style="width: 196px;">Upload MOU</button>
+                                                                        <!-- Button to Open Modal -->
+                                                                        <button type="button" style="width: 196px" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#leasePaymentModal" onclick="loadLeaseData(1)">
+                                                                            Payment
+                                                                        </button>
+                                                                        
+                                                                </td>
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="leasePaymentModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="modalLabel">Lease Payment</h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <!-- Payment Agreement Description -->
+                                                                                <div class="alert alert-info" role="alert">
+                                                                                    <h6><strong>📜 Payment Agreement Terms</strong></h6>
+                                                                                    <ul>
+                                                                                        <li><strong>Lease Amount:</strong> Auto-filled based on the agreement.</li>
+                                                                                        <li><strong>Payment Obligation:</strong> By paying, you accept the terms.</li>
+                                                                                        <li><strong>Non-Refundable:</strong> Payments are final unless stated otherwise.</li>
+                                                                                        <li><strong>Payment Confirmation:</strong> Status will be updated upon submission.</li>
+                                                                                        <li><strong>Legal Compliance:</strong> This confirms your agreement to the MOU.</li>
+                                                                                    </ul>
+                                                                                    <p>✔ Click <strong>"Submit Payment"</strong> to proceed.</p>
+                                                                                </div>
+                                                                
+                                                                                <!-- Lease Payment Form -->
+                                                                                <form action="{{ url_for('lease_payment',enquiry_reply_id=landreply[0]) }}" id="leasePaymentForm"  method="post">
+                                                                                    <input type="hidden" name="enquiry_reply_id" value="{{ landreply[0] }}">
+                                                                                    <div class="mb-3">
+                                                                                        <label class="form-label" style="margin-left: 12px;position: relative;top: 10px;"><strong>Landowner Name:</strong></label>
+                                                                                        <input type="text" style="width: 250px;position: relative;right: -187px;top: -35px;" class="form-control" value="{{ landreply[1] }}" readonly>
+                                                                                    </div>
+                                                                                    <div class="mb-3" style="position: relative;top:-28px;">
+                                                                                        <label class="form-label" style="margin-left: 12px;position: relative;top: 10px;"><strong>Area:</strong></label>
+                                                                                        <input type="text" style="width: 250px;position: relative;right: -187px;top: -35px;" class="form-control" value="{{ landreply[2] }}" readonly>
+                                                                                    </div>
+                                                                                    <div class="mb-3" style="position: relative;top:-54px;">
+                                                                                        <label class="form-label" style="margin-left: 12px;position: relative;top: 10px;"><strong>Total Area:</strong></label>
+                                                                                        <input type="text" style="width: 250px;position: relative;right: -187px;top: -35px;" class="form-control" value="{{ landreply[3] }}" readonly>
+                                                                                    </div>
+                                                                                    <div class="mb-3" style="position: relative;top:-54px;">
+                                                                                        <label class="form-label" style="margin-left: 12px;position: relative;top: 10px;"><strong>Land type:</strong></label>
+                                                                                        <input type="text" style="width: 250px;position: relative;right: -187px;top: -35px;" class="form-control" value="{{ landreply[4] }}" readonly>
+                                                                                    </div>
+                                                                                    <div class="mb-3">
+                                                                                        <label class="form-label" style="margin-left: 12px;position: relative;top: 10px;"><strong>Payment Type:</strong></label>
+                                                                                        <select id="paymentOption" style="width: 250px;position: relative;right: -187px;top: -35px;" name="payment_type" class="form-control" onchange="openPaymentPopup()">
+                                                                                            <option value="">--Select Payment Option--</option>
+                                                                                            <option value="creditDebitCards">CREDIT & DEBIT CARDS</option>
+                                                                                            <option value="upiApps">UPI Apps</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <div class="mb-3">
+                                                                                        <label for="lease_amount" style="margin-left: 12px;position: relative;top: 10px;" class="form-label"><strong>Lease Amount</strong></label>
+                                                                                        <input type="text" style="width: 250px;position: relative;right: -187px;top: -35px;" class="form-control" id="lease_amount" name="lease_amount" value="{{ landreply[9] }}" readonly>
+                                                                                    </div>
+                                                                                    <button type="submit" class="btn btn-success">Submit Payment</button>
+                                                                                </form>
+
+                                                                                <input type="hidden" id="paymentVerified" value="false">
+
+                                                                                <!-- UPI Payment Popup -->
+                                                                                <div id="upiPopup" class="popup">
+                                                                                    <div class="popup-content">
+                                                                                        <span class="close-btn" onclick="closePopup('upiPopup')" style="color: black;">&times;</span>
+                                                                                        <h4>Enter UPI ID</h4>
+                                                                                        <input type="text" id="upi_id" style="padding-left: 10px;padding-right: 10px;" placeholder="Enter UPI ID (e.g., name@bank)" required>
+                                                                                        <button type="button" onclick="verifyPayment('upi')">Verify</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                <!-- Card Payment Popup -->
+                                                                                <div id="cardPopup" class="popup">
+                                                                                    <div class="popup-content">
+                                                                                        <span class="close-btn" onclick="closePopup('cardPopup')" style="color: black;">&times;</span>
+                                                                                        <h4>Enter Card Details</h4>
+                                                                                        <input type="text" style="padding-left: 10px;padding-right: 10px;" id="provider_name" placeholder="Cardholder Name" required>
+                                                                                        <input type="text" style="padding-left: 10px;padding-right: 10px;" id="card_number" placeholder="Card Number" required>
+                                                                                        <input type="text" style="padding-left: 10px;padding-right: 10px;" id="expiry_date" placeholder="MM/YYYY" required>
+                                                                                        <button type="button" onclick="verifyPayment('card')">Verify</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                
+                                                            </tr>
+                                                            {% else %}
+                                                            <tr>
+                                                                <td colspan="10" style="text-align: center;">Not found</td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </table>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="uploadPopup" class="popup">
+                                        <div class="popup-content">
+                                            <span class="close-btn" onclick="closeUploadPopup()">&times;</span>
+                                            <h3>Upload MOU</h3>
+                                            <form id="uploadForm" action="{{ url_for('upload_mou') }}" method="POST" enctype="multipart/form-data">
+                                                <input type="hidden" name="landreply_id" id="landreply_id">
+                                                <input type="file" name="mou_file" accept=".pdf,.doc,.docx" required>
+                                                <button type="submit" class="btn btn-success">Upload</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div><!-- End Single Post -->
+        
+                                
+                                                        
+
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function showCustomAlert(message) {
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '20%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.background = 'white';
+    popup.style.padding = '35px';
+    popup.style.border = '1px solid black';
+    popup.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    popup.style.zIndex = '1000';
+    popup.style.width = '400px'; // Increase the width of the box
+    popup.style.textAlign = 'center'; // Center-align content inside the popup
+    popup.style.borderRadius = '5px'; // Increase the width of the box
+    popup.style.height = '100px';
+
+    document.body.appendChild(popup);
+
+    // Automatically remove popup after 5 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        flashMessages.forEach(message => {
+            showCustomAlert(message.textContent.trim()); // Show alert popup
+        });
+
+        // Hide flash messages after 3 minutes (180,000 milliseconds)
+        setTimeout(() => {
+            flashMessages.forEach(message => {
+                message.style.display = 'none'; // Hide flash message
+            });
+        }, 3000);
+    });
+   
+</script>
+
+<script>
+    function openUploadPopup(landId) {
+        document.getElementById("landreply_id").value = landId;
+        document.getElementById("uploadPopup").style.display = "block";
+    }
+
+    function closeUploadPopup() {
+        document.getElementById("uploadPopup").style.display = "none";
+    }
+</script>
+<script>
+    let paymentVerified = false;
+
+function openPaymentPopup() {
+    let selectedOption = document.getElementById("paymentOption").value;
+
+    if (selectedOption === "creditDebitCards") {
+        document.getElementById("cardPopup").style.display = "block";
+    } else if (selectedOption === "upiApps") {
+        document.getElementById("upiPopup").style.display = "block";
+    }
+}
+
+function closePopup(popupId) {
+    document.getElementById(popupId).style.display = "none";
+}
+
+function verifyPayment(type) {
+    if (type === "upi") {
+        let upiId = document.getElementById("upi_id").value.trim();
+        if (upiId === "") {
+            alert("⚠️ Please enter a valid UPI ID.");
+            return;
+        }
+        alert("✅ UPI ID verified successfully!");
+        document.getElementById("upiPopup").style.display = "none";
+        paymentVerified = true;
+    } else if (type === "card") {
+        let providerName = document.getElementById("provider_name").value.trim();
+        let cardNumber = document.getElementById("card_number").value.trim();
+        let expiryDate = document.getElementById("expiry_date").value.trim();
+
+        if (providerName === "" || cardNumber === "" || expiryDate === "") {
+            alert("⚠️ Please enter all card details.");
+            return;
+        }
+
+        alert("✅ Card details verified successfully!");
+        document.getElementById("cardPopup").style.display = "none";
+        paymentVerified = true;
+    }
+
+    // Set the hidden input value for verification
+    document.getElementById("paymentVerified").value = paymentVerified;
+}
+
+// Prevent form submission if payment is not verified
+document.getElementById("leasePaymentForm").addEventListener("submit", function (event) {
+    if (!paymentVerified) {
+        alert("⚠️ Please verify your payment before submitting.");
+        event.preventDefault();
+    } else {
+        alert("✅ Payment submitted successfully!");
+    }
+});
+</script>
+
+
+{% include 'footer.html' %}
+
+
+
